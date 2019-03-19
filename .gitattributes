@@ -1,1 +1,2 @@
-jsmol/ linguist-vendored
+jsmol/** linguist-vendored
+nbextensions/** linguist-vendored
