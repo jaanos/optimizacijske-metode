@@ -1,0 +1,92 @@
+\documentclass[14pt]{extarticle}
+\usepackage[a4paper, total={18cm, 26cm}]{geometry}
+\usepackage[utf8]{inputenc}
+\input{grafi-2020-03-27}
+
+\title{Optimizacijske metode -- vaje}
+\author{Problem razvoza}
+\date{27.3.2020}
+
+\begin{document}
+
+\maketitle
+
+\section*{Naloga 1}
+
+Reši problem razvoza na grafu s simpleksno metodo za omrežje.
+
+\begin{razvoz}{grafA}
+\end{razvoz}
+
+\subsection*{Rešitev}
+
+Najprej poiščemo drevesno dopustno rešitev.
+
+\begin{razvoz}{grafA}
+    \kolicina{b}{a}{2}
+    \kolicina{a}{c}{0}
+    \kolicina{a}{d}{6}
+    \kolicina{d}{e}{8}
+    \kolicina{d}{g}{3}
+    \kolicina{e}{f}{8}
+    \kolicina{f}{h}{8}
+
+    \oznaka{b}{0}
+    \oznaka{a}{1}
+    \oznaka{c}{7}
+    \oznaka{d}{3}
+    \oznaka{e}{11}
+    \oznaka{g}{5}
+    \oznaka{f}{12}
+    \oznaka{h}{19}
+
+    \kandidat{b}{d}
+    \kandidat{c}{e}
+    \kandidat{e}{h}
+    \kandidat{g}{f}
+    \kandidat{g}{h}
+\end{razvoz}
+
+\clearpage
+\section*{Naloga 2}
+
+Reši problem razvoza na grafu s simpleksno metodo za omrežje.
+Pazi na skupno povpraševanje in ponudbo!
+
+\begin{razvoz}{grafB}
+\end{razvoz}
+
+\subsection*{Rešitev}
+
+Ker je ponudba večja od povpraševanja,
+graf dopolnimo z novim vozliščem.
+
+\begin{razvoz}{grafBs}
+\end{razvoz}
+
+\clearpage
+\section*{Naloga 3}
+
+Reši problem razvoza na grafu
+z dvofazno simpleksno metodo za omrežje.
+
+\begin{razvoz}[scale=0.9]{grafC}
+\end{razvoz}
+
+\subsection*{Rešitev}
+
+Sestavimo omrežje prve faze, da poiščemo začetno dopustno rešitev.
+
+\begin{razvoz}[scale=0.9]{grafCs}
+\end{razvoz}
+
+\clearpage
+\section*{Naloga 4}
+
+Reši problem razvoza na grafu s simpleksno metodo za omrežje
+v odvisnosti od parametra $a$.
+
+\begin{razvoz}{grafD}
+\end{razvoz}
+
+\end{document}

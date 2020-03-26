@@ -1,0 +1,157 @@
+\usepackage[oznake]{grafi}
+
+\tikzstyle{drevo}=[very thick, double, red]
+\tikzstyle{zasicena}=[very thick, double]
+\tikzstyle{velikost}=[scale=1]
+
+\NewEnviron{razvoz@grafA}{
+    \vozlisce{a}{-7, 2}[-4]{above}
+    \vozlisce{b}{-7,-2}[-2]{below}
+    \vozlisce{c}{-2, 2}{above}
+    \vozlisce{d}{-2,-2}[-5]{below}
+    \vozlisce{e}{1, 0}{above}
+    \vozlisce{f}{4, 2}{above}
+    \vozlisce{g}{4,-2}[3]{below}
+    \vozlisce{h}{7, 0}[8]{right}
+
+    \povezava{a}{c}{6}{above}
+    \povezava{a}{d}{2}[sloped]{above}
+    \povezava{b}{a}{1}{left}
+    \povezava{b}{d}{2}{below}
+    \povezava{c}{b}{1}[sloped]{above}
+    \povezava{c}{d}{1}{left}
+    \povezava{c}{e}{2}[sloped]{below}
+    \povezava{d}{e}{8}[sloped]{above}
+    \povezava{d}{g}{2}{below}
+    \povezava{e}{f}{1}[sloped]{above}
+    \povezava{e}{g}{1}[sloped]{below}
+    \povezava{e}{h}{2}{below}
+    \povezava{f}{c}{2}{above}
+    \povezava{f}{h}{7}[sloped]{above}
+    \povezava{g}{f}{1}{right}
+    \povezava{g}{h}{8}[sloped]{below}
+}
+
+\NewEnviron{razvoz@grafB}{
+    \vozlisce{a}{-4, 3}[-10]{above}
+    \vozlisce{b}{-4, 0}[-10]{45}
+    \vozlisce{c}{-4,-3}[-5]{below}
+    \vozlisce{d}{ 0, 3}{above}
+    \vozlisce{e}{ 0, 0}{45}
+    \vozlisce{f}{ 0,-3}{below}
+    \vozlisce{g}{ 4, 3}{above}
+    \vozlisce{h}{ 4, 0}{135}
+    \vozlisce{i}{ 4,-3}[10]{below}
+    \vozlisce{j}{ 8, 3}[10]{above}
+    \vozlisce{k}{ 8, 0}{right}
+    \vozlisce{l}{ 8,-3}{below}
+
+    \povezava{a}{d}{2}{above}
+    \povezava{b}{a}{3}{left}
+    \povezava{b}{c}{12}{left}
+    \povezava{b}{e}{15}{below}
+    \povezava{c}{f}{5}{below}
+    \povezava{d}{g}{3}{above}
+    \povezava{e}{d}{8}{left}
+    \povezava{e}{f}{3}{left}
+    \povezava{f}{i}{1}{below}
+    \povezava{g}{h}{2}{right}
+    \povezava{g}{j}{15}{above}
+    \povezava{h}{e}{3}{below}
+    \povezava{h}{i}{10}{right}
+    \povezava{h}{k}{10}{below}
+    \povezava{i}{l}{4}{below}
+    \povezava{k}{j}{2}{right}
+    \povezava{l}{k}{-3}{right}
+}
+
+\NewEnviron{razvoz@grafBs}{
+    \begin{razvoz@grafB}
+    \end{razvoz@grafB}
+
+    \vozlisce{s}{-8, 0}[5]{left}
+    \povezava{a}{s}{0}[sloped]{above}
+    \povezava{b}{s}{0}{below}
+    \povezava{c}{s}{0}[sloped]{below}
+}
+
+\NewEnviron{razvoz@grafC}{
+    \vozlisce{a}{-8, 5}[1]{left}
+    \vozlisce{b}{ 8, 5}[5]{right}
+    \vozlisce{c}{ 8,-5}[-4]{right}
+    \vozlisce{d}{-8,-5}[-2]{left}
+    \vozlisce{e}{-3, 3}[10]{above}
+    \vozlisce{f}{ 3, 3}[-7]{above}
+    \vozlisce{g}{ 0,-2}[-3]{below}
+
+    \povezava{a}{b}{3}{above}
+    \povezava{c}{b}{9}{right}
+    \povezava{c}{d}{4}{below}
+    \povezava{d}{a}{1}{left}
+    \povezava{e}{a}{2}[sloped]{above}
+    \povezava{e}{d}{11}[sloped]{above}
+    \povezava{f}{b}{4}[sloped]{above}
+    \povezava{f}{e}{8}{above}
+    \povezava{g}{c}{2}[sloped]{below}
+    \povezava{g}{d}{17}[sloped]{below}
+    \povezava{g}{e}{1}[sloped]{above}
+    \povezava{g}{f}{9}[sloped]{above}
+}
+
+\NewEnviron{razvoz@grafCs}{
+    \cena{a}{b}{0}
+    \cena{c}{b}{0}
+    \cena{c}{d}{0}
+    \cena{d}{a}{0}
+    \cena{e}{a}{0}
+    \cena{e}{d}{0}
+    \cena{f}{b}{0}
+    \cena{f}{e}{0}
+    \cena{g}{c}{0}
+    \cena{g}{d}{0}
+    \cena{g}{e}{0}
+    \cena{g}{f}{0}
+
+    \begin{razvoz@grafC}
+    \end{razvoz@grafC}
+
+    \povezava{c}{g}{1}[sloped]{above}[bend right=15]
+    \povezava{d}{g}{1}[sloped]{above}[bend left=15]
+    \povezava{f}{g}{1}[sloped]{below}[bend left=15]
+    \povezava{g}{a}{1}[sloped]{below}
+    \povezava{g}{b}{1}[sloped]{below}[bend right=20]
+}
+
+\NewEnviron{razvoz@grafD}{
+    \vozlisce{a}{-4, 3}[-5]{above}
+    \vozlisce{b}{-4, 0}[-5]{left}
+    \vozlisce{c}{-4,-3}{below}
+    \vozlisce{d}{ 0, 3}{above}
+    \vozlisce{e}{ 0, 0}{45}
+    \vozlisce{f}{ 0,-3}{below}
+    \vozlisce{g}{ 4, 3}{above}
+    \vozlisce{h}{ 4, 0}{135}
+    \vozlisce{i}{ 4,-3}{below}
+    \vozlisce{j}{ 8, 3}[7]{above}
+    \vozlisce{k}{ 8, 0}[3]{right}
+    \vozlisce{l}{ 8,-3}{below}
+
+    \povezava{a}{d}{5}{above}
+    \povezava{b}{a}{10}{left}
+    \povezava{b}{c}{4}{left}
+    \povezava{b}{e}{10}{below}
+    \povezava{c}{f}{4}{below}
+    \povezava{d}{e}{3}{left}
+    \povezava{e}{f}{5}{left}
+    \povezava{e}{h}{a}{below}
+    \povezava{f}{i}{2}{below}
+    \povezava{g}{d}{1}{above}
+    \povezava{g}{j}{15}{above}
+    \povezava{h}{f}{3}[sloped]{below}
+    \povezava{h}{g}{6}{right}
+    \povezava{h}{k}{10}{below}
+    \povezava{i}{h}{3}{right}
+    \povezava{i}{l}{3}{below}
+    \povezava{k}{j}{2}{right}
+    \povezava{l}{k}{1}{right}
+}
