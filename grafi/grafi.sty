@@ -6,6 +6,8 @@
 
 \tikzset{odmik/.style={left/.default=#1,right/.default=#1,above/.default=#1,below/.default=#1}}
 
+\tikzstyle{velikost}=[scale=0.7]
+
 \tikzstyle{vozlisce}=[draw, circle, fill=white, inner sep=0pt, minimum size=10mm]
 \tikzstyle{vozlisce pretoka}=[vozlisce]
 
@@ -36,7 +38,7 @@
     \bigskip
     \noindent
     \makebox[\textwidth][c]{
-    \begin{tikzpicture}[style=thick,#1]
+    \begin{tikzpicture}[velikost,style=thick,#1]
         \tikzstyle{every node}=[]
         \tikzstyle{vertex}=[vozlisce razvoza]
         \tikzstyle{zacetek}=[zacetek razvoza]
@@ -54,7 +56,7 @@
     \bigskip
     \noindent
     \makebox[\textwidth][c]{
-    \begin{tikzpicture}[style=thick,#1]
+    \begin{tikzpicture}[velikost,style=thick,#1]
     \tikzstyle{every node}=[]
     \tikzstyle{vertex}=[draw, circle, fill=white, inner sep=0pt, vozlisce pretoka]
     \tikzstyle{zacetek}=[zacetek pretoka]
