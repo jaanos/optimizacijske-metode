@@ -76,7 +76,7 @@
 
 \NewDocumentCommand{\vozlisce}{smmO{}m}{
     \pgfkeysifdefined{/nodes/#2}{\tikzset{/nodes/#2/.style={dosezeno}}}{\tikzset{/nodes/#2/.style={}}}
-    \node[vertex,label=#5:\pgfkeysvalueof{/labels/#2},/nodes/#2] (#2) at (#3) {\ifthenelse{\IfBooleanTF{#1}{\equal{}{}}{\boolean{@oznake}}}{$\izpisiOznako{#2}$\ifthenelse{\equal{#4}{}}{}{:\,}}{}$#4$};
+    \node[vertex,label=#5:$\pgfkeysvalueof{/labels/#2}$,/nodes/#2] (#2) at (#3) {\ifthenelse{\IfBooleanTF{#1}{\equal{}{}}{\boolean{@oznake}}}{$\izpisiOznako{#2}$\ifthenelse{\equal{#4}{}}{}{:\,}}{}$#4$};
 }
 
 \NewDocumentCommand{\povezava}{mmO{}mO{}mO{}}{
