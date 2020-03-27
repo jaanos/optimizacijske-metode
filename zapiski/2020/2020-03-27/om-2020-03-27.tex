@@ -23,7 +23,7 @@ Reši problem razvoza na grafu s simpleksno metodo za omrežje.
 Najprej poiščemo drevesno dopustno rešitev.
 
 \begin{razvoz}{grafA}
-    \kolicina{b}{a}{2}
+    \kolicina{b}{a}{2}[izstopi]
     \kolicina{a}{c}{0}
     \kolicina{a}{d}{6}
     \kolicina{d}{e}{8}
@@ -40,12 +40,176 @@ Najprej poiščemo drevesno dopustno rešitev.
     \oznaka{f}{12}
     \oznaka{h}{19}
 
-    \kandidat{b}{d}
+    \kandidat{b}{d}[vstopi]
     \kandidat{c}{e}
     \kandidat{e}{h}
     \kandidat{g}{f}
     \kandidat{g}{h}
 \end{razvoz}
+
+\begin{razvoz}{grafA}
+    \kolicina{a}{c}{0}
+    \kolicina{a}{d}{4}[izstopi]
+    \kolicina{b}{d}{2}
+    \kolicina{d}{e}{8}
+    \kolicina{d}{g}{3}
+    \kolicina{e}{f}{8}
+    \kolicina{f}{h}{8}
+
+    \oznaka{b}{1}
+    \oznaka{a}{1}
+    \oznaka{c}{7}
+    \oznaka{d}{3}
+    \oznaka{e}{11}
+    \oznaka{g}{5}
+    \oznaka{f}{12}
+    \oznaka{h}{19}
+
+    \kandidat{c}{e}[vstopi]
+    \kandidat{e}{h}
+    \kandidat{g}{f}
+    \kandidat{g}{h}
+\end{razvoz}
+
+\begin{razvoz}{grafA}
+    \kolicina{a}{c}{4}
+    \kolicina{b}{d}{2}[izstopi]
+    \kolicina{d}{e}{4}
+    \kolicina{d}{g}{3}
+    \kolicina{e}{f}{8}
+    \kolicina{f}{h}{8}
+    \kolicina{c}{e}{4}
+
+    \oznaka{b}{1}
+    \oznaka{a}{3}
+    \oznaka{c}{9}
+    \oznaka{d}{3}
+    \oznaka{e}{11}
+    \oznaka{g}{5}
+    \oznaka{f}{12}
+    \oznaka{h}{19}
+
+    \kandidat{b}{a}[vstopi]
+    \kandidat{e}{h}
+    \kandidat{g}{f}
+    \kandidat{g}{h}
+\end{razvoz}
+
+\begin{razvoz}{grafA}
+    \kolicina{a}{c}{6}
+    \kolicina{b}{a}{2}
+    \kolicina{d}{e}{2}
+    \kolicina{d}{g}{3}
+    \kolicina{e}{f}{8}[izstopi]
+    \kolicina{f}{h}{8}
+    \kolicina{c}{e}{6}
+
+    \oznaka{b}{2}
+    \oznaka{a}{3}
+    \oznaka{c}{9}
+    \oznaka{d}{3}
+    \oznaka{e}{11}
+    \oznaka{g}{5}
+    \oznaka{f}{12}
+    \oznaka{h}{19}
+
+    \kandidat{e}{h}[vstopi]
+    \kandidat{g}{f}
+    \kandidat{g}{h}
+\end{razvoz}
+
+\begin{razvoz}{grafA}
+    \kolicina{a}{c}{6}
+    \kolicina{b}{a}{2}
+    \kolicina{d}{e}{2}
+    \kolicina{d}{g}{3}
+    \kolicina{e}{h}{8}
+    \kolicina{f}{h}{0}[izstopi]
+    \kolicina{c}{e}{6}
+
+    \oznaka{b}{2}
+    \oznaka{a}{3}
+    \oznaka{c}{9}
+    \oznaka{d}{3}
+    \oznaka{e}{11}
+    \oznaka{g}{5}
+    \oznaka{f}{6}
+    \oznaka{h}{13}
+
+    \kandidat{f}{c}[vstopi]
+\end{razvoz}
+
+\begin{razvoz}{grafA}
+    \kolicina{a}{c}{6}
+    \kolicina{b}{a}{2}
+    \kolicina{d}{e}{2}[izstopi]
+    \kolicina{d}{g}{3}
+    \kolicina{e}{h}{8}
+    \kolicina{f}{c}{0}
+    \kolicina{c}{e}{6}
+
+    \oznaka{b}{2}
+    \oznaka{a}{3}
+    \oznaka{c}{9}
+    \oznaka{d}{3}
+    \oznaka{e}{11}
+    \oznaka{g}{5}
+    \oznaka{f}{7}
+    \oznaka{h}{13}
+
+    \kandidat{g}{f}[vstopi]
+\end{razvoz}
+
+Optimalna rešitev:
+
+\begin{razvoz}{grafA}
+    \kolicina{a}{c}{6}
+    \kolicina{b}{a}{2}[izstopi]
+    \kolicina{d}{g}{5}
+    \kolicina{e}{h}{8}
+    \kolicina{f}{c}{2}
+    \kolicina{c}{e}{8}
+    \kolicina{g}{f}{2}
+
+    \oznaka{b}{2}
+    \oznaka{a}{3}
+    \oznaka{c}{9}
+    \oznaka{d}{4}
+    \oznaka{e}{11}
+    \oznaka{g}{6}
+    \oznaka{f}{7}
+    \oznaka{h}{13}
+
+    \kandidat{b}{d}[vstopi]
+\end{razvoz}
+
+Cena razvoza: $2 \cdot 1 + 6 \cdot 6 + 8 \cdot 2 + 8 \cdot 2 + 5 \cdot 2 + 2 \cdot 1 + 2 \cdot 2 = 86$
+
+\clearpage
+
+Splošna rešitev ($0 \le x \le 2$):
+
+\begin{razvoz}{grafA}
+    \kolicina{a}{c}{6-x}
+    \kolicina{b}{a}{2-x}
+    \kolicina{d}{g}{5+x}
+    \kolicina{e}{h}{8}
+    \kolicina{f}{c}{2+x}
+    \kolicina{c}{e}{8}
+    \kolicina{g}{f}{2+x}
+    \kolicina{b}{d}{x}
+
+    \oznaka{b}{2}
+    \oznaka{a}{3}
+    \oznaka{c}{9}
+    \oznaka{d}{4}
+    \oznaka{e}{11}
+    \oznaka{g}{6}
+    \oznaka{f}{7}
+    \oznaka{h}{13}
+\end{razvoz}
+
+Cena razvoza: $(2-x) \cdot 1 + (6-x) \cdot 6 + 8 \cdot 2 + 8 \cdot 2 + x \cdot 2 + (5+x) \cdot 2 + (2+x) \cdot 1 + (2+x) \cdot 2 = 86$
 
 \clearpage
 \section*{Naloga 2}
@@ -62,7 +226,203 @@ Ker je ponudba večja od povpraševanja,
 graf dopolnimo z novim vozliščem.
 
 \begin{razvoz}{grafBs}
+    \kolicina{a}{d}{10}
+    \kolicina{d}{g}{10}
+    \kolicina{g}{j}{10}
+    \kolicina{b}{e}{10}
+    \kolicina{e}{f}{10}
+    \kolicina{f}{i}{10}
+    \kolicina{c}{s}{5}[izstopi]
+    \kolicina{a}{s}{0}
+    \kolicina{b}{s}{0}
+    \kolicina{g}{h}{0}
+    \kolicina{i}{l}{0}
+    \kolicina{l}{k}{0}
+
+    \oznaka{s}{0}
+    \oznaka{a}{0}
+    \oznaka{b}{0}
+    \oznaka{c}{0}
+    \oznaka{d}{2}
+    \oznaka{g}{5}
+    \oznaka{j}{20}
+    \oznaka{h}{7}
+    \oznaka{e}{15}
+    \oznaka{f}{18}
+    \oznaka{i}{19}
+    \oznaka{l}{23}
+    \oznaka{k}{20}
+
+    \kandidat{c}{f}[vstopi]
+    \kandidat{h}{e}
+    \kandidat{h}{i}
+    \kandidat{h}{k}
 \end{razvoz}
+
+\begin{razvoz}{grafBs}
+    \kolicina{a}{d}{10}
+    \kolicina{d}{g}{10}
+    \kolicina{g}{j}{10}
+    \kolicina{b}{e}{5}[izstopi]
+    \kolicina{e}{f}{5}
+    \kolicina{f}{i}{10}
+    \kolicina{a}{s}{0}
+    \kolicina{b}{s}{5}
+    \kolicina{g}{h}{0}
+    \kolicina{i}{l}{0}
+    \kolicina{l}{k}{0}
+    \kolicina{c}{f}{5}
+
+    \oznaka{s}{0}
+    \oznaka{a}{0}
+    \oznaka{b}{0}
+    \oznaka{c}{13}
+    \oznaka{d}{2}
+    \oznaka{g}{5}
+    \oznaka{j}{20}
+    \oznaka{h}{7}
+    \oznaka{e}{15}
+    \oznaka{f}{18}
+    \oznaka{i}{19}
+    \oznaka{l}{23}
+    \oznaka{k}{20}
+
+    \kandidat{b}{c}[vstopi]
+    \kandidat{h}{e}
+    \kandidat{h}{i}
+    \kandidat{h}{k}
+\end{razvoz}
+
+\begin{razvoz}{grafBs}
+    \kolicina{a}{d}{10}
+    \kolicina{d}{g}{10}
+    \kolicina{g}{j}{10}
+    \kolicina{b}{c}{5}
+    \kolicina{e}{f}{0}
+    \kolicina{f}{i}{10}
+    \kolicina{a}{s}{0}[izstopi]
+    \kolicina{b}{s}{5}
+    \kolicina{g}{h}{0}
+    \kolicina{i}{l}{0}
+    \kolicina{l}{k}{0}
+    \kolicina{c}{f}{10}
+
+    \oznaka{s}{0}
+    \oznaka{a}{0}
+    \oznaka{b}{0}
+    \oznaka{c}{12}
+    \oznaka{d}{2}
+    \oznaka{g}{5}
+    \oznaka{j}{20}
+    \oznaka{h}{7}
+    \oznaka{e}{14}
+    \oznaka{f}{17}
+    \oznaka{i}{18}
+    \oznaka{l}{22}
+    \oznaka{k}{19}
+
+    \kandidat{h}{e}[vstopi]
+    \kandidat{h}{i}
+    \kandidat{h}{k}
+\end{razvoz}
+
+\begin{razvoz}{grafBs}
+    \kolicina{a}{d}{10}
+    \kolicina{d}{g}{10}
+    \kolicina{g}{j}{10}
+    \kolicina{b}{c}{5}[izstopi]
+    \kolicina{e}{f}{0}
+    \kolicina{f}{i}{10}
+    \kolicina{b}{s}{5}
+    \kolicina{g}{h}{0}
+    \kolicina{i}{l}{0}
+    \kolicina{l}{k}{0}
+    \kolicina{c}{f}{10}
+    \kolicina{h}{e}{0}
+
+    \oznaka{s}{0}
+    \oznaka{a}{4}
+    \oznaka{b}{0}
+    \oznaka{c}{12}
+    \oznaka{d}{6}
+    \oznaka{g}{9}
+    \oznaka{j}{24}
+    \oznaka{h}{11}
+    \oznaka{e}{14}
+    \oznaka{f}{17}
+    \oznaka{i}{18}
+    \oznaka{l}{22}
+    \oznaka{k}{19}
+
+    \kandidat{b}{a}[vstopi]
+    \kandidat{k}{j}
+\end{razvoz}
+
+\begin{razvoz}{grafBs}
+    \kolicina{a}{d}{15}
+    \kolicina{d}{g}{15}
+    \kolicina{g}{j}{10}[izstopi]
+    \kolicina{b}{a}{5}
+    \kolicina{e}{f}{5}
+    \kolicina{f}{i}{10}
+    \kolicina{b}{s}{5}
+    \kolicina{g}{h}{5}
+    \kolicina{i}{l}{0}
+    \kolicina{l}{k}{0}
+    \kolicina{c}{f}{5}
+    \kolicina{h}{e}{5}
+
+    \oznaka{s}{1}
+    \oznaka{a}{4}
+    \oznaka{b}{1}
+    \oznaka{c}{12}
+    \oznaka{d}{6}
+    \oznaka{g}{9}
+    \oznaka{j}{24}
+    \oznaka{h}{11}
+    \oznaka{e}{14}
+    \oznaka{f}{17}
+    \oznaka{i}{18}
+    \oznaka{l}{22}
+    \oznaka{k}{19}
+
+    \kandidat{k}{j}[vstopi]
+\end{razvoz}
+
+\clearpage
+
+Optimalna rešitev:
+
+\begin{razvoz}{grafBs}
+    \kolicina{a}{d}{15}
+    \kolicina{d}{g}{15}
+    \kolicina{k}{j}{10}
+    \kolicina{b}{a}{5}
+    \kolicina{e}{f}{15}
+    \kolicina{f}{i}{20}
+    \kolicina{b}{s}{5}
+    \kolicina{g}{h}{15}
+    \kolicina{i}{l}{10}
+    \kolicina{l}{k}{10}
+    \kolicina{c}{f}{5}
+    \kolicina{h}{e}{15}
+
+    \oznaka{s}{1}
+    \oznaka{a}{4}
+    \oznaka{b}{1}
+    \oznaka{c}{12}
+    \oznaka{d}{6}
+    \oznaka{g}{9}
+    \oznaka{j}{21}
+    \oznaka{h}{11}
+    \oznaka{e}{14}
+    \oznaka{f}{17}
+    \oznaka{i}{18}
+    \oznaka{l}{22}
+    \oznaka{k}{19}
+\end{razvoz}
+
+Cena razvoza: $5 \cdot 0 + 5 \cdot 3 + 15 \cdot 2 + 15 \cdot 3 + 15 \cdot 2 + 15 \cdot 3 + 15 \cdot 3 + 5 \cdot 5 + 20 \cdot 1 + 10 \cdot 4 + 10 \cdot (-3) + 10 \cdot 2 = 285$
 
 \clearpage
 \section*{Naloga 3}
@@ -78,7 +438,196 @@ z dvofazno simpleksno metodo za omrežje.
 Sestavimo omrežje prve faze, da poiščemo začetno dopustno rešitev.
 
 \begin{razvoz}[scale=0.9]{grafCs}
+    \kolicina{c}{g}{4}[izstopi]
+    \kolicina{d}{g}{2}
+    \kolicina{f}{g}{7}
+    \kolicina{g}{a}{1}
+    \kolicina{g}{b}{5}
+    \kolicina{g}{e}{10}
+
+    \oznaka{g}{0}
+    \oznaka{c}{-1}
+    \oznaka{d}{-1}
+    \oznaka{f}{-1}
+    \oznaka{a}{1}
+    \oznaka{b}{1}
+    \oznaka{e}{0}
+
+    \kandidat{c}{b}[vstopi]
+    \kandidat{d}{a}
+    \kandidat{e}{a}
+    \kandidat{f}{b}
+    \kandidat{f}{e}
 \end{razvoz}
+
+\begin{razvoz}[scale=0.9]{grafCs}
+    \kolicina{c}{b}{4}
+    \kolicina{d}{g}{2}
+    \kolicina{f}{g}{7}
+    \kolicina{g}{a}{1}[izstopi]
+    \kolicina{g}{b}{1}
+    \kolicina{g}{e}{10}
+
+    \oznaka{g}{0}
+    \oznaka{c}{1}
+    \oznaka{d}{-1}
+    \oznaka{f}{-1}
+    \oznaka{a}{1}
+    \oznaka{b}{1}
+    \oznaka{e}{0}
+
+    \kandidat{d}{a}[vstopi]
+    \kandidat{e}{a}
+    \kandidat{f}{b}
+    \kandidat{f}{e}
+    \kandidat{g}{c}
+\end{razvoz}
+
+\begin{razvoz}[scale=0.9]{grafCs}
+    \kolicina{c}{b}{4}
+    \kolicina{d}{g}{1}[izstopi]
+    \kolicina{f}{g}{7}
+    \kolicina{d}{a}{1}
+    \kolicina{g}{b}{1}
+    \kolicina{g}{e}{10}
+
+    \oznaka{g}{0}
+    \oznaka{c}{1}
+    \oznaka{d}{-1}
+    \oznaka{f}{-1}
+    \oznaka{a}{-1}
+    \oznaka{b}{1}
+    \oznaka{e}{0}
+
+    \kandidat{a}{b}[vstopi]
+    \kandidat{f}{b}
+    \kandidat{f}{e}
+    \kandidat{g}{c}
+\end{razvoz}
+
+\begin{razvoz}[scale=0.9]{grafCs}
+    \kolicina{c}{b}{4}
+    \kolicina{a}{b}{1}
+    \kolicina{f}{g}{7}
+    \kolicina{d}{a}{2}
+    \kolicina{g}{b}{0}[izstopi]
+    \kolicina{g}{e}{10}
+
+    \oznaka{g}{0}
+    \oznaka{c}{1}
+    \oznaka{d}{1}
+    \oznaka{f}{-1}
+    \oznaka{a}{1}
+    \oznaka{b}{1}
+    \oznaka{e}{0}
+
+    \kandidat{e}{a}[vstopi]
+    \kandidat{e}{d}
+    \kandidat{f}{b}
+    \kandidat{f}{e}
+    \kandidat{g}{c}
+    \kandidat{g}{d}
+\end{razvoz}
+
+\begin{razvoz}[scale=0.9]{grafCs}
+    \kolicina{c}{b}{4}
+    \kolicina{a}{b}{1}
+    \kolicina{f}{g}{7}
+    \kolicina{d}{a}{2}
+    \kolicina{e}{a}{0}[izstopi]
+    \kolicina{g}{e}{10}
+
+    \oznaka{g}{1}
+    \oznaka{c}{1}
+    \oznaka{d}{1}
+    \oznaka{f}{0}
+    \oznaka{a}{1}
+    \oznaka{b}{1}
+    \oznaka{e}{1}
+
+    \kandidat{f}{b}[vstopi]
+    \kandidat{f}{e}
+\end{razvoz}
+
+\begin{razvoz}[scale=0.9]{grafCs}
+    \kolicina{c}{b}{4}
+    \kolicina{a}{b}{1}
+    \kolicina{f}{g}{7}[izstopi]
+    \kolicina{d}{a}{2}
+    \kolicina{f}{b}{0}
+    \kolicina{g}{e}{10}
+
+    \oznaka{g}{2}
+    \oznaka{c}{1}
+    \oznaka{d}{1}
+    \oznaka{f}{1}
+    \oznaka{a}{1}
+    \oznaka{b}{1}
+    \oznaka{e}{2}
+
+    \kandidat{f}{e}[vstopi]
+\end{razvoz}
+
+\begin{razvoz}[scale=0.9]{grafCs}
+    \kolicina{c}{b}{4}
+    \kolicina{a}{b}{1}
+    \kolicina{f}{e}{7}
+    \kolicina{d}{a}{2}
+    \kolicina{f}{b}{0}
+    \kolicina{g}{e}{3}
+
+    \oznaka{g}{1}
+    \oznaka{c}{1}
+    \oznaka{d}{1}
+    \oznaka{f}{1}
+    \oznaka{a}{1}
+    \oznaka{b}{1}
+    \oznaka{e}{1}
+\end{razvoz}
+
+\clearpage
+
+Našli smo optimalno rešitev prve faze, uporabimo dobljeno drevo kot dopustno rešitev originalnega problema:
+
+\begin{razvoz}[scale=0.9]{grafC}
+    \kolicina{c}{b}{4}[izstopi]
+    \kolicina{a}{b}{1}
+    \kolicina{f}{e}{7}
+    \kolicina{d}{a}{2}
+    \kolicina{f}{b}{0}
+    \kolicina{g}{e}{3}
+
+    \oznaka{g}{0}
+    \oznaka{c}{-12}
+    \oznaka{d}{-7}
+    \oznaka{f}{-7}
+    \oznaka{a}{-6}
+    \oznaka{b}{-3}
+    \oznaka{e}{1}
+
+    \kandidat{c}{d}[vstopi]
+\end{razvoz}
+
+Optimalna rešitev:
+
+\begin{razvoz}[scale=0.9]{grafC}
+    \kolicina{c}{d}{4}
+    \kolicina{a}{b}{5}
+    \kolicina{f}{e}{7}
+    \kolicina{d}{a}{6}
+    \kolicina{f}{b}{0}
+    \kolicina{g}{e}{3}
+
+    \oznaka{g}{0}
+    \oznaka{c}{-11}
+    \oznaka{d}{-7}
+    \oznaka{f}{-7}
+    \oznaka{a}{-6}
+    \oznaka{b}{-3}
+    \oznaka{e}{1}
+\end{razvoz}
+
+Cena razvoza: $4 \cdot 4 + 6 \cdot 1 + 3 \cdot 5 + 3 \cdot 1 + 8 \cdot 7 + 4 \cdot 0 = 96$
 
 \clearpage
 \section*{Naloga 4}
