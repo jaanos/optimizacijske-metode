@@ -5,14 +5,14 @@
 \tikzstyle{velikost}=[scale=1]
 
 \NewEnviron{razvoz@grafA}{
-    \vozlisce{a}{-7, 2}[-4]{above}
-    \vozlisce{b}{-7,-2}[-2]{below}
-    \vozlisce{c}{-2, 2}{above}
-    \vozlisce{d}{-2,-2}[-5]{below}
-    \vozlisce{e}{1, 0}{above}
-    \vozlisce{f}{4, 2}{above}
-    \vozlisce{g}{4,-2}[3]{below}
-    \vozlisce{h}{7, 0}[8]{right}
+    \vozlisce{a}[above]{-7, 2}[-4]
+    \vozlisce{b}[below]{-7,-2}[-2]
+    \vozlisce{c}[above]{-2, 2}
+    \vozlisce{d}[below]{-2,-2}[-5]
+    \vozlisce{e}[above]{1, 0}
+    \vozlisce{f}[above]{4, 2}
+    \vozlisce{g}[below]{4,-2}[3]
+    \vozlisce{h}[right]{7, 0}[8]
 
     \povezava{a}{c}{6}{above}
     \povezava{a}{d}{2}[sloped]{above}
@@ -33,18 +33,18 @@
 }
 
 \NewEnviron{razvoz@grafB}{
-    \vozlisce{a}{-4, 3}[-10]{above}
-    \vozlisce{b}{-4, 0}[-10]{45}
-    \vozlisce{c}{-4,-3}[-5]{below}
-    \vozlisce{d}{ 0, 3}{above}
-    \vozlisce{e}{ 0, 0}{45}
-    \vozlisce{f}{ 0,-3}{below}
-    \vozlisce{g}{ 4, 3}{above}
-    \vozlisce{h}{ 4, 0}{135}
-    \vozlisce{i}{ 4,-3}[10]{below}
-    \vozlisce{j}{ 8, 3}[10]{above}
-    \vozlisce{k}{ 8, 0}{right}
-    \vozlisce{l}{ 8,-3}{below}
+    \vozlisce{a}[above]{-4, 3}[-10]
+    \vozlisce{b}[45]{-4, 0}[-10]
+    \vozlisce{c}[below]{-4,-3}[-5]
+    \vozlisce{d}[above]{ 0, 3}
+    \vozlisce{e}[45]{ 0, 0}
+    \vozlisce{f}[below]{ 0,-3}
+    \vozlisce{g}[above]{ 4, 3}
+    \vozlisce{h}[135]{ 4, 0}
+    \vozlisce{i}[below]{ 4,-3}[10]
+    \vozlisce{j}[above]{ 8, 3}[10]
+    \vozlisce{k}[right]{ 8, 0}
+    \vozlisce{l}[below]{ 8,-3}
 
     \povezava{a}{d}{2}{above}
     \povezava{b}{a}{3}{left}
@@ -69,20 +69,20 @@
     \begin{razvoz@grafB}
     \end{razvoz@grafB}
 
-    \vozlisce{s}{-8, 0}[5]{left}
+    \vozlisce{s}[left]{-8, 0}[5]
     \povezava{a}{s}{0}[sloped]{above}
     \povezava{b}{s}{0}{below}
     \povezava{c}{s}{0}[sloped]{below}
 }
 
 \NewEnviron{razvoz@grafC}{
-    \vozlisce{a}{-8, 5}[1]{left}
-    \vozlisce{b}{ 8, 5}[5]{right}
-    \vozlisce{c}{ 8,-5}[-4]{right}
-    \vozlisce{d}{-8,-5}[-2]{left}
-    \vozlisce{e}{-3, 3}[10]{above}
-    \vozlisce{f}{ 3, 3}[-7]{above}
-    \vozlisce{g}{ 0,-2}[-3]{below}
+    \vozlisce{a}[left]{-8, 5}[1]
+    \vozlisce{b}[right]{ 8, 5}[5]
+    \vozlisce{c}[right]{ 8,-5}[-4]
+    \vozlisce{d}[left]{-8,-5}[-2]
+    \vozlisce{e}[above]{-3, 3}[10]
+    \vozlisce{f}[above]{ 3, 3}[-7]
+    \vozlisce{g}[below]{ 0,-2}[-3]
 
     \povezava{a}{b}{3}{above}
     \povezava{c}{b}{9}{right}
@@ -123,18 +123,18 @@
 }
 
 \NewEnviron{razvoz@grafD}{
-    \vozlisce{a}{-4, 3}[-5]{above}
-    \vozlisce{b}{-4, 0}[-5]{left}
-    \vozlisce{c}{-4,-3}{below}
-    \vozlisce{d}{ 0, 3}{above}
-    \vozlisce{e}{ 0, 0}{45}
-    \vozlisce{f}{ 0,-3}{below}
-    \vozlisce{g}{ 4, 3}{above}
-    \vozlisce{h}{ 4, 0}{135}
-    \vozlisce{i}{ 4,-3}{below}
-    \vozlisce{j}{ 8, 3}[7]{above}
-    \vozlisce{k}{ 8, 0}[3]{right}
-    \vozlisce{l}{ 8,-3}{below}
+    \vozlisce{a}[above]{-4, 3}[-5]
+    \vozlisce{b}[left]{-4, 0}[-5]
+    \vozlisce{c}[below]{-4,-3}
+    \vozlisce{d}[above]{ 0, 3}
+    \vozlisce{e}[45]{ 0, 0}
+    \vozlisce{f}[below]{ 0,-3}
+    \vozlisce{g}[above]{ 4, 3}
+    \vozlisce{h}[135]{ 4, 0}
+    \vozlisce{i}[below]{ 4,-3}
+    \vozlisce{j}[above]{ 8, 3}[7]
+    \vozlisce{k}[right]{ 8, 0}[3]
+    \vozlisce{l}[below]{ 8,-3}
 
     \povezava{a}{d}{5}{above}
     \povezava{b}{a}{10}{left}
