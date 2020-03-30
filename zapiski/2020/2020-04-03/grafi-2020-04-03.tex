@@ -1,0 +1,106 @@
+\usepackage[oznake]{omrezja}
+
+\tikzstyle{drevo}=[very thick, double, red]
+\tikzstyle{zasicena}=[very thick, double]
+\tikzstyle{velikost}=[scale=1]
+
+\NewEnviron{razvoz@grafE}{
+    \vozlisce{a}[above]{xyz polar cs:angle=90,radius=4}
+    \vozlisce{b}[right]{xyz polar cs:angle=18,radius=4}[-2]
+    \vozlisce{c}[below]{xyz polar cs:angle=-54,radius=4}[1]
+    \vozlisce{d}[below]{xyz polar cs:angle=-126,radius=4}[-3]
+    \vozlisce{e}[left]{xyz polar cs:angle=162,radius=4}[4]
+
+    \povezava{b}{a}{2}[sloped]{above}
+    \povezava{b}{c}{1}{right}
+    \povezava{c}{a}{5}{left}
+    \povezava{d}{a}{7}{right}
+    \povezava{d}{c}{4}{below}
+    \povezava{d}{e}{1}{left}
+    \povezava{e}{a}{6}[sloped]{below}
+}
+
+\NewEnviron{razvoz@grafEs}{
+    \cena{b}{a}{0}
+    \cena{b}{c}{0}
+    \cena{c}{a}{0}
+    \cena{d}{a}{0}
+    \cena{d}{c}{0}
+    \cena{d}{e}{0}
+    \cena{e}{a}{0}
+
+    \begin{razvoz@grafE}
+    \end{razvoz@grafE}
+
+    \povezava{a}{c}{1}{right}[bend left=15]
+    \povezava{a}{e}{1}[sloped]{above}[bend right=15]
+}
+
+\NewEnviron{razvoz@grafF}{
+    \tikzstyle{drevo}=[thick]
+
+    \vozlisce{a}[left]{-4,-4}[-2]
+    \vozlisce{b}[left]{-4, 4}[]
+    \vozlisce{c}[right]{4,-4}[2]
+    \vozlisce{d}[right]{4, 4}[]
+
+    \povezava{a}{b}{1}{left}
+    \povezava{a}{c}{3}{below}
+    \povezava{b}{c}{3}[sloped]{above}
+    \povezava{b}{d}{1}{above}
+    \povezava{d}{c}{1}{right}
+}
+
+\NewEnviron{razvoz@grafG}{
+    \vozlisce{a}[above]{-10,  5}[-4]
+    \vozlisce{b}[above]{  0,  5}
+    \vozlisce{c}[above]{ 10,  5}[8]
+    \vozlisce{d}[left]{ -5,  0}
+    \vozlisce{e}[225]{  0,  0}[1]
+    \vozlisce{f}[right]{  5,  0}
+    \vozlisce{g}[below]{-10, -5}[-7]
+    \vozlisce{h}[below]{  0, -5}
+    \vozlisce{i}[below]{ 10, -5}[2]
+
+    \povezava{a}{b}{3}{above}
+    \povezava{a}{d}{2}[sloped]{below}
+    \povezava{a}{e}{4}[sloped]{above}
+    \povezava{b}{c}{4}{above}
+    \povezava{b}{d}{5}[sloped]{above}
+    \povezava{b}{e}{2}{right}
+    \povezava{c}{f}{3}[sloped]{below}
+    \povezava{d}{e}{-2}{above}
+    \povezava{d}{g}{1}[sloped]{above}
+    \povezava{e}{c}{1}[sloped]{above}
+    \povezava{e}{g}{6}[sloped]{below}
+    \povezava{e}{i}{3}[sloped]{below}
+    \povezava{f}{b}{-1}[sloped]{above}
+    \povezava{f}{e}{11}{above}
+    \povezava{f}{i}{10}[sloped]{above}
+    \povezava{g}{h}{3}{below}
+    \povezava{h}{d}{8}[sloped]{below}
+    \povezava{h}{e}{5}{right}
+    \povezava{h}{f}{3}[sloped]{below}
+    \povezava{i}{h}{3}{below}
+}
+
+\NewEnviron{razvoz@grafH}{
+    \vozlisce{a}[left]{-6, 6}[-9]
+    \vozlisce{b}[right]{ 6, 6}[4]
+    \vozlisce{c}[right]{ 6,-6}[-8]
+    \vozlisce{d}[left]{-6,-6}[-5]
+    \vozlisce{e}[above]{-2, 2}[17]
+    \vozlisce{f}[below]{ 2,-2}[1]
+
+    \povezava{a}{b}[2]{3}{above}
+    \povezava{a}{d}[10]{1}{left}
+    \povezava{a}{e}[10]{5}[sloped]{below}
+    \povezava{b}{e}[6]{1}[sloped]{above}
+    \povezava{c}{b}[7]{1}{right}
+    \povezava{c}{f}[8]{1}[sloped]{above}
+    \povezava{d}{c}[6]{2}{below}
+    \povezava{d}{e}[9]{6}[sloped]{above}
+    \povezava{d}{f}[10]{1}[sloped]{below}
+    \povezava{f}{b}[8]{4}[sloped]{below}
+    \povezava{f}{e}[9]{1}[sloped]{above}
+}
