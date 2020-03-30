@@ -37,8 +37,6 @@
 }
 
 \NewEnviron{razvoz@grafF}{
-    \tikzstyle{drevo}=[thick]
-
     \vozlisce{a}[left]{-4,-4}[-2]
     \vozlisce{b}[left]{-4, 4}[]
     \vozlisce{c}[right]{4,-4}[2]
@@ -63,24 +61,24 @@
     \vozlisce{i}[below]{ 10, -5}[2]
 
     \povezava{a}{b}{3}{above}
-    \povezava{a}{d}{2}[sloped]{below}
-    \povezava{a}{e}{4}[sloped]{above}
+    \povezava{a}{d}{2}[sloped]{below}[bend left=15]
+    \povezava{a}{e}{4}[sloped]{above}[bend left=15]
     \povezava{b}{c}{4}{above}
-    \povezava{b}{d}{5}[sloped]{above}
+    \povezava{b}{d}{5}[sloped]{above}[bend right=15]
     \povezava{b}{e}{2}{right}
-    \povezava{c}{f}{3}[sloped]{below}
+    \povezava{c}{f}{3}[sloped]{below}[bend right=15]
     \povezava{d}{e}{-2}{above}
-    \povezava{d}{g}{1}[sloped]{above}
-    \povezava{e}{c}{1}[sloped]{above}
-    \povezava{e}{g}{6}[sloped]{below}
-    \povezava{e}{i}{3}[sloped]{below}
-    \povezava{f}{b}{-1}[sloped]{above}
+    \povezava{d}{g}{1}[sloped]{above}[bend left=15]
+    \povezava{e}{c}{1}[sloped]{above}[bend left=15]
+    \povezava{e}{g}{6}[sloped]{below}[bend left=15]
+    \povezava{e}{i}{3}[sloped]{below}[bend right=15]
+    \povezava{f}{b}{-1}[sloped]{above}[bend right=15]
     \povezava{f}{e}{11}{above}
-    \povezava{f}{i}{10}[sloped]{above}
+    \povezava{f}{i}{10}[sloped]{above}[bend right=15]
     \povezava{g}{h}{3}{below}
-    \povezava{h}{d}{8}[sloped]{below}
+    \povezava{h}{d}{8}[sloped]{below}[bend left=15]
     \povezava{h}{e}{5}{right}
-    \povezava{h}{f}{3}[sloped]{below}
+    \povezava{h}{f}{3}[sloped]{below}[bend right=15]
     \povezava{i}{h}{3}{below}
 }
 
