@@ -1,6 +1,7 @@
 \documentclass[14pt]{extarticle}
 \usepackage[a4paper, total={18cm, 26cm}]{geometry}
 \usepackage[utf8]{inputenc}
+\usepackage{amsmath}
 \input{grafi-2020-04-03}
 
 \title{Optimizacijske metode -- vaje}
@@ -25,7 +26,51 @@ Pokaži, da problem razvoza nima dopustne rešitve.
 Poskusimo poiskati začetno dopustno rešitev.
 
 \begin{razvoz}{grafEs}
+    \kolicina{b}{a}{2}
+    \kolicina{a}{c}{1}[izstopi]
+    \kolicina{d}{a}{3}
+    \kolicina{a}{e}{4}
+
+    \oznaka{a}{0}
+    \oznaka{b}{0}
+    \oznaka{c}{1}
+    \oznaka{d}{0}
+    \oznaka{e}{1}
+
+    \kandidat{b}{c}[vstopi]
+    \kandidat{d}{c}
+    \kandidat{d}{e}
 \end{razvoz}
+
+\begin{razvoz}{grafEs}
+    \kolicina{b}{a}{1}
+    \kolicina{b}{c}{1}
+    \kolicina{d}{a}{3}[izstopi]
+    \kolicina{a}{e}{4}
+
+    \oznaka{a}{0}
+    \oznaka{b}{0}
+    \oznaka{c}{0}
+    \oznaka{d}{0}
+    \oznaka{e}{1}
+
+    \kandidat{d}{e}[vstopi]
+\end{razvoz}
+
+\begin{razvoz}{grafEs}
+    \kolicina{b}{a}{1}
+    \kolicina{b}{c}{1}
+    \kolicina{d}{e}{3}
+    \kolicina{a}{e}{1}
+
+    \oznaka{a}{0}
+    \oznaka{b}{0}
+    \oznaka{c}{0}
+    \oznaka{d}{1}
+    \oznaka{e}{1}
+\end{razvoz}
+
+Peljemo $1$ po novi povezavi $a \to e$, torej je originalni problem nedopusten.
 
 \clearpage
 
@@ -36,12 +81,126 @@ S pomočjo dualnosti dokaži optimalnost podanega razvoza.
 \begin{razvoz}{grafF}
     \tikzstyle{drevo}=[thick]
 
-    \kolicina{a}{b}{1}
-    \kolicina{a}{c}{1}
-    \kolicina{b}{c}{0}
-    \kolicina{b}{d}{1}
-    \kolicina{d}{c}{1}
+    \kolicina{a}{b}{x_1 = 1}
+    \kolicina{a}{c}{x_2 = 1}
+    \kolicina{b}{c}{x_3 = 0}
+    \kolicina{b}{d}{x_4 = 1}
+    \kolicina{d}{c}{x_5 = 1}
+
+    \oznaka{a}{y_1 = 0}
+    \oznaka{b}{y_2 = 1}
+    \oznaka{c}{y_3 = 3}
+    \oznaka{d}{y_4 = 2}
 \end{razvoz}
+
+Linearni program:
+\begin{align*}
+    \min &\ x_1 + 3 x_2 + 3 x_3 + x_4 + x_5 \\
+    -x_1 - x_2 &= -2 \\
+    x_1 - x_3 - x_4 &= 0 \\
+    x_2 + x_3 + x_5 &= 2 \\
+    x_4 - x_5 &= 0 \\
+    x_1, x_2, x_3, x_4, x_5 &\ge 0
+\end{align*}
+
+Dualni program:
+\begin{align*}
+    \max -2 y_1 + 2 y_3 \\
+    -y_1 + y_2 &\le 1 \\
+    -y_1 + y_3 &\le 3 \\
+    -y_2 + y_3 &\le 3 \\
+    -y_2 + y_4 &\le 1 \\
+     y_3 - y_4 &\le 1
+\end{align*}
+
+Preverimo dopustnost:
+\begin{align*}
+    -1 - 1 &= -2 \\
+    1 - 0 - 1 &= 0 \\
+    1 + 0 + 1 &= 2 \\
+    1 - 1 &= 0 \\
+    1, 1, 0, 1, 1 &\ge 0
+\end{align*}
+
+Postavimo sistem enakosti za neničelne $x_i$:
+\begin{align*}
+    -y_1 + y_2 &= 1 \\
+    -y_1 + y_3 &= 3 \\
+    -y_2 + y_4 &= 1 \\
+     y_3 - y_4 &= 1
+\end{align*}
+
+Rešujemo sistem:
+\begin{align*}
+    -y_1 + y_2 &= 1 \\
+    -y_1 + y_2 &= 1 \\
+    -y_2 + y_3 &= 2 \\
+     y_3 - y_4 &= 1
+\end{align*}
+
+Splošna rešitev:
+\begin{alignat*}{2}
+    y_3 &&&= y_4 + 1 \\
+    y_2 &= y_3 - 2 &&= y_4 - 1 \\
+    y_1 &= y_2 - 1 &&= y_4 - 2
+\end{alignat*}
+
+Preverimo dopustnost:
+$$
+3 \ge -y_2 + y_3 = 1 - y_4 + y_4 + 1 = 2
+$$
+
+Imamo dopustno rešitev duala (za poljuben $y_4$), torej je dana rešitev originalnega LP optimalna.
+
+Preverimo vrednosti ciljnih funkcij:
+\begin{align*}
+x_1 + 3x_2 + 3x_3 + x_4 + x_5 &= 6 \\
+-2y_1 + 2y_3 = -2y_4 + 4 + 2y_4 + 2 &= 6
+\end{align*}
+
+\clearpage
+
+Neoptimalna rešitev:
+
+\begin{razvoz}{grafF}
+    \tikzstyle{drevo}=[thick]
+
+    \kolicina{a}{b}{x_1 = 1}
+    \kolicina{a}{c}{x_2 = 1}
+    \kolicina{b}{c}{x_3 = 1}
+    \kolicina{b}{d}{x_4 = 0}
+    \kolicina{d}{c}{x_5 = 0}
+
+    \oznaka{a}{y_1 = 0}
+    \oznaka{b}{y_2 = 1}
+    \oznaka{c}{4 = y_3 = 3 !!}
+    \oznaka{d}{y_4 = 2}
+\end{razvoz}
+
+Preverimo dopustnost:
+\begin{align*}
+    -1 - 1 &= -2 \\
+    1 - 1 - 0 &= 0 \\
+    1 + 1 + 0 &= 2 \\
+    0 - 0 &= 0 \\
+    1, 1, 1, 0, 0 &\ge 0
+\end{align*}
+
+Postavimo sistem enakosti za neničelne $x_i$:
+\begin{align*}
+    -y_1 + y_2 &= 1 \\
+    -y_1 + y_3 &= 3 \\
+    -y_2 + y_3 &= 3
+\end{align*}
+
+Rešujemo sistem:
+\begin{align*}
+    -y_1 + y_2 &= 1 \\
+    -y_1 + y_2 &= 0 \\
+    -y_2 + y_3 &= 3
+\end{align*}
+
+Sistem enačb nima rešitve, zato je rešitev originalnega problema neoptimalna!
 
 \clearpage
 
@@ -50,7 +209,75 @@ S pomočjo dualnosti dokaži optimalnost podanega razvoza.
 Poišči najcenejši razvoz na sledečem grafu.
 
 \begin{razvoz}[scale=0.9]{grafG}
+    \kolicina{a}{d}{4}
+    \kolicina{d}{e}{4}
+    \kolicina{e}{c}{3}
+    \kolicina{g}{h}{7}
+    \kolicina{h}{f}{7}
+    \kolicina{f}{i}{2}[izstopi]
+    \kolicina{f}{b}{5}
+    \kolicina{b}{c}{5}
+
+    \oznaka{a}{0}
+    \oznaka{d}{2}
+    \oznaka{e}{0}
+    \oznaka{c}{1}
+    \oznaka{b}{-3}
+    \oznaka{f}{-2}
+    \oznaka{i}{8}
+    \oznaka{h}{-5}
+    \oznaka{g}{-8}
+
+    \kandidat{e}{i}[vstopi]
+    \kandidat{b}{e}
 \end{razvoz}
+
+\begin{razvoz}[scale=0.9]{grafG}
+    \kolicina{a}{d}{4}
+    \kolicina{d}{e}{4}
+    \kolicina{e}{c}{1}
+    \kolicina{g}{h}{7}
+    \kolicina{h}{f}{7}
+    \kolicina{e}{i}{2}
+    \kolicina{f}{b}{7}
+    \kolicina{b}{c}{7}[izstopi]
+
+    \oznaka{a}{0}
+    \oznaka{d}{2}
+    \oznaka{e}{0}
+    \oznaka{c}{1}
+    \oznaka{b}{-3}
+    \oznaka{f}{-2}
+    \oznaka{i}{3}
+    \oznaka{h}{-5}
+    \oznaka{g}{-8}
+
+    \kandidat{b}{e}[vstopi]
+\end{razvoz}
+
+\begin{razvoz}[scale=0.9]{grafG}
+    \kolicina{a}{d}{4}
+    \kolicina{d}{e}{4}
+    \kolicina{e}{c}{8}
+    \kolicina{g}{h}{7}
+    \kolicina{h}{f}{7}
+    \kolicina{e}{i}{2}
+    \kolicina{f}{b}{7}
+    \kolicina{b}{e}{7}
+
+    \oznaka{a}{0}
+    \oznaka{d}{2}
+    \oznaka{e}{0}
+    \oznaka{c}{1}
+    \oznaka{b}{-2}
+    \oznaka{f}{-1}
+    \oznaka{i}{3}
+    \oznaka{h}{-4}
+    \oznaka{g}{-7}
+
+\end{razvoz}
+
+Cena razvoza: $4 \cdot 2 + 4 \cdot (-2) + 2 \cdot 3 + 8 \cdot 1 + 7 \cdot 3 + 7 \cdot 3 + 7 \cdot (-1) + 7 \cdot 2 = 63$
 
 \clearpage
 
@@ -59,6 +286,65 @@ Poišči najcenejši razvoz na sledečem grafu.
 Reši problem razvoza na grafu z omejitvami.
 
 \begin{razvoz}[scale=0.8]{grafH}
+    \kolicina{a}{d}{3}
+    \kolicina*{d}{c}{6}
+    \kolicina{d}{f}{2}
+    \kolicina*{c}{f}{8}
+    \kolicina{c}{b}{6}[izstopi]
+    \kolicina{b}{e}{4}
+    \kolicina*{f}{e}{9}
+    \kolicina*{a}{b}{2}
+    \kolicina{a}{e}{4}
+
+    \oznaka{a}{0}
+    \oznaka{d}{1}
+    \oznaka{f}{2}
+    \oznaka{e}{5}
+    \oznaka{b}{4}
+    \oznaka{c}{3}
+
+    \kandidat{c}{f}[zasicena,vstopi]
 \end{razvoz}
+
+\begin{razvoz}[scale=0.8]{grafH}
+    \kolicina{a}{d}{4}
+    \kolicina*{d}{c}{6}
+    \kolicina{d}{f}{3}
+    \kolicina{c}{f}{7}
+    \kolicina*{c}{b}{7}
+    \kolicina{b}{e}{5}
+    \kolicina*{f}{e}{9}
+    \kolicina*{a}{b}{2}
+    \kolicina{a}{e}{3}
+
+    \oznaka{a}{0}
+    \oznaka{d}{1}
+    \oznaka{f}{2}
+    \oznaka{e}{5}
+    \oznaka{b}{4}
+    \oznaka{c}{1}
+
+    \kandidat{d}{c}[zasicena, vstopi, izstopi]
+\end{razvoz}
+
+\begin{razvoz}[scale=0.8]{grafH}
+    \kolicina{a}{d}{4}
+    \kolicina{d}{f}{9}
+    \kolicina{c}{f}{1}
+    \kolicina*{c}{b}{7}
+    \kolicina{b}{e}{5}
+    \kolicina*{f}{e}{9}
+    \kolicina*{a}{b}{2}
+    \kolicina{a}{e}{3}
+
+    \oznaka{a}{0}
+    \oznaka{d}{1}
+    \oznaka{f}{2}
+    \oznaka{e}{5}
+    \oznaka{b}{4}
+    \oznaka{c}{1}
+\end{razvoz}
+
+Cena razvoza: $2 \cdot 3 + 3 \cdot 5 + 5 \cdot 1 + 4 \cdot 1 + 9 \cdot 1 + 7 \cdot 1 + 9 \cdot 1 + 1 \cdot 1 = 56$
 
 \end{document}
