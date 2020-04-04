@@ -57,6 +57,19 @@
       mermaid.initialize(config);
       window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/viz.js/2.1.2/viz.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/viz.js/2.1.2/full.render.js"></script>
+    <script>
+      var viz = new Viz();
+      document.querySelectorAll('.language-graphviz').forEach(function(elm) {
+        viz.renderSVGElement(elm.innerText).then(function(svg) {
+          elm.parentNode.replaceWith(svg);
+        }).catch(error => {
+          viz = new Viz();
+          console.log(error);
+        });
+      });
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
     <script>anchors.add();</script>
     {% if site.google_analytics %}
