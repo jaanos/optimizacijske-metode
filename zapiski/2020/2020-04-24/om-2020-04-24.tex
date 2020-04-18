@@ -1,0 +1,88 @@
+\documentclass[14pt]{extarticle}
+\usepackage[a4paper, total={18cm, 26cm}]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\input{grafi-2020-04-24}
+
+\title{Optimizacijske metode -- vaje}
+\author{Problem pretoka}
+\date{24.4.2020}
+
+\begin{document}
+
+\maketitle
+
+\section*{Naloga 1}
+
+Poišči maksimalni pretok in minimalni prerez na sledečem grafu.
+
+\begin{pretok}{grafA}
+\end{pretok}
+
+\clearpage
+
+\subsection*{Rešitev}
+
+Najdemo disjunktne povečujoče poti.
+
+\begin{pretok}{grafA}
+    \nicle
+    \kolicina*{s}{a}[6]{0}[red]
+    \kolicina*{a}{e}[9]{0}[red]
+    \kolicina*{e}{t}[5]{0}[red]
+    \kolicina*{s}{b}[3]{0}[green]
+    \kolicina*{b}{c}[7]{0}[green]
+    \kolicina*{c}{d}[5]{0}[green]
+    \kolicina*{d}{t}[2]{0}[green]
+    \kolicina*{s}{c}[2]{0}[blue]
+    \kolicina*{c}{f}[1]{0}[blue]
+    \kolicina*{f}{t}[4]{0}[blue]
+
+    \dosezeno{s}
+    \dosezeno{a}
+    \dosezeno{b}
+    \dosezeno{c}
+    \dosezeno{d}
+    \dosezeno{e}
+    \dosezeno{f}
+    \dosezeno{g}
+    \dosezeno{t}[pogojno]
+\end{pretok}
+
+\clearpage
+
+\section*{Naloga 2}
+
+Poišči maksimalni pretok in minimalni prerez na sledečem grafu.
+
+\begin{pretok}{grafB}
+\end{pretok}
+
+\clearpage
+
+\section*{Naloga 3}
+
+Poišči maksimalni pretok in minimalni prerez na sledečem grafu v odvisnosti od parametra $a$.
+
+\begin{pretok}{grafC}
+\end{pretok}
+
+\clearpage
+
+\section*{Naloga 4}
+
+V sledečem grafu lahko kapaciteto ene povezave povečamo za $1$. Katera naj bo ta povezava, da bomo povečali maksimalni pretok?
+
+\begin{pretok}{grafD}
+\end{pretok}
+
+\clearpage
+
+\section*{Naloga 5}
+
+Poišči maksimalen pretok v sledečem grafu, če ta obstaja!
+
+\begin{pretok}{grafE}
+\end{pretok}
+
+\end{document}

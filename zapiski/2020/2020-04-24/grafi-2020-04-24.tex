@@ -1,0 +1,185 @@
+\usepackage[oznake]{omrezja}
+
+\tikzstyle{pot}=[very thick, double]
+\tikzstyle{dosezeno}=[fill=lightgray]
+\tikzstyle{pogojno}=[fill=pink]
+\tikzstyle{vozlisce pretoka}=[vozlisce, minimum size=8mm]
+\tikzstyle{velikost}=[scale=0.9]
+
+\NewEnviron{pretok@grafA}{
+    \vozlisce*{s}{-8, 5}
+    \vozlisce{a}{ 0, 5}
+    \vozlisce{b}{-4, 2}
+    \vozlisce{c}{-8,-1}
+    \vozlisce{d}{ 0,-1}
+    \vozlisce{e}{ 4, 2}
+    \vozlisce{f}{ 0,-5}
+    \vozlisce{g}{ 8, 5}
+    \vozlisce*{t}{ 8,-1}
+
+    \povezava{s}{a}{6}{above}
+    \povezava{s}{b}{3}[sloped]{above}
+    \povezava{s}{c}{2}{left}
+    \povezava{a}{b}{2}[sloped]{above}
+    \povezava{a}{e}{9}[sloped]{above}
+    \povezava{b}{c}{7}[sloped]{below}
+    \povezava{c}{d}{5}{below}
+    \povezava{c}{f}{1}[sloped]{below}
+    \povezava{d}{a}{10}{left}
+    \povezava{d}{b}{10}[sloped]{below}
+    \povezava{d}{e}{3}[sloped]{below}
+    \povezava{d}{t}{2}{below}
+    \povezava{e}{g}{2}[sloped]{above}
+    \povezava{e}{t}{5}[sloped]{below}
+    \povezava{f}{d}{8}{left}
+    \povezava{f}{t}{4}[sloped]{below}
+    \povezava{g}{a}{3}{above}
+    \povezava{g}{t}{4}{right}
+}
+
+\NewEnviron{pretok@grafB}{
+    \vozlisce*{s}{-10, 0}
+    \vozlisce{a}{ -6, 4.5}
+    \vozlisce{b}{ -6, 1.5}
+    \vozlisce{c}{ -6,-1.5}
+    \vozlisce{d}{ -6,-4.5}
+    \vozlisce{e}{ -2, 4.5}
+    \vozlisce{f}{ -2, 1.5}
+    \vozlisce{g}{ -2,-1.5}
+    \vozlisce{h}{ -2,-4.5}
+    \vozlisce{i}{  2, 4.5}
+    \vozlisce{j}{  2, 1.5}
+    \vozlisce{k}{  2,-1.5}
+    \vozlisce{l}{  2,-4.5}
+    \vozlisce{m}{  6, 4.5}
+    \vozlisce{n}{  6, 1.5}
+    \vozlisce{o}{  6,-1.5}
+    \vozlisce{p}{  6,-4.5}
+    \vozlisce*{t}{ 10, 0}
+
+    \povezava{s}{a}{7}[sloped]{above}[bend left=15]
+    \povezava{s}{b}{6}[sloped]{above}
+    \povezava{s}{c}{7}[sloped]{below}
+    \povezava{s}{d}{8}[sloped]{below}[bend right=15]
+    \povezava{a}{e}{5}{above}
+    \povezava{b}{a}{6}{right}
+    \povezava{b}{f}{3}{below}
+    \povezava{c}{b}{3}{left}
+    \povezava{c}{g}{7}{above}
+    \povezava{d}{c}{6}{right}
+    \povezava{d}{h}{7}{below}
+    \povezava{e}{f}{3}{left}
+    \povezava{e}{i}{8}{above}
+    \povezava{f}{g}{4}{right}
+    \povezava{f}{j}{4}{above}
+    \povezava{g}{h}{1}{left}
+    \povezava{g}{k}{2}{below}
+    \povezava{h}{l}{5}{below}
+    \povezava{i}{m}{1}{above}
+    \povezava{j}{i}{1}{right}
+    \povezava{j}{n}{9}{below}
+    \povezava{k}{j}{10}{left}
+    \povezava{k}{o}{4}{above}
+    \povezava{l}{k}{2}{right}
+    \povezava{l}{p}{1}{below}
+    \povezava{m}{n}{5}{left}
+    \povezava{m}{t}{12}[sloped]{above}[bend left=15]
+    \povezava{n}{o}{6}{right}
+    \povezava{n}{t}{4}[sloped]{above}
+    \povezava{o}{p}{6}{left}
+    \povezava{o}{t}{8}[sloped]{below}
+    \povezava{p}{t}{8}[sloped]{below}[bend right=15]
+}
+
+\NewEnviron{pretok@grafC}{
+    \vozlisce*{s}{-6, 0}
+    \vozlisce{a}{-2, 3}
+    \vozlisce{b}{-2,-3}
+    \vozlisce{c}{ 2, 0}
+    \vozlisce{d}{ 6, 3}
+    \vozlisce*{t}{ 6,-3}
+
+    \povezava{s}{a}{\alpha}[sloped]{above}
+    \povezava{s}{b}{3}[sloped]{below}
+    \povezava{a}{c}{3}[sloped]{below}
+    \povezava{a}{d}{4}{above}
+    \povezava{b}{c}{2}[sloped]{below}
+    \povezava{b}{t}{4}{below}
+    \povezava{c}{t}{2}[sloped]{above}
+    \povezava{d}{t}{3}{right}
+}
+
+\NewEnviron{pretok@grafD}{
+    \vozlisce*{s}{-10,0}
+    \vozlisce{a}{-6, 6}
+    \vozlisce{b}{-6, 0}
+    \vozlisce{c}{-6,-6}
+    \vozlisce{d}{-2, 3}
+    \vozlisce{e}{-2,-3}
+    \vozlisce{f}{ 2,-3}
+    \vozlisce{g}{ 6, 6}
+    \vozlisce{h}{ 6, 3}
+    \vozlisce{i}{ 6, 0}
+    \vozlisce{j}{ 6,-6}
+    \vozlisce*{t}{10, 0}
+
+    \povezava{s}{a}{8}[sloped]{above}
+    \povezava{s}{b}{12}{above}
+    \povezava{s}{c}{20}[sloped]{below}
+    \povezava{a}{g}{5}{above}
+    \povezava{b}{a}{5}{left}
+    \povezava{b}{c}{5}{left}
+    \povezava{b}{d}{7}[sloped]{below}
+    \povezava{b}{e}{3}[sloped]{below}
+    \povezava{c}{e}{10}[sloped]{below}
+    \povezava{c}{j}{6}{below}
+    \povezava{g}{t}{10}[sloped]{above}
+    \povezava{d}{a}{2}[sloped]{above}
+    \povezava{d}{h}{3}{above}
+    \povezava{d}{f}{8}[sloped]{below}
+    \povezava{e}{f}{8}{below}
+    \povezava{h}{g}{3}{left}
+    \povezava{h}{t}{4}[sloped]{below}
+    \povezava{f}{i}{10}[sloped]{above}
+    \povezava{f}{j}{2}[sloped]{below}
+    \povezava{i}{h}{7}{left}
+    \povezava{i}{t}{3}[sloped]{below}
+    \povezava{j}{i}{4}{left}
+    \povezava{j}{t}{8}[sloped]{below}
+}
+
+\NewEnviron{pretok@grafE}{
+    \vozlisce*{s}{-8, 0}
+    \vozlisce{a}{-4, 4}
+    \vozlisce{b}{-4, 0}
+    \vozlisce{c}{-4,-4}
+    \vozlisce{d}{ 0, 4}
+    \vozlisce{e}{ 0, 0}
+    \vozlisce{f}{ 4, 4}
+    \vozlisce{g}{ 4, 0}
+    \vozlisce{h}{ 4,-4}
+    \vozlisce{i}{ 8, 4}
+    \vozlisce{j}{ 8,-4}
+    \vozlisce*{t}{ 8, 0}
+
+    \povezava{s}{a}{5}[sloped]{above}
+    \povezava{s}{b}{\infty}{above}
+    \povezava{s}{c}{13}[sloped]{below}
+    \povezava{a}{d}{\infty}{above}
+    \povezava{a}{e}{\infty}[sloped]{below}
+    \povezava{b}{a}{\infty}{left}
+    \povezava{b}{c}{21}{left}
+    \povezava{c}{e}{9}[sloped]{above}
+    \povezava{c}{h}{\infty}{below}
+    \povezava{d}{e}{\infty}{right}
+    \povezava{d}{f}{5}{above}
+    \povezava{e}{g}{23}{below}
+    \povezava{f}{g}{3}{left}
+    \povezava{h}{g}{\infty}{left}
+    \povezava{g}{i}{\infty}[sloped]{below}
+    \povezava{g}{j}{16}[sloped]{above}
+    \povezava{i}{f}{11}{above}
+    \povezava{i}{t}{\infty}{right}
+    \povezava{j}{h}{\infty}{below}
+    \povezava{j}{t}{\infty}{right}
+}
