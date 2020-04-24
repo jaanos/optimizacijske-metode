@@ -1,5 +1,5 @@
 \documentclass[14pt]{extarticle}
-\usepackage[a4paper, total={18cm, 26cm}]{geometry}
+\usepackage[a4paper, total={18cm, 27cm}]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \input{grafi-2020-04-24}
@@ -23,7 +23,7 @@ Poišči maksimalni pretok in minimalni prerez na sledečem grafu.
 
 \subsection*{Rešitev}
 
-Najdemo disjunktne povečujoče poti.
+Poiščemo disjunktne povečujoče poti.
 
 \begin{pretok}{grafA}
     \nicle
@@ -37,17 +37,81 @@ Najdemo disjunktne povečujoče poti.
     \kolicina*{s}{c}[2]{0}[blue]
     \kolicina*{c}{f}[1]{0}[blue]
     \kolicina*{f}{t}[4]{0}[blue]
+\end{pretok}
+
+\begin{pretok}{grafA}
+    \nicle
+    \kolicina*{s}{a}[1]{5}[red]
+    \kolicina*{a}{e}[4]{5}[red]
+    \kolicina*{e}{g}[2]{0}[red]
+    \kolicina*{g}{t}[4]{0}[red]
+    \kolicina{e}{t}[0]{5}[zasicena]
+    \kolicina{s}{b}[1]{2}
+    \kolicina{b}{c}[5]{2}
+    \kolicina{c}{d}[3]{2}
+    \kolicina{d}{t}[0]{2}[zasicena]
+    \kolicina{s}{c}[1]{1}
+    \kolicina{c}{f}[0]{1}[zasicena]
+    \kolicina{f}{t}[3]{1}
 
     \dosezeno{s}
-    \dosezeno{a}
     \dosezeno{b}
     \dosezeno{c}
     \dosezeno{d}
     \dosezeno{e}
-    \dosezeno{f}
-    \dosezeno{g}
-    \dosezeno{t}[pogojno]
+    \dosezeno{a}
 \end{pretok}
+
+\begin{pretok}{grafA}
+    \nicle
+    \kolicina*{s}{c}[1]{1}[red]
+    \kolicina*{c}{d}[3]{2}[red]
+    \kolicina*{d}{e}[3]{2}[red]
+    \kolicina*{e}{g}[1]{1}[red]
+    \kolicina*{g}{t}[3]{1}[red]
+    \kolicina{s}{a}[0]{6}[zasicena]
+    \kolicina{a}{e}[3]{6}
+    \kolicina{e}{t}[0]{5}[zasicena]
+    \kolicina{s}{b}[1]{2}
+    \kolicina{b}{c}[5]{2}
+    \kolicina{d}{t}[0]{2}[zasicena]
+    \kolicina{c}{f}[0]{1}[zasicena]
+    \kolicina{f}{t}[3]{1}
+
+    \dosezeno{s}
+    \dosezeno{b}
+    \dosezeno{c}
+\end{pretok}
+
+\begin{pretok}{grafA}
+    \nicle
+    \kolicina{s}{c}[0]{2}[zasicena]
+    \kolicina{c}{d}[2]{3}
+    \kolicina{d}{e}[2]{3}
+    \kolicina{e}{g}[0]{2}[prerez]
+    \kolicina{g}{t}[2]{2}
+    \kolicina{s}{a}[0]{6}[zasicena]
+    \kolicina{a}{e}[3]{6}
+    \kolicina{e}{t}[0]{5}[prerez]
+    \kolicina{s}{b}[1]{2}
+    \kolicina{b}{c}[5]{2}
+    \kolicina{d}{t}[0]{2}[prerez]
+    \kolicina{c}{f}[0]{1}[prerez]
+    \kolicina{f}{t}[3]{1}
+
+    \nasprotna{g}{a}
+    \nasprotna{f}{d}
+
+    \dosezeno{s}
+    \dosezeno{b}
+    \dosezeno{c}
+    \dosezeno{d}
+    \dosezeno{e}
+    \dosezeno{a}
+\end{pretok}
+
+Maksimalni pretok: $6+2+2 = 1+2+5+2 = 10$,
+minimalni prerez $eg, et, dt, cf$, kapaciteta $2+5+2+1 = 10$.
 
 \clearpage
 
@@ -58,14 +122,237 @@ Poišči maksimalni pretok in minimalni prerez na sledečem grafu.
 \begin{pretok}{grafB}
 \end{pretok}
 
+\subsection*{Rešitev}
+
+\begin{pretok}{grafB}
+    \nicle
+    \kolicina*{s}{a}[7]{0}[red]
+    \kolicina*{a}{e}[5]{0}[red]
+    \kolicina*{e}{i}[8]{0}[red]
+    \kolicina*{i}{m}[1]{0}[red]
+    \kolicina*{m}{t}[12]{0}[red]
+    \kolicina*{s}{b}[6]{0}[green]
+    \kolicina*{b}{f}[3]{0}[green]
+    \kolicina*{f}{j}[4]{0}[green]
+    \kolicina*{j}{n}[9]{0}[green]
+    \kolicina*{n}{t}[4]{0}[green]
+    \kolicina*{s}{c}[7]{0}[blue]
+    \kolicina*{c}{g}[7]{0}[blue]
+    \kolicina*{g}{k}[2]{0}[blue]
+    \kolicina*{k}{o}[4]{0}[blue]
+    \kolicina*{o}{t}[8]{0}[blue]
+    \kolicina*{s}{d}[8]{0}[magenta]
+    \kolicina*{d}{h}[7]{0}[magenta]
+    \kolicina*{h}{l}[5]{0}[magenta]
+    \kolicina*{l}{p}[1]{0}[magenta]
+    \kolicina*{p}{t}[8]{0}[magenta]
+\end{pretok}
+
+\begin{pretok}{grafB}
+    \nicle
+    \kolicina*{s}{c}[5]{2}[red]
+    \kolicina*{c}{g}[5]{2}[red]
+    \kolicina*{g}{h}[1]{0}[red]
+    \kolicina*{h}{l}[4]{1}[red]
+    \kolicina*{l}{k}[2]{0}[red]
+    \kolicina*{k}{o}[2]{2}[red]
+    \kolicina*{o}{t}[6]{2}[red]
+    \kolicina*{s}{a}[6]{1}[green]
+    \kolicina*{a}{e}[4]{1}[green]
+    \kolicina*{e}{f}[3]{0}[green]
+    \kolicina*{f}{j}[1]{3}[green]
+    \kolicina*{j}{n}[6]{3}[green]
+    \kolicina*{n}{t}[1]{3}[green]
+    \kolicina{e}{i}[7]{1}
+    \kolicina{i}{m}[0]{1}[zasicena]
+    \kolicina{m}{t}[11]{1}
+    \kolicina{s}{b}[3]{3}
+    \kolicina{b}{f}[0]{3}[zasicena]
+    \kolicina{g}{k}[0]{2}[zasicena]
+    \kolicina{s}{d}[7]{1}
+    \kolicina{d}{h}[6]{1}
+    \kolicina{l}{p}[0]{1}[zasicena]
+    \kolicina{p}{t}[7]{1}
+
+    \dosezeno{s}
+    \dosezeno{b}
+    \dosezeno{d}
+    \dosezeno{a}
+    \dosezeno{c}
+    \dosezeno{h}
+\end{pretok}
+
+\begin{pretok}{grafB}
+    \nicle
+    \kolicina*{s}{d}[7]{1}[red]
+    \kolicina*{d}{h}[6]{1}[red]
+    \kolicina*{h}{l}[3]{2}[red]
+    \kolicina*{l}{k}[1]{1}[red]
+    \kolicina*{k}{o}[1]{3}[red]
+    \kolicina*{o}{t}[5]{3}[red]
+    \kolicina{s}{c}[4]{3}
+    \kolicina{c}{g}[4]{3}
+    \kolicina{g}{h}[0]{1}[zasicena]
+    \kolicina{s}{a}[5]{2}
+    \kolicina{a}{e}[3]{2}
+    \kolicina{e}{f}[2]{1}
+    \kolicina{f}{j}[0]{4}[zasicena]
+    \kolicina{j}{n}[5]{4}
+    \kolicina{n}{t}[0]{4}[zasicena]
+    \kolicina{e}{i}[7]{1}
+    \kolicina{i}{m}[0]{1}[zasicena]
+    \kolicina{m}{t}[11]{1}
+    \kolicina{s}{b}[3]{3}
+    \kolicina{b}{f}[0]{3}[zasicena]
+    \kolicina{g}{k}[0]{2}[zasicena]
+    \kolicina{l}{p}[0]{1}[zasicena]
+    \kolicina{p}{t}[7]{1}
+
+    \dosezeno{s}
+    \dosezeno{a}
+    \dosezeno{b}
+    \dosezeno{c}
+    \dosezeno{e}
+    \dosezeno{g}
+    \dosezeno{f}
+    \dosezeno{i}
+\end{pretok}
+
+\begin{pretok}{grafB}
+    \nicle
+    \kolicina{s}{d}[6]{2}
+    \kolicina{d}{h}[5]{2}
+    \kolicina{h}{l}[2]{3}
+    \kolicina{l}{k}[0]{2}[prerez]
+    \kolicina{k}{o}[0]{4}[zasicena]
+    \kolicina{o}{t}[4]{4}
+    \kolicina{s}{c}[4]{3}
+    \kolicina{c}{g}[4]{3}
+    \kolicina{g}{h}[0]{1}[zasicena]
+    \kolicina{s}{a}[5]{2}
+    \kolicina{a}{e}[3]{2}
+    \kolicina{e}{f}[2]{1}
+    \kolicina{f}{j}[0]{4}[prerez]
+    \kolicina{j}{n}[5]{4}
+    \kolicina{n}{t}[0]{4}[zasicena]
+    \kolicina{e}{i}[7]{1}
+    \kolicina{i}{m}[0]{1}[prerez]
+    \kolicina{m}{t}[11]{1}
+    \kolicina{s}{b}[3]{3}
+    \kolicina{b}{f}[0]{3}[zasicena]
+    \kolicina{g}{k}[0]{2}[prerez]
+    \kolicina{l}{p}[0]{1}[prerez]
+    \kolicina{p}{t}[7]{1}
+
+    \nasprotna{j}{i}
+
+    \dosezeno{s}
+    \dosezeno{a}
+    \dosezeno{b}
+    \dosezeno{c}
+    \dosezeno{e}
+    \dosezeno{g}
+    \dosezeno{f}
+    \dosezeno{i}
+    \dosezeno{d}
+    \dosezeno{h}
+    \dosezeno{l}
+\end{pretok}
+
+Maksimalni pretok $2+3+3+2 = 1+4+4+1 = 10$, minimalni prerez $fj, fk, im, \ell k,  \ell p$, kapaciteta $4+2+1+2+1 = 10$.
+
 \clearpage
 
 \section*{Naloga 3}
 
-Poišči maksimalni pretok in minimalni prerez na sledečem grafu v odvisnosti od parametra $a$.
+Poišči maksimalni pretok in minimalni prerez na sledečem grafu v odvisnosti od parametra $\alpha$.
 
 \begin{pretok}{grafC}
 \end{pretok}
+
+\subsection*{Rešitev}
+
+Najprej rešimo nalogo pri $\alpha = 0$.
+
+\begin{pretok}{grafC}
+    \nicle
+    \kolicina*{s}{b}[3]{0}[red]
+    \kolicina*{b}{t}[4]{0}[red]
+    \kolicina*{s}{a}[\alpha]{0}[green]
+    \kolicina*{a}{d}[4]{0}[green]
+    \kolicina*{d}{t}[3]{0}[green]
+\end{pretok}
+
+\clearpage
+
+Če je $0 \le \alpha < 3$, potem imamo maksimalni pretok $\alpha + 3$.
+
+\begin{pretok}{grafC}
+    \nicle
+    \kolicina{s}{b}[0]{3}[prerez]
+    \kolicina{b}{t}[1]{3}
+    \kolicina{s}{a}[0]{\alpha}[prerez]
+    \kolicina{a}{d}[4-\alpha]{\alpha}
+    \kolicina{d}{t}[3-\alpha]{\alpha}
+
+    \dosezeno{s}
+\end{pretok}
+
+Minimalni prerez: $sa, sb$, kapaciteta $\alpha + 3$.
+
+\medskip
+Če je $\alpha \ge 3$:
+
+\begin{pretok}{grafC}
+    \nicle
+    \kolicina*{s}{a}[\alpha-3]{3}[red]
+    \kolicina*{a}{c}[3]{0}[red]
+    \kolicina*{c}{t}[2]{0}[red]
+    \kolicina{s}{b}[0]{3}[zasicena]
+    \kolicina{b}{t}[1]{3}
+    \kolicina{a}{d}[1]{3}
+    \kolicina{d}{t}[0]{3}[zasicena]
+\end{pretok}
+
+Če je $3 \le \alpha < 5$, potem imamo maksimalni pretok $\alpha + 3$.
+
+\begin{pretok}{grafC}
+    \nicle
+    \kolicina{s}{a}[0]{\alpha}[prerez]
+    \kolicina{a}{c}[6-\alpha]{\alpha-3}
+    \kolicina{c}{t}[5-\alpha]{\alpha-3}
+    \kolicina{s}{b}[0]{3}[prerez]
+    \kolicina{b}{t}[1]{3}
+    \kolicina{a}{d}[1]{3}
+    \kolicina{d}{t}[0]{3}[zasicena]
+
+    \dosezeno{s}
+\end{pretok}
+
+Minimalni prerez: $sa, sb$, kapaciteta $\alpha + 3$.
+
+\clearpage
+Če je $\alpha \ge 5$:
+
+\begin{pretok}{grafC}
+    \nicle
+    \kolicina{s}{a}[\alpha-5]{5}
+    \kolicina{a}{c}[1]{2}
+    \kolicina{c}{t}[0]{2}[prerez]
+    \kolicina{s}{b}[0]{3}[prerez]
+    \kolicina{b}{t}[1]{3}
+    \kolicina{a}{d}[1]{3}
+    \kolicina{d}{t}[0]{3}[prerez]
+
+    \nasprotna{b}{c}
+
+    \dosezeno{s}
+    \dosezeno{a}
+    \dosezeno{c}
+    \dosezeno{d}
+\end{pretok}
+
+Maksimalni pretok $5+3 = 3+2+3 = 8$, minimalni prerez $sb, ct, dt$, kapaciteta $3+2+3 = 8$.
 
 \clearpage
 
@@ -74,6 +361,193 @@ Poišči maksimalni pretok in minimalni prerez na sledečem grafu v odvisnosti o
 V sledečem grafu lahko kapaciteto ene povezave povečamo za $1$. Katera naj bo ta povezava, da bomo povečali maksimalni pretok?
 
 \begin{pretok}{grafD}
+\end{pretok}
+
+\clearpage
+
+\subsection*{Rešitev}
+
+Najprej poiščemo maksimalni pretok in minimalni prerez.
+
+\begin{pretok}{grafD}
+    \nicle
+    \kolicina*{s}{c}[20]{0}[red]
+    \kolicina*{c}{j}[6]{0}[red]
+    \kolicina*{j}{t}[8]{0}[red]
+    \kolicina*{s}{a}[8]{0}[green]
+    \kolicina*{a}{g}[5]{0}[green]
+    \kolicina*{g}{t}[10]{0}[green]
+    \kolicina*{s}{b}[12]{0}[blue]
+    \kolicina*{b}{d}[7]{0}[blue]
+    \kolicina*{d}{f}[8]{0}[blue]
+    \kolicina*{f}{i}[10]{0}[blue]
+    \kolicina*{i}{h}[7]{0}[blue]
+    \kolicina*{h}{t}[4]{0}[blue]
+\end{pretok}
+
+\begin{pretok}{grafD}
+    \nicle
+    \kolicina*{s}{b}[8]{4}[red]
+    \kolicina*{b}{d}[3]{4}[red]
+    \kolicina*{d}{f}[4]{4}[red]
+    \kolicina*{f}{i}[6]{4}[red]
+    \kolicina*{i}{t}[3]{0}[red]
+    \kolicina*{s}{c}[14]{6}[green]
+    \kolicina*{c}{e}[10]{0}[green]
+    \kolicina*{e}{f}[8]{0}[green]
+    \kolicina*{f}{j}[2]{0}[green]
+    \kolicina*{j}{t}[2]{6}[green]
+    \kolicina{c}{j}[0]{6}[zasicena]
+    \kolicina{s}{a}[3]{5}
+    \kolicina{a}{g}[0]{5}[zasicena]
+    \kolicina{g}{t}[5]{5}
+    \kolicina{i}{h}[3]{4}
+    \kolicina{h}{t}[0]{4}[zasicena]
+
+    \dosezeno{s}
+    \dosezeno{a}
+\end{pretok}
+
+\begin{pretok}{grafD}
+    \nicle
+    \kolicina*{s}{b}[5]{7}[red]
+    \kolicina*{b}{e}[3]{0}[red]
+    \kolicina*{e}{f}[6]{2}[red]
+    \kolicina*{f}{i}[3]{7}[red]
+    \kolicina*{i}{h}[3]{4}[red]
+    \kolicina*{h}{g}[3]{0}[red]
+    \kolicina*{g}{t}[5]{5}[red]
+    \kolicina{b}{d}[0]{7}[zasicena]
+    \kolicina{d}{f}[1]{7}
+    \kolicina{i}{t}[0]{3}[zasicena]
+    \kolicina{s}{c}[12]{8}
+    \kolicina{c}{e}[8]{2}
+    \kolicina{f}{j}[0]{2}[zasicena]
+    \kolicina{j}{t}[0]{8}[zasicena]
+    \kolicina{c}{j}[0]{6}[zasicena]
+    \kolicina{s}{a}[3]{5}
+    \kolicina{a}{g}[0]{5}[zasicena]
+    \kolicina{h}{t}[0]{4}[zasicena]
+
+    \dosezeno{s}
+    \dosezeno{a}
+    \dosezeno{c}
+    \dosezeno{e}
+\end{pretok}
+
+\begin{pretok}{grafD}
+    \nicle
+    \kolicina{s}{b}[2]{10}
+    \kolicina{b}{e}[0]{3}[zasicena]
+    \kolicina{e}{f}[3]{5}
+    \kolicina{f}{i}[0]{10}[zasicena]
+    \kolicina{i}{h}[0]{7}[zasicena]
+    \kolicina{h}{g}[0]{3}[prerez]
+    \kolicina{g}{t}[2]{8}
+    \kolicina{b}{d}[0]{7}[zasicena]
+    \kolicina{d}{f}[1]{7}
+    \kolicina{i}{t}[0]{3}[prerez]
+    \kolicina{s}{c}[12]{8}
+    \kolicina{c}{e}[8]{2}
+    \kolicina{f}{j}[0]{2}[prerez]
+    \kolicina{j}{t}[0]{8}[zasicena]
+    \kolicina{c}{j}[0]{6}[prerez]
+    \kolicina{s}{a}[3]{5}
+    \kolicina{a}{g}[0]{5}[prerez]
+    \kolicina{h}{t}[0]{4}[prerez]
+
+    \nasprotna{j}{i}
+
+    \dosezeno{s}
+    \dosezeno{a}
+    \dosezeno{c}
+    \dosezeno{e}
+    \dosezeno{b}
+    \dosezeno{f}
+    \dosezeno{d}
+    \dosezeno{h}
+    \dosezeno{i}
+\end{pretok}
+
+Maksimalni pretok $5+10+8 = 8+4+3+8 = 23$, \\
+minimalni prerez $ag, cj, fj, hg, ht, it$,
+kapaciteta $5+6+2+3+4+3 = 23$.
+
+\clearpage
+
+Da povečamo kapaciteto omrežja,
+lahko povečamo kapaciteto katerikoli povezavi iz minimalnega prereza.
+Povečajmo kapaciteto povezavi $it$ za $1$:
+
+\begin{pretok}{grafD}
+    \nicle
+    \kolicina*{s}{c}[12]{8}[magenta]
+    \kolicina*{c}{e}[8]{2}[magenta]
+    \kolicina*{e}{f}[3]{5}[magenta]
+    \kolicina*{d}{f}[1]{7}[magenta]
+    \kolicina*{d}{h}[3]{0}[magenta]
+    \kolicina*{i}{h}[0]{7}[zasicena,magenta]
+    \kolicina*{i}{t}[1]{3}[magenta]
+    \kolicina{s}{b}[2]{10}
+    \kolicina{b}{e}[0]{3}[zasicena]
+    \kolicina{f}{i}[0]{10}[zasicena]
+    \kolicina{h}{g}[0]{3}[prerez]
+    \kolicina{g}{t}[2]{8}
+    \kolicina{b}{d}[0]{7}[zasicena]
+    \kolicina{f}{j}[0]{2}[prerez]
+    \kolicina{j}{t}[0]{8}[zasicena]
+    \kolicina{c}{j}[0]{6}[prerez]
+    \kolicina{s}{a}[3]{5}
+    \kolicina{a}{g}[0]{5}[prerez]
+    \kolicina{h}{t}[0]{4}[prerez]
+
+    \nasprotna{j}{i}
+
+    \dosezeno{s}
+    \dosezeno{a}
+    \dosezeno{c}
+    \dosezeno{e}
+    \dosezeno{b}
+    \dosezeno{f}
+    \dosezeno{d}
+    \dosezeno{h}
+    \dosezeno{i}
+    \dosezeno{t}[pogojno]
+\end{pretok}
+
+\begin{pretok}{grafD}
+    \nicle
+    \kolicina{s}{c}[11]{9}
+    \kolicina{c}{e}[7]{3}
+    \kolicina{e}{f}[2]{5}
+    \kolicina{d}{f}[2]{6}
+    \kolicina{d}{h}[2]{1}
+    \kolicina{i}{h}[1]{6}
+    \kolicina{i}{t}[0]{4}[prerez]
+    \kolicina{s}{b}[2]{10}
+    \kolicina{b}{e}[0]{3}[zasicena]
+    \kolicina{f}{i}[0]{10}[zasicena]
+    \kolicina{h}{g}[0]{3}[prerez]
+    \kolicina{g}{t}[2]{8}
+    \kolicina{b}{d}[0]{7}[zasicena]
+    \kolicina{f}{j}[0]{2}[prerez]
+    \kolicina{j}{t}[0]{8}[zasicena]
+    \kolicina{c}{j}[0]{6}[prerez]
+    \kolicina{s}{a}[3]{5}
+    \kolicina{a}{g}[0]{5}[prerez]
+    \kolicina{h}{t}[0]{4}[prerez]
+
+    \nasprotna{j}{i}
+
+    \dosezeno{s}
+    \dosezeno{a}
+    \dosezeno{c}
+    \dosezeno{e}
+    \dosezeno{b}
+    \dosezeno{f}
+    \dosezeno{d}
+    \dosezeno{h}
+    \dosezeno{i}
 \end{pretok}
 
 \clearpage
