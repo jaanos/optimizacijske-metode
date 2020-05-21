@@ -6,3 +6,4 @@
 * [`2020-04-10.md`](2020-04-10.md) - prirejanja v dvodelnih grafih
 * [`2020-04-17.md`](2020-04-17.md) - madžarska metoda z utežmi
 * [`2020-04-24/`](2020-04-24/om-2020-04-24.pdf) - problem pretoka ([izvorna koda](https://github.com/jaanos/optimizacijske-metode/tree/master/zapiski/2020/2020-04-24/))
+* [`2020-05-22.md`](2020-05-22.md) - Karush-Kuhn-Tuckerjevi pogoji, Fisherjev model trga
