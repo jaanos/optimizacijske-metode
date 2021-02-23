@@ -6,4 +6,4 @@ FROM sagemath/sagemath:9.1
 
 # Copy the contents of the repo in ${HOME}
 COPY --chown=sage:sage . ${HOME}
-RUN sage -pip install RISE
+RUN sage -pip install RISE==5.6.1
