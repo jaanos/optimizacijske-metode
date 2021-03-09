@@ -2,7 +2,7 @@
 
 [![Launch in Binder](http://mybinder.org/badge.svg)](http://beta.mybinder.org/v2/gh/jaanos/optimizacijske-metode/master)
 
-Repozitorij z gradivi pri predmetu Operacijske raziskave (1. letnik finančne matematike)
+Repozitorij z gradivi pri predmetu Optimizacijske metode (1. letnik finančne matematike)
 
 ## Vsebina
 
