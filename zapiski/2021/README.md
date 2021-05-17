@@ -6,3 +6,4 @@
 * [`2021-03-19.md`](2021-03-19.md) - dualni programi
 * [`2021-03-26.md`](2021-03-26.md) - problem razvoza
 * [`2021-04-02.md`](2021-04-02.md) - problem razvoza
+* [`2021-05-21.md`](2021-05-21.md) - problem vezanega ekstrema z neenačbami
