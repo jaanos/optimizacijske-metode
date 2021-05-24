@@ -23,7 +23,6 @@ def novaRazporeditev(problem):
     random.shuffle(novi_obhod)
     return {"tocke": tocke, "obhod": novi_obhod}
 
-
 def zamenjava(problem):
     obhod = problem["obhod"]
     tocke = problem["tocke"]
@@ -34,7 +33,6 @@ def zamenjava(problem):
     novi_obhod = obhod[:a] + list(reversed(obhod[a:b])) + obhod[b:]
     return {"tocke": tocke, "obhod": novi_obhod}
 
-
 def naslednji_problem(problem, f):
     novi_problem = dolzina(f(problem))
     if novi_problem["dolzina"] < problem["dolzina"]:
@@ -42,12 +40,10 @@ def naslednji_problem(problem, f):
     else:
         return problem
 
-
 def kroznica(n):
     fi = 2 * math.pi / n
     return [(0.5 + math.cos(k * fi) / 2,
              0.5 + math.sin(k * fi) / 2) for k in range(n)]
-
 
 def oboje(p):
     return lambda problem: (novaRazporeditev if random.random() < p else zamenjava)(problem)
