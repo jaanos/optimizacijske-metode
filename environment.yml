@@ -1,0 +1,10 @@
+name: optimizacijske-metode
+
+channels:
+  - defaults
+  - conda-forge
+
+dependencies:
+  - sage
+  - pip:
+    - RISE==5.6.1
