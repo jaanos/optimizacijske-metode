@@ -1,4 +1,4 @@
-name: test-binder-sage
+name: optimizacijske-metode
 
 channels:
   - defaults
@@ -6,3 +6,4 @@ channels:
 
 dependencies:
   - sage
+  - RISE
