@@ -6,4 +6,5 @@ channels:
 
 dependencies:
   - sage
-  - RISE
+  - pip:
+    - RISE==5.6.1
