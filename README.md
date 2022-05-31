@@ -7,6 +7,7 @@ Repozitorij z gradivi pri predmetu Optimizacijske metode (1. letnik finančne ma
 ## Delovni zvezki in programi
 
 * [![Launch in Binder](http://mybinder.org/badge.svg)](http://beta.mybinder.org/v2/gh/jaanos/optimizacijske-metode/master?filepath=predavanja-Dualnost.ipynb) [`predavanja-Dualnost.ipynb`](predavanja-Dualnost.ipynb): Predavanja - Dualnost v linearnem programiranju
+* [![Launch in Binder](http://mybinder.org/badge.svg)](http://beta.mybinder.org/v2/gh/jaanos/optimizacijske-metode/master?filepath=predavanja-FisherjevModelTrga.ipynb) [`predavanja-FisherjevModelTrga.ipynb`](predavanja-FisherjevModelTrga.ipynb): Predavanja - Fisherjev model trga
 * [![Launch in Binder](http://mybinder.org/badge.svg)](http://beta.mybinder.org/v2/gh/jaanos/optimizacijske-metode/original?filepath=vaje2-LinearniProgrami.ipynb) [`vaje2-LinearniProgrami.ipynb`](vaje2-LinearniProgrami.ipynb): Vaje 2 - Linearni programi
 * [![Launch in Binder](http://mybinder.org/badge.svg)](http://beta.mybinder.org/v2/gh/jaanos/optimizacijske-metode/original?filepath=vaje4-DvofaznaCelostevilsko.ipynb) [`vaje4-DvofaznaCelostevilsko.ipynb`](vaje4-DvofaznaCelostevilsko.ipynb): Vaje 4 - Dvofazna metoda in celoštevilsko linearno programiranje
 * [![Launch in Binder](http://mybinder.org/badge.svg)](http://beta.mybinder.org/v2/gh/jaanos/optimizacijske-metode/original?filepath=vaje10-PrirejanjaPretoki.ipynb) [`vaje10-PrirejanjaPretoki.ipynb`](vaje10-PrirejanjaPretoki.ipynb): Vaje 10 - Prirejanja v dvodelnih grafih, pretoki in prerezi
