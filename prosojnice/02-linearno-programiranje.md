@@ -9,6 +9,7 @@ plugins: mathjax
 * **_Definicija._** _Linearni program_ (LP) je optimizacijski problem, kjer so ciljna funkcija in vsi pogoji linearni.
 
 * **_Primer._**
+
     $$
     \begin{aligned}
     \min \ 2x_1 - 3x_2 + 2x_3 \\[1ex]
@@ -50,6 +51,7 @@ plugins: mathjax
 # Primer
 
 Zapišimo prejšnji primer v standardni obliki.
+
 $$
 \begin{aligned}
 \max \ -2x_1 + 3x^+_2 - 3x^-_2 + 2x'_3 \\[1ex]
@@ -67,6 +69,7 @@ $$
 # Splošni zapis LP v standardni obliki
 
 V splošnem lahko zapišemo linearni program v standardni obliki kot
+
 $$
 \begin{aligned}
 \max \ c_1 x_1 + c_2 x_2 + \dots + c_n x_n \\[1ex]
@@ -84,6 +87,7 @@ $$
 # Matrična oblika
 
 * Definirajmo:
+
   $$
   x = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix},
   \quad
@@ -95,6 +99,7 @@ $$
   $$
 
 * Potem lahko zapišemo linearni program v matrični obliki:
+
   $$
   \begin{aligned}
   \max \ c^\top x \\[1ex]
@@ -123,6 +128,7 @@ $$
 * Konveksne množice v $\mathbb{R}$: intervali
 * Krogla v $\mathbb{R}^n$ je konveksna, sfera pa ne
 * Polprostor v $\mathbb{R}^n$ je konveksen:
+
   $$
   \begin{aligned}
   a_1 x_1 + a_2 x_2 + \dots + a_n x_n &\le b &&/ \cdot (1 - \lambda) \\
@@ -130,6 +136,7 @@ $$
   a_1 ((1-\lambda) x_1 + \lambda y_1) + \dots + a_n ((1-\lambda) x_n + \lambda y_n) &\le (1-\lambda) b + \lambda b = b
   \end{aligned}
   $$
+
   $\Rightarrow$ $(1-\lambda) x + \lambda y$ je tudi v polprostoru.
 
 ---
@@ -157,9 +164,11 @@ $$
 
   1. $\Omega$ je presek polprostorov (in hiperravnin), torej je konveksna množica.
   2. Če optimalnih rešitev ni, potem je množica optimalnih rešitev prazna, torej konveksna. Sicer naj bo $c$ optimalna vrednost. Potem je množica optimalnih rešitev enaka
+
      $$
-     \{x \in \Omega \mid f(x) = c\}
+     \lbrace x \in \Omega \mid f(x) = c \rbrace
      $$
+
      in je zato konveksna množica.
 
 </span>
@@ -173,6 +182,7 @@ $$
 <span>
 
 * **_Primer._**
+
   $$
   \begin{aligned}
   \max \ x + y \\[1ex]
@@ -208,6 +218,7 @@ $$
 # Simpleksna metoda
 
 Denimo, da imamo linearni program v standardni obliki
+
 $$
 \begin{aligned}
 \max \ c^\top x \\[1ex]
@@ -216,6 +227,7 @@ A x &\le b \\
 x &\ge 0
 \end{aligned}
 $$
+
 kjer velja
 
 * $A \in \mathbb{R}^{m \times n}$, $b \in \mathbb{R}^m$, $c \in \mathbb{R}^n$
@@ -229,6 +241,7 @@ kjer velja
 <span class="small">
 
 * Dan je sledeči linearni program.
+
   $$
   \begin{aligned}
   \max &\ &  400 x_1 + 600 x_2 + 480 x_3 \\[1ex]
@@ -240,6 +253,7 @@ kjer velja
   $$
 
 * Ciljno funkcijo in omejitve lahko skaliramo brez vpliva na pomen spremenljivk:
+
   $$
   \begin{aligned}
   \max &\ & 10 x_1 + 15 x_2 + 12 x_3 \\[1ex]
@@ -261,6 +275,7 @@ kjer velja
 * Neenakosti spremenimo v enakosti z uvedbo novih **nenegativnih** spremenljivk.
 
 * Prvi slovar:
+
   $$
   \begin{aligned}
   x_4 &= 50 - x_1 - x_2 - x_3 \\
@@ -358,6 +373,7 @@ kjer velja
 # Kaj se lahko še zgodi?
 
 * Konstantni koeficient bazne spremenljivke je enak $0$:
+
   $$
   \begin{aligned}
   &\vdots \\
@@ -366,6 +382,7 @@ kjer velja
   z &= 10 + \ldots + 4 \underline{x_i} + \ldots
   \end{aligned}
   $$
+
 * Vrednost v bazni dopustni rešitvi se **ne** poveča - _izrojen_ korak.
 
 ---
@@ -373,6 +390,7 @@ kjer velja
 # Kaj se lahko še zgodi? (2)
 
 * Nobena vrstica na omejuje vstopne spremenljivke:
+
   $$
   \begin{aligned}
   &\vdots \\
@@ -381,6 +399,7 @@ kjer velja
   z &= \ldots + 4 \underline{x_i} + \ldots
   \end{aligned}
   $$
+
 * Tedaj je linearni program **neomejen** - končamo simpleksno metodo. 
 * **Neomejeno družino** dopustnih rešitev dobimo tako, da vstopno spremenljivko pustimo kot nenegativen parameter brez zgornje meje, ostalim nebaznim spremenljivkam pa dodelimo vrednost $0$.
 
@@ -401,6 +420,7 @@ Kako iz zadnjega slovarja za optimalni problem dobimo **vse** optimalne rešitve
 <span class="small">
 
 * Denimo, da imamo sledeči zadnji slovar.
+
   $$
   \begin{aligned}
   x_2 &= 40 - {2 \over 3} x_1 - {4 \over 5} x_3 - {1 \over 15} x_6 \\
@@ -461,6 +481,7 @@ Kako iz zadnjega slovarja za optimalni problem dobimo **vse** optimalne rešitve
 # Klee-Mintyjeva kocka
 
 * **_Primer._** (Klee-Minty) Za $n = 3$:
+
   $$
   \begin{aligned}
   \max &\ & 100 x_1 + 10 x_2 + x_3 \\[1ex]
@@ -506,6 +527,7 @@ Kako najceneje zadostiti dnevnim potrebam?
 <span class="small">
 
 * Zapišimo kot linearni program.
+
   $$
   \begin{aligned}
   \min &\ & 12 x_1 + 10 x_2 \\[1ex]
@@ -517,6 +539,7 @@ Kako najceneje zadostiti dnevnim potrebam?
   $$
 
 * Zapišimo še ekvivalentni linearni program v standardni obliki.
+
   $$
   \begin{aligned}
   \max &\ & -12 x_1 - 10 x_2 \\[1ex]
@@ -534,6 +557,7 @@ Kako najceneje zadostiti dnevnim potrebam?
 # Pomožni problem prve faze
 
 * Ker v zgornjem linearnem programu velja $b \not\ge 0$, zapišimo še pomožni problem prve faze:
+
   $$
   \begin{aligned}
   && \min \ x_0 \\[1ex]
@@ -543,6 +567,7 @@ Kako najceneje zadostiti dnevnim potrebam?
   && x_0, x_1, x_2 &\ge 0
   \end{aligned}
   $$
+
 * Pomožni problem je vedno dopusten ($x_0$ mora biti dovolj velik).
 * Pomožni problem ima optimalno vrednost $0$ **natanko tedaj**, ko je prvotni problem dopusten.
 
@@ -551,6 +576,7 @@ Kako najceneje zadostiti dnevnim potrebam?
 # Začetni slovar za prvo fazo
 
 * Zapišimo začetni slovar za prvo fazo - ta slovar **ni dopusten**:
+
   $$
   \begin{aligned}
   x_3 &= -7 + x_0 + x_1 + x_2 \\
@@ -561,6 +587,7 @@ Kako najceneje zadostiti dnevnim potrebam?
   $$
 
 * V prvem koraku prve faze v bazo vstopi $x_0$, izstopi pa spremenljivka z najmanjšim (najbolj negativnim) konstantnim členom - v našem primeru $x_4$:
+
   $$
   \begin{aligned}
   x_0 &= 13 - 4 x_1 - x_2 + x_4 & \leftarrow x_2 &\le 13  \\
@@ -576,6 +603,7 @@ Kako najceneje zadostiti dnevnim potrebam?
 
 * Nadaljujemo enako kot pri osnovni simpleksni metodi.
 * V našem primeru po metodi največjega povečanja izberemo $x_2$ za vstopno spremenljivko in $x_0$ za izstopno spremenljivko.
+
   $$
   \begin{aligned}
   x_2 &= 13 - x_0 - 4 x_1 + x_4 \\
@@ -591,6 +619,7 @@ Kako najceneje zadostiti dnevnim potrebam?
 
 * Optimalna vrednost pomožnega problema je $0$ - prvotni problem je torej dopusten.
 * Začetni slovar druge faze dobimo tako, da v zadnjem slovarju prve faze vzamemo $x_0 = 0$ in vstavimo prvotne bazne spremenljivke v funkcional $z$:
+
   $$
   \begin{aligned}
   x_2 &= 13 - 4 x_1 + x_4 \\
@@ -608,6 +637,7 @@ Kako najceneje zadostiti dnevnim potrebam?
 <span class="small">
 
 $x_1$ vstopi, $x_3$ izstopi:
+
 $$
 \begin{aligned}
 x_1 &=  2 - {1 \over 3} x_3 + {1 \over 3} x_4 \\[-1ex]
@@ -664,6 +694,7 @@ Prva faza se vedno konča, ko ne moremo več izbrati vstopne spremenljivke (ker 
 # Dualnost pri linearnem programiranju
 
 * Naj bo $\Pi$ linearni program
+
   $$
   \begin{aligned}
   \max &\ & 10 x_1 + 15 x_2 + 12 x_3 \\[1ex]
@@ -675,6 +706,7 @@ Prva faza se vedno konča, ko ne moremo več izbrati vstopne spremenljivke (ker 
   $$
 
 * Iščemo zgornje meje za ciljno funkcijo:
+
   $$
   (y_4 + 3 y_5 + 3 y_6) x_1 + (y_4 + 4 y_5 + 5 y_6) x_2 + (y_4 + 5 y_5 + 4 y_6) x_3 \le 50 y_4 + 250 y_5 + 300 y_6
   $$
@@ -684,6 +716,7 @@ Prva faza se vedno konča, ko ne moremo več izbrati vstopne spremenljivke (ker 
 # Zgornja meja za ciljno funkcijo
 
 * Če velja
+
   $$
   \begin{aligned}
   y_4 + 3 y_5 + 3 y_6 &\ge 10, \\
@@ -691,10 +724,13 @@ Prva faza se vedno konča, ko ne moremo več izbrati vstopne spremenljivke (ker 
   y_4 + 5 y_5 + 4 y_6 &\ge 12,
   \end{aligned}
   $$
+
   potem
+
   $$
   10 x_1 + 15 x_2 + 12 x_3 \le 50 y_4 + 250 y_5 + 300 y_6.
   $$
+
 * Hočemo čim manjšo zgornjo mejo.
 
 ---
@@ -702,6 +738,7 @@ Prva faza se vedno konča, ko ne moremo več izbrati vstopne spremenljivke (ker 
 # Dualni linearni program
 
 _Prvotnemu_ linearnemu programu $\Pi$ dodelimo _dualni_ linearni program $\Pi'$:
+
 $$
 \begin{aligned}
 \min &\ & 50 y_4 + 250 y_5 + 300 y_6 \\[1ex]
@@ -788,6 +825,7 @@ $$
   <span>
 
   * Zapišimo $\Pi'$ v standardni obliki.
+
     $$
     \begin{aligned}
     \max \ -b^\top y \\[1ex]
@@ -800,6 +838,7 @@ $$
   <span>
 
   * Potem je $\Pi''$ sledeči LP:
+
     $$
     \begin{aligned}
     \min \ -c^\top x \\[1ex]
@@ -871,6 +910,7 @@ $$
 <span class="small">
 
 * Zadnji slovar za problem kmetije:
+
   $$
   \begin{aligned}
   x_2 &= 50 - x_1 - x_3 - x_4 \\
@@ -881,6 +921,7 @@ $$
   $$
 
 * Zadnji slovar za dual problema kmetije:
+
   $$
   \begin{aligned}
   y_1 &=  5 + y_2 -   y_5 - 2 y_6 \\
@@ -899,9 +940,11 @@ $$
 # Dokaz KID
 
 * Simpleksna metoda za $\Pi$ se konča z zadnjim slovarjem z
+
   $$
   z = z^\ast + \sum_{j=1}^{n+m} c^\ast_j x_j = \sum_{j=1}^n c_j x^\ast_j + \sum_{j=1}^n c^\ast_j x_j + \sum_{i=1}^m c^\ast_{n+i} x_{n+i},
   $$
+
   kjer velja $c^\ast_j \le 0$ ($1 \le j \le n+m$) in $c^\ast_j = 0$, če je $x_j$ bazna spremenljivka.
 * Naj bo $y^\ast_{n+i} = -c^\ast_{n+i}$ ($1 \le i \le m$).
 * Pokazali bomo, da je $y^\ast$ optimalna rešitev $\Pi'$.
@@ -911,6 +954,7 @@ $$
 # Dokaz KID (2)
 
 Velja
+
 $$
 \begin{aligned}
 z &= \sum_{j=1}^n c_j x^\ast_j + \sum_{j=1}^n c^\ast_j x_j + \sum_{i=1}^m (-y^\ast_{n+i}) \left(b_i - \sum_{j=1}^n a_{ij} x_j\right) \\
@@ -924,12 +968,14 @@ $$
 # Dokaz KID (3)
 
 * Ker velja $z = \sum_{j=1}^n c_j x_j$, sledi
+
   $$
   \begin{aligned}
   \sum_{j=1}^n c_j x^\ast_j - \sum_{i=1}^m b_i y^\ast_{n+i} &= 0, \\
   c^\ast_j + \sum_{i=1}^m a_{ij} y^\ast_{n+i} &= c_j & (1 \le j \le n).
   \end{aligned}
   $$
+
 * Ker velja $y^\ast_{n+i} = -c^\ast_{n+i} \ge 0$ ($1 \le i \le m$) in $\sum_{i=1}^m a_{ij} y^\ast_{n+i} = c_j - c^\ast_j \ge c_j$ ($1 \le j \le n$), je $y^\ast$ dopustna rešitev za $\Pi'$.
 * Ker velja $c^\top x^\ast = b^\top y^\ast$, je po Posledici 1 $y^\ast$ optimalna rešitev za $\Pi'$.
 
@@ -977,7 +1023,8 @@ $$
 \text{p.p.} && -y_3 + y_4 &\ge 2 \\
 && y_3 - y_4 &\ge -1 \\
 && y_3, y_4 &\ge 0
-\end{aligned}$$
+\end{aligned}
+$$
 
 </span>
 
@@ -996,10 +1043,11 @@ $$
 * Naj bo $\Pi$ prvotni linearni program kot zgoraj in $\Pi'$ njegov dual,
 ter naj bosta $x$ in $y$ dopustni rešitvi za $\Pi$ oziroma $\Pi'$.
 * Potem sta $x$ in $y$ optimalni rešitvi za $\Pi$ oziroma $\Pi'$ natanko tedaj, ko velja
+
   $$
   \begin{aligned}
-  \forall i &\in \{1, \dots, m\}: & \Big(\sum_{j=1}^n a_{ij} x_j &= b_i &&\lor& y_{n+i} &= 0\Big) \quad \text{in} \\
-  \forall j &\in \{1, \dots, n\}: & \Big(x_j &= 0 &&\lor& \sum_{i=1}^m a_{ij} y_{n+i} &= c_j\Big).
+  \forall i &\in \lbrace 1, \dots, m \rbrace: & \Big(\sum_{j=1}^n a_{ij} x_j &= b_i &&\lor& y_{n+i} &= 0\Big) \quad \text{in} \\
+  \forall j &\in \lbrace 1, \dots, n \rbrace: & \Big(x_j &= 0 &&\lor& \sum_{i=1}^m a_{ij} y_{n+i} &= c_j\Big).
   \end{aligned}
   $$
 
@@ -1008,10 +1056,11 @@ ter naj bosta $x$ in $y$ dopustni rešitvi za $\Pi$ oziroma $\Pi'$.
 # IDD - ekvivalentna oblika
 
 Ekvivalentno: potem sta $x$ in $y$ optimalni rešitvi za $\Pi$ oziroma $\Pi'$ natanko tedaj, ko velja
+
 $$
 \begin{aligned}
-\forall i &\in \{1, \dots, m\}: & \Big(\sum_{j=1}^n a_{ij} x_j &< b_i &&\Rightarrow& y_{n+i} &= 0\Big) \quad \text{in} \\
-\forall j &\in \{1, \dots, n\}: & \Big(x_j &> 0 &&\Rightarrow& \sum_{i=1}^m a_{ij} y_{n+i} &= c_j\Big).
+\forall i &\in \lbrace 1, \dots, m \rbrace: & \Big(\sum_{j=1}^n a_{ij} x_j &< b_i &&\Rightarrow& y_{n+i} &= 0\Big) \quad \text{in} \\
+\forall j &\in \lbrace 1, \dots, n \rbrace: & \Big(x_j &> 0 &&\Rightarrow& \sum_{i=1}^m a_{ij} y_{n+i} &= c_j\Big).
 \end{aligned}
 $$
 
@@ -1024,6 +1073,7 @@ L = \sum_{j=1}^n c_j x_j \le \sum_{j=1}^n \left(\sum_{i=1}^m a_{ij} y_{n+i}\righ
 $$
 
 * Po Posledici 1 in KID sta $x, y$ optimalni za $\Pi, \Pi'$ natanko tedaj, ko velja $L = D$, kar je enakovredno
+
   $$
   \begin{aligned}
   \forall j: c_j x_j = \left(\sum_{i=1}^m a_{ij} y_{n+i}\right) x_j &\ \land \ \forall i: \left(\sum_{j=1}^n a_{ij} x_j\right) y_{n+i} = b_i y_{n+i} \\
@@ -1039,6 +1089,7 @@ $$
 Pokaži, da je $x = (0, 50, 0)$ optimalna rešitev problema kmetije.
 
 * 1\. korak: preverimo, da je ponujena rešitev dopustna.
+
   $$
   \begin{aligned}
   0 + 50 + 0 &= 50 \\
@@ -1048,6 +1099,7 @@ Pokaži, da je $x = (0, 50, 0)$ optimalna rešitev problema kmetije.
   $$
 
 * 2\. korak: za vsako neenakost, ki je izpolnjena z $<$, pripadajoči dualni spremenljivki dodelimo vrednost $0$.
+
   $$
   y_5 = y_6 = 0
   $$
@@ -1057,12 +1109,14 @@ Pokaži, da je $x = (0, 50, 0)$ optimalna rešitev problema kmetije.
 # Primer (2)
 
 * 3\. korak: za vsako pozitivno vrednost v rešitvi postavimo enačaj v pripadajoči neenakosti.
+
   $$
   y_4 + 4 y_5 + 5 y_6 = 15
   $$
 
 * 4\. korak: rešimo sistem iz korakov 2 in 3 ter preverimo dopustnost rešitve.
   - Če je rešitev več (parametrična rešitev), zadostuje, da poiščemo tako vrednost parametrov, da bo dobljena rešitev dopustna.
+
   $$
   \begin{aligned}
   y_4 = 15 \qquad y_5 &= 0 \qquad y_6 = 0 \\[1ex]
@@ -1076,6 +1130,7 @@ Pokaži, da je $x = (0, 50, 0)$ optimalna rešitev problema kmetije.
 # Ekonomski pomen dualnih spremenljivk
 
 * **_Primer._** Problem kmetije:
+
   $$
   \begin{aligned}
   x_1^\ast = 0 \qquad x_2^\ast = 50 \qquad x_3^\ast &= 0 \\[1ex]
@@ -1085,7 +1140,9 @@ Pokaži, da je $x = (0, 50, 0)$ optimalna rešitev problema kmetije.
   3 \cdot 0 + 5 \cdot 50 + 4 \cdot 0 &< 300 & \text{(kapital v 80 €)}
   \end{aligned}
   $$
+
 * Ne izplača se nam najeti več delovne sile ali vzeti kredita. Morda se nam izplača dokupiti dodatno zemljo.
+
   $$
   y_4^\ast = 15 \qquad y_5^\ast = 0 \qquad y_6^\ast = 0
   $$
@@ -1097,12 +1154,14 @@ Pokaži, da je $x = (0, 50, 0)$ optimalna rešitev problema kmetije.
 <span class="small">
 
 * **_Izrek._** Naj bo $\Pi$ prvotni linearni program kot zgoraj z neizrojeno bazno optimalno rešitvijo (tj., v pripadajočem slovarju so vsi konstantni členi pri baznih spremenljivkah pozitivni), in $\Pi'$ njegov dual. Potem obstaja $\epsilon > 0$, da velja
+
   $$
-  |\Delta b| < \epsilon \ \Rightarrow \ \Delta z^\ast = \sum_{i=1}^m y_{n+i}^\ast \Delta b_i,
+  \vert \Delta b \vert < \epsilon \ \Rightarrow \ \Delta z^\ast = \sum_{i=1}^m y_{n+i}^\ast \Delta b_i,
   $$
+
   kjer je $y^\ast$ optimalna rešitev $\Pi'$ ter sta $\Delta b$ in $\Delta z^\ast$ spremembi desne strani in optimalne vrednosti.
 
-* V našem primeru: $\Delta z^\ast = 15 \, \Delta b_1$ za $|\Delta b| < \epsilon$. Zemljo se nam splača kupiti po ceni največ $15 \cdot 40$ €/ha = $600$ €/ha.
+* V našem primeru: $\Delta z^\ast = 15 \, \Delta b_1$ za $\vert \Delta b \vert < \epsilon$. Zemljo se nam splača kupiti po ceni največ $15 \cdot 40$ €/ha = $600$ €/ha.
 
 * Torej: optimalne vrednosti duala nam dajo "tržno"/"pošteno"/sprejemljivo ceno surovin.
 
@@ -1137,7 +1196,8 @@ $$
 \text{p.p.} \quad \sum_{i=1}^m a_{ij} y_{n+i} &\ge c_j & (1 &\le j \le n') \\
 \sum_{i=1}^m a_{ij} y_{n+i} &= c_j & (n'+1 &\le j \le n) \\
 y_{n+i} &\ge 0 & (1 &\le i \le m')
-\end{aligned}$$
+\end{aligned}
+$$
 
 </span>
 
@@ -1149,10 +1209,11 @@ y_{n+i} &\ge 0 & (1 &\le i \le m')
 
 * Naj bosta $x$ in $y$ dopustni rešitvi za $\Pi$ oziroma $\Pi'$.
 * Potem sta $x$ in $y$ optimalni rešitvi za $\Pi$ oziroma $\Pi'$ natanko tedaj, ko velja
+
   $$
   \begin{aligned}
-  \forall i &\in \{1, \dots, m'\}: & \Big(\sum_{j=1}^n a_{ij} x_j &= b_i &&\lor& y_{n+i} &= 0\Big) \quad \text{in} \\
-  \forall j &\in \{1, \dots, n'\}: & \Big(x_j &= 0 &&\lor& \sum_{i=1}^m a_{ij} y_{n+i} &= c_j\Big).
+  \forall i &\in \lbrace 1, \dots, m' \rbrace: & \Big(\sum_{j=1}^n a_{ij} x_j &= b_i &&\lor& y_{n+i} &= 0\Big) \quad \text{in} \\
+  \forall j &\in \lbrace 1, \dots, n' \rbrace: & \Big(x_j &= 0 &&\lor& \sum_{i=1}^m a_{ij} y_{n+i} &= c_j\Big).
   \end{aligned}
   $$
 
@@ -1189,7 +1250,8 @@ $$
 \text{p.p.} \quad y_3 + 3 y_4 &\ge 3 \\
 4 y_3 + y_4 &= -2 \\
 y_3 &\ge 0
-\end{aligned}$$
+\end{aligned}
+$$
 
 </span>
 
@@ -1215,6 +1277,7 @@ $$
 # Dual splošnega linearnega programa - dokaz
 
 Zapišimo še dual - ta je enakovreden našemu zapisu $\Pi'$:
+
 $$
 \begin{aligned}
 \min \ \sum_{i=1}^{m'} b_i y_{n+i} + \sum_{i=m'+1}^m b_i y^+_{n+i} - \sum_{i=m'+1}^m b_i y^-_{n+i} \\

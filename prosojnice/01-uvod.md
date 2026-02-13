@@ -59,7 +59,7 @@ plugins: mathjax
 
   - $\Omega$ ... množica dopustnih (angl. _feasible_) rešitev
   - $f : \Omega \to \mathbb{R}$ ... ciljna (kriterijska) funkcija
-  - $\operatorname{opt} \in \{\min, \max, \inf, \sup\}$ ... tip ekstrema
+  - $\operatorname{opt} \in \lbrace \min, \max, \inf, \sup \rbrace$ ... tip ekstrema
 
 * Če velja $\Omega = \emptyset$, je problem _nedopusten_, sicer pa je _dopusten_.
 
@@ -77,6 +77,7 @@ plugins: mathjax
 * Metoda reševanja: kandidati za maksimum so ničle odvoda in krajišča dopustnega intervala.
 
 * Pišemo:
+
   $$
   \begin{aligned}
   \max &\quad x^2 - 3x + 2 \\[1ex]
@@ -145,8 +146,8 @@ Taki nalogi rečemo _linearni program_ (LP).
 
 Imamo $2n$ jabolk z masami $w_1, w_2, \dots, w_{2n}$. Jabolka bi radi razdelili v dve košari tako, da je v vsaki košari $n$ jabolk in da sta masi obeh košar čim bliže.
 
-- $\Omega = \{A \subseteq \{1, 2, \dots, 2n\} \mid |A| = n\}$
-- $f(A) = |\sum_{i \in A} w_i - \sum_{i \in A^c} w_i|$
+- $\Omega = \lbrace A \subseteq \lbrace 1, 2, \dots, 2n \rbrace \mid \vert A \vert = n\rbrace$
+- $f(A) = \vert \sum_{i \in A} w_i - \sum_{i \in A^c} w_i \vert$
 - $\operatorname{opt} = \min$
 
 ---
@@ -157,7 +158,7 @@ Drugače zapisano:
 
 $$
 \begin{aligned}
-\Omega &= \{-1, 1\}^{2n} \\
+\Omega &= {\lbrace -1, 1 \rbrace}^{2n} \\
 x_i &= \begin{cases}
 1 & \text{$i$-to jabolko v levi košari} \\
 -1 & \text{$i$-to jabolko v desni košari} \\
@@ -167,9 +168,9 @@ $$
 
 $$
 \begin{aligned}
-&& \min \ \left|\sum_{i=1}^{2n} w_i x_i \right| \\
+&& \min \ \left\vert \sum_{i=1}^{2n} w_i x_i \right\vert \\
 \text{p.p.} && \sum_{i=1}^{2n} x_i &= 0 \\
-&& x_1, x_2, \dots, x_{2n} &\in \{-1, 1\}
+&& x_1, x_2, \dots, x_{2n} &\in \lbrace -1, 1 \rbrace
 \end{aligned}
 $$
 
@@ -183,10 +184,10 @@ Ana, Barbara, Cvetka in Darja želijo prečkati most. Naenkrat lahko most prečk
 
 # Primer 5 - predstavitev
 
-* Definiramo graf z množico vozlišč $V = \mathcal{P}\{A, B, C, D, s\}$ - vsako vozlišče predstavlja stanje na eni strani mostu.
-* Vozlišči $u$ in $v$ sta sosedni, če lahko z enim prečkanjem pridemo od stanja $u$ do stanja $v$ (tj., $s \in u \oplus v$, $2 \le |u \oplus v| \le 3$ in $u \subset v$ ali $v \subset u$).
+* Definiramo graf z množico vozlišč $V = \mathcal{P}\lbrace A, B, C, D, s \rbrace$ - vsako vozlišče predstavlja stanje na eni strani mostu.
+* Vozlišči $u$ in $v$ sta sosedni, če lahko z enim prečkanjem pridemo od stanja $u$ do stanja $v$ (tj., $s \in u \oplus v$, $2 \le \vert u \oplus v \vert \le 3$ in $u \subset v$ ali $v \subset u$).
 * Uteži povezav so porabljeni časi.
-* Iščemo najkrajšo pot med $\emptyset$ in $\{A, B, C, D, s\}$.
+* Iščemo najkrajšo pot med $\emptyset$ in $\lbrace A, B, C, D, s \rbrace$.
 * Rešujemo z Dijkstrovim algoritmom - spoznali ga bomo pri predmetu Operacijske raziskave.
 
 ---
@@ -262,6 +263,7 @@ Primer rešitve (ne nujno optimalne!):
 # Optimizacijski problemi - primeri
 
 * Nedopustni problemi: $\Omega = \emptyset$
+
   $$
   \begin{aligned}
   \max \ 2x - y^2 \\
@@ -270,8 +272,10 @@ Primer rešitve (ne nujno optimalne!):
   -x + y &\le -2
   \end{aligned}
   $$
+
 * Dopustni problemi: $\Omega \ne \emptyset$
   * Neomejeni problemi
+
     $$
     \begin{aligned}
     \max \ 2x - y^2 \\
@@ -280,6 +284,7 @@ Primer rešitve (ne nujno optimalne!):
     y &\le 5
     \end{aligned}
     $$
+
   * Omejeni problemi
 
 ---
@@ -288,6 +293,7 @@ Primer rešitve (ne nujno optimalne!):
 
 * Omejeni problemi
   * Optimalni problemi
+
     $$
     \begin{aligned}
     \max \ x^2 + y^2 \\
@@ -296,7 +302,9 @@ Primer rešitve (ne nujno optimalne!):
     0 \le y &\le 1
     \end{aligned}
     $$
+
   * Neoptimalni problemi
+
     $$
     \begin{aligned}
     \max \ x^2 + y^2 \\
