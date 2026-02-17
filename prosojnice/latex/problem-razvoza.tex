@@ -1,0 +1,577 @@
+\documentclass[14pt]{extarticle}
+\usepackage[a4paper, total={18cm, 26cm}]{geometry}
+\usepackage[utf8]{inputenc}
+
+\usepackage[oznake]{omrezja}
+
+\tikzstyle{drevo}=[very thick, double, red]
+\tikzstyle{zasicena}=[very thick, double]
+\tikzstyle{velikost}=[scale=1]
+
+\NewEnviron{razvoz@primer}{
+    \vozlisce{a}[left] {-2, 0}[-7]
+    \vozlisce{b}[above]{ 2, 2}[4]
+    \vozlisce{c}[above]{ 2,-2}[3]
+
+    \povezava{a}{b}{1}[sloped]{above}
+    \povezava{a}{c}{3}[sloped]{below}
+    \povezava{b}{c}{1}{right}[bend left=15]
+    \povezava{c}{b}{6}{left}[bend left=15]
+}
+
+\begin{document}
+
+\begin{razvoz}{primer}
+\end{razvoz}
+
+\begin{razvoz}{primer}
+    \kolicina{a}{b}{4}
+    \kolicina{a}{c}{3}
+\end{razvoz}
+
+\begin{razvoz}{primer}
+    \kolicina{a}{b}{7}
+    \kolicina{b}{c}{3}
+\end{razvoz}
+
+\NewEnviron{razvoz@cikel}{
+    \vozlisce{a}[left] {-2, 0}
+    \vozlisce{b}[above]{ 2, 2}
+    \vozlisce{c}[above]{ 2,-2}
+
+    \povezava{a}{b}{2}[sloped]{above}
+    \povezava{a}{c}{1}[sloped]{below}
+    \povezava{b}{c}{5}{right}
+}
+
+\begin{razvoz}{cikel}
+\end{razvoz}
+
+\NewEnviron{razvoz@drevo}{
+    \vozlisce{a}[left] {-6, 2}
+    \vozlisce{b}[left] {-6, 0}
+    \vozlisce{c}[above]{-2, 1}
+    \vozlisce{d}[below]{-2,-1}
+    \vozlisce{e}[below]{ 2, 0}
+    \vozlisce{f}[below]{ 6, 0}
+
+    \povezava{a}{c}{5}[sloped]{above}
+    \povezava{b}{c}{1}[sloped]{below}
+    \povezava{c}{e}{2}[sloped]{above}
+    \povezava{d}{e}{-3}[sloped]{below}
+    \povezava{e}{f}{4}{above}
+}
+
+\begin{razvoz}{drevo}
+\end{razvoz}
+
+\NewEnviron{pretok@ddr}{
+    \tikzstyle{vozlisce pretoka}=[vozlisce razvoza]
+
+    \vozlisce{a}[left] {-6, 0}
+    \vozlisce{b}[above]{-2, 2}
+    \vozlisce{c}[below]{-2,-2}
+    \vozlisce{d}[above]{ 2, 2}
+    \vozlisce{e}[below]{ 2,-2}
+    \vozlisce{f}[right]{ 6, 0}
+
+    \povezava{a}{b}{}[sloped]{above}
+    \povezava{a}{c}{}[sloped]{below}
+    \povezava{b}{c}{}{left}
+    \povezava{c}{d}{}[sloped]{above}
+    \povezava{c}{e}{}{below}
+    \povezava{d}{b}{}{above}
+    \povezava{d}{e}{}{right}
+    \povezava{d}{f}{}[sloped]{above}[bend left=15]
+    \povezava{f}{d}{}[sloped]{below}[bend left=15]
+    \povezava{f}{e}{}[sloped]{below}
+}
+
+\begin{pretok}{ddr}
+    \kolicina*{a}{b}{}[red]
+    \kolicina {a}{c}{0}
+    \kolicina {b}{c}{0}
+    \kolicina*{c}{d}{}[red]
+    \kolicina*{c}{e}{}[red]
+    \kolicina*{d}{b}{}[red]
+    \kolicina {d}{e}{0}
+    \kolicina {d}{f}{0}
+    \kolicina*{f}{d}{}[red]
+    \kolicina {f}{e}{0}
+\end{pretok}
+
+\NewEnviron{pretok@cikel}{
+    \tikzstyle{vozlisce pretoka}=[vozlisce razvoza]
+
+    \vozlisce{a}[left] {xyz polar cs:angle=180,radius=4}
+    \vozlisce{b}[above]{xyz polar cs:angle=108,radius=4}
+    \vozlisce{c}[below]{xyz polar cs:angle=252,radius=4}
+    \vozlisce{d}[above]{xyz polar cs:angle= 36,radius=4}
+    \vozlisce{e}[below]{xyz polar cs:angle=324,radius=4}
+
+    \povezava{a}{b}{}[sloped]{above}
+    \povezava{a}{c}{}[sloped]{below}
+    \povezava{c}{e}{}[sloped]{below}
+    \povezava{d}{b}{}[sloped]{above}
+    \povezava{d}{e}{}{right}
+}
+
+\begin{pretok}{cikel}
+    \tikzstyle{konec}=[midway]
+
+    \kolicina {a}{b}{{\rm obratna}}
+    \kolicina {a}{c}{{\rm prema}}
+    \kolicina*{c}{e}{f}[red]
+    \kolicina {d}{b}{{\rm prema}}
+    \kolicina {d}{e}{{\rm obratna}}
+\end{pretok}
+
+\begin{pretok}{cikel}
+    \tikzstyle{konec}=[midway, black]
+
+    \kolicina {a}{b}{6}
+    \kolicina {a}{c}{3}
+    \kolicina*{c}{e}{1}[red]
+    \kolicina {d}{b}{5}
+    \kolicina {d}{e}{4}
+\end{pretok}
+
+\begin{pretok}{cikel}
+    \tikzstyle{konec}=[midway, red]
+
+    \kolicina {a}{b}{7}
+    \kolicina {a}{c}{2}
+    \kolicina*{c}{e}{0}[red]
+    \kolicina {d}{b}{4}
+    \kolicina {d}{e}{5}
+\end{pretok}
+
+\NewEnviron{razvoz@drevo2}{
+    \vozlisce{a}[left] {-6, 2}[-3]
+    \vozlisce{b}[left] {-6, 0}[-5]
+    \vozlisce{c}[above]{-2, 1}
+    \vozlisce{d}[below]{-2,-1}[-2]
+    \vozlisce{e}[below]{ 2, 0}[6]
+    \vozlisce{f}[below]{ 6, 0}[4]
+
+    \povezava{a}{c}{5}[sloped]{above}
+    \povezava{b}{c}{1}[sloped]{below}
+    \povezava{c}{e}{2}[sloped]{above}
+    \povezava{d}{e}{-3}[sloped]{below}
+    \povezava{e}{f}{4}{above}
+}
+
+\begin{razvoz}{drevo2}
+    \kolicina{a}{c}{3}
+    \kolicina{b}{c}{5}
+    \kolicina{c}{e}{8}
+    \kolicina{d}{e}{2}
+    \kolicina{e}{f}{4}
+\end{razvoz}
+
+\NewEnviron{razvoz@simplex}{
+    \setboolean{@oznake}{false}
+    \tikzstyle{vozlisce razvoza}=[vozlisce, minimum size=10mm]
+
+    \vozlisce{a}[left] {-6, 0}[5]
+    \vozlisce{b}[above]{-2, 2}[-5]
+    \vozlisce{c}[below]{-2,-2}[-3]
+    \vozlisce{d}[above]{ 2, 2}[-2]
+    \vozlisce{e}[below]{ 2,-2}
+    \vozlisce{f}[above]{ 6, 2}[2]
+    \vozlisce{g}[below]{ 6,-2}[3]
+
+    \povezava{b}{a}{5}[sloped]{above}
+    \povezava{b}{d}{6}{above}
+    \povezava{c}{a}{20}[sloped]{below}
+    \povezava{c}{b}{5}{right}
+    \povezava{c}{e}{11}{below}
+    \povezava{d}{e}{1}{left}
+    \povezava{d}{f}{5}{above}
+    \povezava{e}{g}{1}{below}
+    \povezava{f}{e}{1}[sloped]{below}
+    \povezava{g}{f}{1}{right}
+}
+
+\begin{razvoz}{simplex}
+\end{razvoz}
+
+\begin{razvoz}{simplex}
+    \kolicina{b}{a}{2}
+    \kolicina{b}{d}{3}[izstopi]
+    \kolicina{c}{a}{3}
+    \kolicina{d}{f}{5}
+    \kolicina{e}{g}{3}
+    \kolicina{f}{e}{3}
+
+    \oznaka{c}{0}
+    \oznaka{a}{20}
+    \oznaka{b}{15}
+    \oznaka{d}{21}
+    \oznaka{f}{26}
+    \oznaka{e}{27}
+    \oznaka{g}{28}
+
+    \kandidat{c}{b}
+    \kandidat{c}{e}[vstopi]
+    \kandidat{d}{e}
+\end{razvoz}
+
+\begin{razvoz}{simplex}
+    \kolicina{b}{a}{5}
+    \kolicina{c}{a}{0}[izstopi]
+    \kolicina{c}{e}{3}
+    \kolicina{d}{f}{2}
+    \kolicina{e}{g}{3}
+    \kolicina{f}{e}{0}
+
+    \oznaka{c}{16}
+    \oznaka{a}{36}
+    \oznaka{b}{31}
+    \oznaka{d}{21}
+    \oznaka{f}{26}
+    \oznaka{e}{27}
+    \oznaka{g}{28}
+
+    \kandidat{c}{b}[vstopi]
+    \kandidat{d}{e}
+\end{razvoz}
+
+\begin{razvoz}{simplex}
+    \kolicina{b}{a}{5}
+    \kolicina{c}{b}{0}
+    \kolicina{c}{e}{3}
+    \kolicina{d}{f}{2}
+    \kolicina{e}{g}{3}
+    \kolicina{f}{e}{0}[izstopi]
+
+    \oznaka{c}{16}
+    \oznaka{a}{26}
+    \oznaka{b}{21}
+    \oznaka{d}{21}
+    \oznaka{f}{26}
+    \oznaka{e}{27}
+    \oznaka{g}{28}
+
+    \kandidat{d}{e}[vstopi]
+\end{razvoz}
+
+\begin{razvoz}{simplex}
+    \kolicina{b}{a}{5}
+    \kolicina{c}{b}{0}
+    \kolicina{c}{e}{3}
+    \kolicina{d}{e}{0}
+    \kolicina{d}{f}{2}[izstopi]
+    \kolicina{e}{g}{3}
+
+    \oznaka{c}{16}
+    \oznaka{a}{26}
+    \oznaka{b}{21}
+    \oznaka{d}{26}
+    \oznaka{f}{31}
+    \oznaka{e}{27}
+    \oznaka{g}{28}
+
+    \kandidat{g}{f}[vstopi]
+\end{razvoz}
+
+\begin{razvoz}{simplex}
+    \kolicina{b}{a}{5}
+    \kolicina{c}{b}{0}
+    \kolicina{c}{e}{3}
+    \kolicina{d}{e}{2}
+    \kolicina{e}{g}{5}
+    \kolicina{g}{f}{2}
+
+    \oznaka{c}{16}
+    \oznaka{a}{26}
+    \oznaka{b}{21}
+    \oznaka{d}{26}
+    \oznaka{f}{29}
+    \oznaka{e}{27}
+    \oznaka{g}{28}
+\end{razvoz}
+
+\begin{pretok}{cikel}
+    \kolicina{a}{b}{}
+    \kolicina{a}{c}{}[blue, dashed]
+    \kolicina{c}{e}{}
+    \kolicina{d}{b}{}
+    \kolicina{d}{e}{}
+\end{pretok}
+
+\NewEnviron{pretok@cunningham}{
+    \tikzstyle{vozlisce pretoka}=[vozlisce, minimum size=10mm]
+
+    \vozlisce{u}[below]{xyz polar cs:angle=240,radius=2}
+    \vozlisce{v}[below]{xyz polar cs:angle=300,radius=2}
+    \vozlisce{w}[right]{xyz polar cs:angle=  0,radius=2}
+    \vozlisce{x}[above]{xyz polar cs:angle= 60,radius=2}
+    \vozlisce{y}[above]{xyz polar cs:angle=120,radius=2}
+    \vozlisce{z}[below]{xyz polar cs:angle=180,radius=2}
+    \vozlisce{t}[below]{xyz polar cs:angle=180,radius=4}
+    \vozlisce{s}[below]{xyz polar cs:angle=180,radius=6}
+    \vozlisce{r}[below]{xyz polar cs:angle=180,radius=8}
+
+    \povezava{r}{s}{}{above}
+    \povezava{t}{s}{}{above}
+    \povezava{t}{z}{}{above}
+    \povezava{z}{u}{}[sloped]{below}
+    \povezava{z}{y}{}[sloped]{above}
+    \povezava{u}{v}{}{below}
+    \povezava{w}{v}{}[sloped]{below}
+    \povezava{x}{w}{}[sloped]{above}
+    \povezava{x}{y}{}{above}
+}
+
+\begin{pretok}{cunningham}
+    \tikzstyle{konec}=[midway, black]
+
+    \kolicina{u}{v}{e}[blue]
+    \kolicina{w}{v}{f}[green]
+    \kolicina{x}{w}{}[green]
+    \kolicina{z}{y}{}[green]
+\end{pretok}
+
+\NewEnviron{razvoz@dvofazna}{
+    \setboolean{@oznake}{false}
+    \tikzstyle{vozlisce razvoza}=[vozlisce, minimum size=10mm]
+
+    \vozlisce{a}[below]{xyz polar cs:angle=270,radius=4}[r]
+    \vozlisce{b}[left] {xyz polar cs:angle=198,radius=4}[-2]
+    \vozlisce{c}[above]{xyz polar cs:angle=126,radius=4}[1]
+    \vozlisce{d}[above]{xyz polar cs:angle= 54,radius=4}[-3]
+    \vozlisce{e}[right]{xyz polar cs:angle=342,radius=4}[4]
+
+    \povezava{b}{a}{2}[sloped]{below}
+    \povezava{b}{c}{1}{left}
+    \povezava{c}{a}{1}{right}
+    \povezava{d}{a}{4}{left}
+    \povezava{d}{c}{4}{above}
+    \povezava{d}{e}{2}{right}
+    \povezava{e}{a}{1}[sloped]{above}
+}
+
+\begin{razvoz}{dvofazna}
+\end{razvoz}
+
+\NewEnviron{razvoz@dvofazna1}{
+    \cena{b}{a}{0}
+    \cena{b}{c}{0}
+    \cena{c}{a}{0}
+    \cena{d}{a}{0}
+    \cena{d}{c}{0}
+    \cena{d}{e}{0}
+    \cena{e}{a}{0}
+
+    \begin{razvoz@dvofazna}
+    \end{razvoz@dvofazna}
+
+    \povezava{a}{c}{1}{left}[bend left=15]
+    \povezava{a}{e}{1}[sloped]{below}[bend right=15]
+}
+
+\begin{razvoz}{dvofazna1}
+    \kolicina{b}{a}{2}
+    \kolicina{a}{c}{1}[izstopi]
+    \kolicina{d}{a}{3}
+    \kolicina{a}{e}{4}
+
+    \oznaka{a}{0}
+    \oznaka{b}{0}
+    \oznaka{c}{1}
+    \oznaka{d}{0}
+    \oznaka{e}{1}
+
+    \kandidat{b}{c}
+    \kandidat{d}{c}[vstopi]
+    \kandidat{d}{e}
+\end{razvoz}
+
+\begin{razvoz}{dvofazna1}
+    \kolicina{b}{a}{2}
+    \kolicina{d}{a}{2}[izstopi]
+    \kolicina{a}{e}{4}
+    \kolicina{d}{c}{1}
+
+    \oznaka{a}{0}
+    \oznaka{b}{0}
+    \oznaka{c}{0}
+    \oznaka{d}{0}
+    \oznaka{e}{1}
+
+    \kandidat{d}{e}[vstopi]
+\end{razvoz}
+
+\begin{razvoz}{dvofazna1}
+    \kolicina{b}{a}{2}
+    \kolicina{d}{e}{2}
+    \kolicina{a}{e}{2}
+    \kolicina{d}{c}{1}[izstopi]
+
+    \oznaka{a}{0}
+    \oznaka{b}{0}
+    \oznaka{c}{1}
+    \oznaka{d}{1}
+    \oznaka{e}{1}
+
+    \kandidat{b}{c}[vstopi]
+\end{razvoz}
+
+\begin{razvoz}{dvofazna1}
+    \kolicina{b}{a}{1}
+    \kolicina{d}{e}{3}
+    \kolicina{a}{e}{1}
+    \kolicina{b}{c}{1}
+
+    \oznaka{a}{0}
+    \oznaka{b}{0}
+    \oznaka{c}{0}
+    \oznaka{d}{1}
+    \oznaka{e}{1}
+\end{razvoz}
+
+\NewEnviron{razvoz@ds}{
+    \setboolean{@oznake}{false}
+    \tikzstyle{vozlisce razvoza}=[vozlisce, minimum size=10mm]
+
+    \vozlisce{a}[above]{-4, 2}[-1]
+    \vozlisce{b}[above]{ 0, 2}[-1]
+    \vozlisce{c}[above]{ 4, 2}[-1]
+    \vozlisce{d}[below]{-4,-2}[1]
+    \vozlisce{e}[below]{ 0,-2}[1]
+    \vozlisce{f}[below]{ 4,-2}[1]
+
+    \povezava{a}{e}{0}[sloped]{above}
+    \povezava{a}{f}{0}[sloped]{below}
+    \povezava{b}{d}{0}[sloped]{above}
+    \povezava{b}{e}{0}{right}
+    \povezava{b}{f}{0}[sloped]{above}
+    \povezava{c}{d}{0}[sloped]{below}
+    \povezava{c}{f}{0}{right}
+}
+
+\begin{razvoz}{ds}
+    \kolicina{a}{e}{\quad\  0.9}
+    \kolicina{a}{f}{0.1}
+    \kolicina{b}{d}{0.4}
+    \kolicina{b}{e}{0.1}
+    \kolicina{b}{f}{0.5}
+    \kolicina{c}{d}{0.6}
+    \kolicina{c}{f}{0.4}
+\end{razvoz}
+
+\NewEnviron{neusmerjen@koenig}{
+    \setboolean{@oznake}{false}
+    \tikzstyle{zvezdica}=[red]
+
+    \vozlisce{a}[above]{-6, 2}
+    \vozlisce{b}[above]{-2, 2}
+    \vozlisce{c}[above]{ 2, 2}
+    \vozlisce{d}[above]{ 6, 2}
+    \vozlisce{e}[below]{-6,-2}
+    \vozlisce{f}[below]{-2,-2}
+    \vozlisce{g}[below]{ 2,-2}
+    \vozlisce{h}[below]{ 6,-2}
+
+    \povezava{a}{f}{}{}
+    \povezava*{a}{g}{}{}
+    \povezava{b}{e}{}{}
+    \povezava*{b}{f}{}{}
+    \povezava{c}{g}{}{}
+    \povezava*{c}{h}{}{}
+    \povezava*{d}{e}{}{}
+    \povezava{d}{h}{}{}
+}
+
+\begin{neusmerjen}{koenig}
+\end{neusmerjen}
+
+\NewEnviron{razvoz@pro}{
+    \setboolean{@oznake}{false}
+    \tikzstyle{vozlisce razvoza}=[vozlisce, minimum size=10mm]
+
+    \vozlisce{a}[left] {-2, 2}[-8]
+    \vozlisce{b}[right]{ 2, 2}[3]
+    \vozlisce{c}[left]{-2,-2}[2]
+    \vozlisce{d}[right]{ 2,-2}[3]
+
+    \povezava{a}{b}[2]{1}{above}
+    \povezava{a}{c}[9]{3}{left}
+    \povezava{b}{d}[5]{1}{right}
+    \povezava{c}{b}[3]{2}[sloped]{above}
+    \povezava{c}{d}[4]{4}{below}
+}
+
+\begin{razvoz}{pro}
+\end{razvoz}
+
+\begin{razvoz}{pro}
+    \kolicina{a}{b}{0}[izstopi]
+    \kolicina{a}{c}{8}
+    \kolicina*{c}{b}{3}
+    \kolicina{c}{d}{3}
+
+    \oznaka{a}{0}
+    \oznaka{b}{1}
+    \oznaka{c}{3}
+    \oznaka{d}{7}
+
+    \kandidat{b}{d}
+    \kandidat{c}{b}[vstopi, zasicena]
+\end{razvoz}
+
+\begin{razvoz}{pro}
+    \kolicina*{a}{b}{2}
+    \kolicina{a}{c}{6}
+    \kolicina{c}{b}{1}[izstopi]
+    \kolicina{c}{d}{3}
+
+    \oznaka{a}{0}
+    \oznaka{b}{5}
+    \oznaka{c}{3}
+    \oznaka{d}{7}
+
+    \kandidat{b}{d}[vstopi]
+\end{razvoz}
+
+\begin{razvoz}{pro}
+    \kolicina*{a}{b}{2}
+    \kolicina{a}{c}{6}
+    \kolicina{b}{d}{2}
+    \kolicina*{c}{b}{3}
+    \kolicina{c}{d}{1}
+
+    \oznaka{a}{0}
+    \oznaka{b}{6}
+    \oznaka{c}{3}
+    \oznaka{d}{7}
+\end{razvoz}
+
+\NewEnviron{pretok@trikotnik}{
+    \setboolean{@oznake}{false}
+    \tikzstyle{vozlisce pretoka}=[vozlisce, minimum size=10mm]
+    \tikzstyle{konec}=[midway, black]
+
+    \vozlisce{a}[left] {-2, 0}
+    \vozlisce{b}[above]{ 2, 2}
+    \vozlisce{c}[above]{ 2,-2}
+
+    \povezava{a}{b}{}[sloped]{above}
+    \povezava{a}{c}{}[sloped]{below}
+    \povezava{c}{b}{}{right}
+}
+
+\begin{pretok}{trikotnik}
+    \kolicina{a}{b}{2 \le 3}[red, double]
+    \kolicina{a}{c}{\le 1}[blue, dashed]
+    \kolicina{c}{b}{1 \le 5}[red, double]
+\end{pretok}
+
+\begin{pretok}{trikotnik}
+    \kolicina{a}{b}{1 \le 3}[red, double]
+    \kolicina{a}{c}{1 \le 1}[very thick]
+    \kolicina{c}{b}{2 \le 5}[red, double]
+\end{pretok}
+
+\end{document}

@@ -30,7 +30,7 @@ plugins: mathjax
 # Termini kolokvijev in izpitov
 
 * Kolokviji:
-  - 1\. kolokvij:
+  - 1\. kolokvij: sreda, 8. april 2026 ob 16:15 v 2.01 in 2.05
   - 2\. kolokvij: sreda, 27. maj 2026 ob 16:15 v 2.01 in 2.05
 * Pisni izpiti:
   - 1\. pisni izpit: četrtek, 11. junij 2026 v 2.05, vaje ob 9:15, teorija ob 11:30
