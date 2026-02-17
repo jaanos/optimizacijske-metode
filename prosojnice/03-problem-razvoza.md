@@ -20,11 +20,11 @@ plugins: mathjax
 
 # Predstavitev z grafom
 
-<center>
+<span class="center">
 
 ![h:500px](slike/razvoz1.png)
 
-</center>
+</span>
 
 ---
 
@@ -248,12 +248,10 @@ Kdaj je sistem $\forall uv \in E': \ y_u + c_{uv} = y_v$ ($E' \subseteq E$) reš
 
 # Dualno dopolnjevanje, drugič (2)
 
-<span class="nobullet">
-<center>
+<span class="nobullet center">
 
 * ![](slike/razvoz-drevo.png)
 
-</center>
 </span>
 
 <span class="columns col2 small">
@@ -290,11 +288,11 @@ Kdaj je sistem $\forall uv \in E': \ y_u + c_{uv} = y_v$ ($E' \subseteq E$) reš
 
 * **_Definicija._** Dopustna rešitev $x$ za problem razvoza $\Pi$ na grafu $G = (V, E)$ je _drevesna dopustna rešitev_, če v grafu $G$ obstaja vpeto drevo $T = (V, E')$, da velja $x_e = 0$ za vsak $e \in E \setminus E'$.
 
-  <center>
+  <span class="center">
 
   ![h:250px](slike/razvoz-ddr.png)
 
-  </center>
+  </span>
 
 * **_Trditev._** Če ima problem razvoza $\Pi$ dopustno rešitev, ima tudi drevesno dopustno rešitev.
 
@@ -304,11 +302,11 @@ Kdaj je sistem $\forall uv \in E': \ y_u + c_{uv} = y_v$ ($E' \subseteq E$) reš
 
 **_Definicija._** Naj bo $G$ usmerjen graf in $C$ cikel v $G$, ki vsebuje povezavo $f$. Potem je povezava $e$ v ciklu $C$ (glede na povezavo $f$) _prema_, če kaže v isto smer kot $f$, in _obratna_ sicer.
 
-<center>
+<span class="center">
 
 ![h:400px](slike/razvoz-povezave.png)
 
-</center>
+</span>
 
 ---
 
@@ -342,31 +340,31 @@ Kdaj je sistem $\forall uv \in E': \ y_u + c_{uv} = y_v$ ($E' \subseteq E$) reš
 
 Rešitev ustreza pogojem in je dopustna, saj še vedno velja Kirchhoffov zakon:
 
-<center>
+<span class="center">
 
 ![h:500px](slike/kirchhoff.png)
 
-</center>
+</span>
 
 ---
 
 # Primer
 
-<center>
+<span class="center">
 
 ![h:500px](slike/razvoz-povezave1.png)
 
-</center>
+</span>
 
 ---
 
 # Spremembe razvozov
 
-<center>
+<span class="center">
 
 ![h:500px](slike/razvoz-povezave2.png)
 
-</center>
+</span>
 
 ---
 
@@ -377,11 +375,11 @@ Rešitev ustreza pogojem in je dopustna, saj še vedno velja Kirchhoffov zakon:
 * Potem je $x_e$ enolično določen.
 * Postopek ponovimo za drevo $T - u$, dokler imamo še kakšno povezavo.
 
-  <center>
+  <span class="center">
 
   ![h:300px](slike/razvoz-drevo2.png)
 
-  </center>
+  </span>
 
 ---
 
@@ -413,11 +411,11 @@ Rešitev ustreza pogojem in je dopustna, saj še vedno velja Kirchhoffov zakon:
 
 # Primer
 
-<center>
+<span class="center">
 
 ![h:400px](slike/razvoz-simplex.png)
 
-</center>
+</span>
 
 ---
 
@@ -425,11 +423,11 @@ Rešitev ustreza pogojem in je dopustna, saj še vedno velja Kirchhoffov zakon:
 
 Določimo začetno drevesno dopustno rešitev, razvozne cene in kandidate za vstop ter izberemo vstopno in izstopno povezavo:
 
-<center>
+<span class="center">
 
 ![h:400px](slike/razvoz-simplex1.png)
 
-</center>
+</span>
 
 ---
 
@@ -437,11 +435,11 @@ Določimo začetno drevesno dopustno rešitev, razvozne cene in kandidate za vst
 
 Povezavam na ciklu spremenimo razvoz za $3$:
 
-<center>
+<span class="center">
 
 ![h:400px](slike/razvoz-simplex2.png)
 
-</center>
+</span>
 
 ---
 
@@ -449,11 +447,11 @@ Povezavam na ciklu spremenimo razvoz za $3$:
 
 Izstopna povezava je imela razvoz $0$ - razvozi se ne spremenijo, spremeni se le drevo in razvozne cene (_izrojen korak_):
 
-<center>
+<span class="center">
 
 ![h:400px](slike/razvoz-simplex3.png)
 
-</center>
+</span>
 
 ---
 
@@ -461,11 +459,11 @@ Izstopna povezava je imela razvoz $0$ - razvozi se ne spremenijo, spremeni se le
 
 Še en izrojen korak:
 
-<center>
+<span class="center">
 
 ![h:400px](slike/razvoz-simplex4.png)
 
-</center>
+</span>
 
 ---
 
@@ -473,11 +471,11 @@ Izstopna povezava je imela razvoz $0$ - razvozi se ne spremenijo, spremeni se le
 
 Povezavam na ciklu spremenimo razvoz za $2$:
 
-<center>
+<span class="center">
 
 ![h:400px](slike/razvoz-simplex5.png)
 
-</center>
+</span>
 
 ---
 
@@ -596,11 +594,11 @@ $$
   * izberemo _koren_ $r \in V$;
   * ko izbiramo izstopno povezavo v ciklu $C$ z vstopno povezavo $e = uv$, določimo vozlišče $z$ na $C$, ki leži na poteh (v drevesu - brez $e$) od $r$ do $u$ oziroma $v$, in za izstopno povezavo izberemo prvega kandidata na $C$ od $z$ naprej v smeri $uv$.
     
-    <center>
+    <span class="center">
 
     ![h:250px](slike/cunningham.png)
 
-    </center>
+    </span>
 
 </span>
 
@@ -647,11 +645,11 @@ $$
 
 Dokažimo, da je problem nedopusten.
 
-<center>
+<span class="center">
 
 ![h:500px](slike/razvoz-dvofazna.png)
 
-</center>
+</span>
 
 ---
 
@@ -659,41 +657,41 @@ Dokažimo, da je problem nedopusten.
 
 Narišimo graf za pomožni problem in določimo začetno drevesno rešitev.
 
-<center>
+<span class="center">
 
 ![h:500px](slike/razvoz-dvofazna1.png)
 
-</center>
+</span>
 
 ---
 
 # Primer (3)
 
-<center>
+<span class="center">
 
 ![h:500px](slike/razvoz-dvofazna2.png)
 
-</center>
+</span>
 
 ---
 
 # Primer (4)
 
-<center>
+<span class="center">
 
 ![h:500px](slike/razvoz-dvofazna3.png)
 
-</center>
+</span>
 
 ---
 
 # Primer (5)
 
-<center>
+<span class="center">
 
 ![h:400px](slike/razvoz-dvofazna4.png)
 
-</center>
+</span>
 
 <span class="small">
 
@@ -838,11 +836,11 @@ Narišimo graf za pomožni problem in določimo začetno drevesno rešitev.
 
 # Primer
 
-<center>
+<span class="center">
 
 ![h:400px](slike/ds.png)
 
-</center>
+</span>
 
 ---
 
@@ -862,11 +860,11 @@ Narišimo graf za pomožni problem in določimo začetno drevesno rešitev.
 
 **Opomba.** Če imamo $n$ deklet in $n$ fantov ter vsako dekle pozna $r$ fantov in vsak fant pozna $r$ deklet, potem lahko vsako dekle pleše s fantom, ki ga pozna.
 
-<center>
+<span class="center">
 
 ![h:400px](slike/koenig.png)
 
-</center>
+</span>
 
 ---
 
