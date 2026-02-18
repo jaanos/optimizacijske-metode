@@ -291,9 +291,7 @@ Povečamo pretok na izbrani poti za 1:
   $$
 
 * **Opomba.** Primerjaj s šibkim izrekom o dualnosti!
-
 * **_Posledica._** Če velja $F = K$, je $x$ maksimalen pretok, $C$ pa minimalen prerez.
-
 * Govorimo torej o **problemu maksimalnega pretoka in minimalnega prereza** (angl. _maximal flow/minimal cut_).
 
 ---
