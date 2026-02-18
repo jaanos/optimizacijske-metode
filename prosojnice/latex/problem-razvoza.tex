@@ -8,6 +8,8 @@
 \tikzstyle{zasicena}=[very thick, double]
 \tikzstyle{velikost}=[scale=1]
 
+\begin{document}
+
 \NewEnviron{razvoz@primer}{
     \vozlisce{a}[left] {-2, 0}[-7]
     \vozlisce{b}[above]{ 2, 2}[4]
@@ -18,8 +20,6 @@
     \povezava{b}{c}{1}{right}[bend left=15]
     \povezava{c}{b}{6}{left}[bend left=15]
 }
-
-\begin{document}
 
 \begin{razvoz}{primer}
 \end{razvoz}

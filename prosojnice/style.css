@@ -16,6 +16,10 @@
   grid-template-columns: 0.58fr 0.5fr;
 }
 
+.col2c {
+  grid-template-columns: 0.9fr 1.1fr;
+}
+
 .col3 {
   --cols: 3;
 }
@@ -26,6 +30,10 @@
 
 .small td, .smaller {
   font-size: large;
+}
+
+.large {
+  font-size: 2em;
 }
 
 .numbers ol li {

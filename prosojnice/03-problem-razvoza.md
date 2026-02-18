@@ -314,7 +314,7 @@ Kdaj je sistem $\forall uv \in E': \ y_u + c_{uv} = y_v$ ($E' \subseteq E$) reš
 
 * Naj bo $x$ dopustna rešitev za problem razvoza $\Pi$ na grafu $G = (V, E)$.
 * Naj bo $E^{(0)} = E$ in $x^{(0)} = x$.
-* Definirali bomo zaporedje $\{(E^{(i)}, x^{(i)})\}_{i=0}^k$, tako da v $i$-tem koraku dobimo $E^{(i)}$ tako, da iz $E^{(i-1)}$ odstranimo eno povezavo in določimo novo dopustno rešitev $x^{(i)}$ tako, da velja $x_e^{(i)} = 0$ za vsako povezavo $e \in E \setminus E^{(i)}$, dokler ne dobimo vpetega drevesa $T = (V, E^{(k)})$.
+* Definirali bomo zaporedje $\lbrace (E^{(i)}, x^{(i)}) \rbrace_{i=0}^k$, tako da v $i$-tem koraku dobimo $E^{(i)}$ tako, da iz $E^{(i-1)}$ odstranimo eno povezavo in določimo novo dopustno rešitev $x^{(i)}$ tako, da velja $x_e^{(i)} = 0$ za vsako povezavo $e \in E \setminus E^{(i)}$, dokler ne dobimo vpetega drevesa $T = (V, E^{(k)})$.
 * Denimo, da ima graf $G^{(i-1)} = (V, E^{(i-1)})$ cikel $C$, in naj bo $f$ povezava na $C$ z najmanjšo vrednostjo $x_f^{(i-1)}$.
 
 ---
@@ -331,7 +331,7 @@ Kdaj je sistem $\forall uv \in E': \ y_u + c_{uv} = y_v$ ($E' \subseteq E$) reš
   \end{cases}
   $$
 
-  in novo množico povezav $E^{(i)} = E^{(i-1)} \setminus \{f\}$.
+  in novo množico povezav $E^{(i)} = E^{(i-1)} \setminus \lbrace f \rbrace$.
 * Opazimo, da velja $x^{(i)} \ge 0$, $x_f^{(i)} = 0$ in $x_e^{(i)} = 0$ za vsako povezavo $e \in E \setminus E^{(i-1)}$.
 
 ---
@@ -398,7 +398,7 @@ Rešitev ustreza pogojem in je dopustna, saj še vedno velja Kirchhoffov zakon:
 
 * 2\. Rešimo sistem $\forall uv \in E': \ y_u + c_{uv} = y_v$ (nadaljevanje).
    * Sicer obstaja povezava $e = uv \in E \setminus E'$, za katero velja $y_u + c_e < y_v$.
-     * Ta povezava (_vstopna povezava_) je v natanko enem (edinem) ciklu $C$ v grafu $H = (V, E' \cup \{e\})$.
+     * Ta povezava (_vstopna povezava_) je v natanko enem (edinem) ciklu $C$ v grafu $H = (V, E' \cup \lbrace e \rbrace)$.
      * Naj bo $f$ obratna povezava v $C$ glede na $e$ z najmanjšo vrednostjo $x_f$ (_izstopna povezava_).
      * Razvoz povečamo za $x_f$ na premih povezavah na $C$ glede na $e$ (obratnih glede na $f$) in zmanjšamo za $x_f$ na obratnih povezavah na $C$ glede na $e$ (premih glede na $f$).
      * V novi rešitvi ima povezava $f$ ničeln razvoz in jo odstranimo iz drevesa.
@@ -612,7 +612,7 @@ $$
 * Uporabimo **dvofazno simpleksno metodo na omrežjih**.
 * Definiramo pomožni problem:
   * Izberemo _koren_ $r \in V$.
-  * Za vsako vozlišče $v \in V \setminus \{r\}$:
+  * Za vsako vozlišče $v \in V \setminus \lbrace r \rbrace$:
     - če $b_v \ge 0$ in povezava $rv$ ne obstaja, jo dodamo;
     - če $b_v < 0$ in povezava $vr$ ne obstaja, jo dodamo.
   * Dobimo nov graf $\tilde{G} = (V, \tilde{E})$. Dodanim povezavam (iz $\tilde{E} \setminus E$) pravimo _umetne povezave_, povezavam iz $E$ pa _prvotne povezave_.
@@ -746,7 +746,7 @@ Narišimo graf za pomožni problem in določimo začetno drevesno rešitev.
 
 # Permutacijske matrike
 
-* **_Definicija._** Matrika $P = (p_{ij})_{i,j=1}^n \in \{0, 1\}^{n \times n}$ je _permutacijska matrika_, če je v vsaki vrstici in v vsakem stolpcu natanko ena enica.
+* **_Definicija._** Matrika $P = (p_{ij})_{i,j=1}^n \in {\lbrace 0, 1 \rbrace}^{n \times n}$ je _permutacijska matrika_, če je v vsaki vrstici in v vsakem stolpcu natanko ena enica.
 
 * **_Primeri_** za $n = 3$:
 
@@ -795,9 +795,9 @@ Narišimo graf za pomožni problem in določimo začetno drevesno rešitev.
 
 <span class="small">
 
-* **_Trditev._** Naj bo $A \in \mathbb{R}^{n \times n}$ dvojno stohastična matrika. Potem obstaja permutacijska matrika $P \in \{0, 1\}^{n \times n}$, tako da velja $p_{ij} = 1 \Rightarrow a_{ij} > 0$ ($1 \le i, j \le n$).
+* **_Trditev._** Naj bo $A \in \mathbb{R}^{n \times n}$ dvojno stohastična matrika. Potem obstaja permutacijska matrika $P \in {\lbrace 0, 1 \rbrace}^{n \times n}$, tako da velja $p_{ij} = 1 \Rightarrow a_{ij} > 0$ ($1 \le i, j \le n$).
 
-* _Dokaz._ Naj bo $G = (V, E)$ usmerjen graf z množico vozlišč $V = \{v_i, s_i \mid 1 \le i \le n\}$ in množico povezav $E = \{v_i s_j \mid a_{ij} > 0\}$.
+* _Dokaz._ Naj bo $G = (V, E)$ usmerjen graf z množico vozlišč $V = \lbrace v_i, s_i \mid 1 \le i \le n \rbrace$ in množico povezav $E = \lbrace v_i s_j \mid a_{ij} > 0 \rbrace$.
 * Postavimo še $b_{v_i} = -1$, $b_{s_i} = 1$ ($1 \le i \le n$) in $c_{v_i s_j} = 0$ ($v_i s_j \in E$).
 * Dobljeni problem razvoza je dopusten, saj obstaja dopustna rešitev z $x_{v_i s_j} = a_{ij}$ ($v_i s_j \in E$):
 
@@ -870,7 +870,7 @@ Narišimo graf za pomožni problem in določimo začetno drevesno rešitev.
 
 # Dokaz
 
-* Naj bo $X = \{x_1, x_2, \dots x_n\}$ in $Y = \{y_1, y_2, \dots y_n\}$.
+* Naj bo $X = \lbrace x_1, x_2, \dots x_n \rbrace$ in $Y = \lbrace y_1, y_2, \dots y_n \rbrace$.
 * Definirajmo matriko $A = (a_{ij})_{i,j=1}^n$ z
 
   $$
@@ -991,9 +991,9 @@ Narišimo graf za pomožni problem in določimo začetno drevesno rešitev.
 <span class="small">
 
 * 2\. Rešimo sistem $\forall uv \in E': \ y_u + c_{uv} = y_v$ (nadaljevanje).
-   * Sicer obstaja povezava $e = uv \in E \setminus E'$ (_vstopna povezava_ - v edinem ciklu $C$ v grafu $H = (V, E' \cup \{e\})$), za katero velja:
-     - $x_{uv} = 0$ in $y_u + c_e < y_v$: nastavimo $p = \min(\{x_f \mid f \in C \text{ obratna}\} \cup \{d_f - x_f \mid f \in C \text{ prema}\})$ ter premim povezavam povečamo razvoz za $p$, obratnim pa zmanjšamo za $p$; ali
-     - $x_{uv} = d_{uv}$ in $y_u + c_e > y_v$: nastavimo $p = \min(\{x_f \mid f \in C \text{ prema}\} \cup \{d_f - x_f \mid f \in C \text{ obratna}\})$ ter premim povezavam zmanjšamo razvoz za $p$, obratnim pa povečamo za $p$.
+   * Sicer obstaja povezava $e = uv \in E \setminus E'$ (_vstopna povezava_ - v edinem ciklu $C$ v grafu $H = (V, E' \cup \lbrace e \rbrace)$), za katero velja:
+     - $x_{uv} = 0$ in $y_u + c_e < y_v$: nastavimo $p = \min(\lbrace x_f \mid f \in C \text{ obratna} \rbrace \cup \lbrace d_f - x_f \mid f \in C \text{ prema} \rbrace)$ ter premim povezavam povečamo razvoz za $p$, obratnim pa zmanjšamo za $p$; ali
+     - $x_{uv} = d_{uv}$ in $y_u + c_e > y_v$: nastavimo $p = \min(\lbrace x_f \mid f \in C \text{ prema} \rbrace \cup \lbrace d_f - x_f \mid f \in C \text{ obratna} \rbrace)$ ter premim povezavam zmanjšamo razvoz za $p$, obratnim pa povečamo za $p$.
    *  Naj bo $f$ povezava v $C$, za katero je dosežena vrednost $p$ (_izstopna povezava_). V novi rešitvi je $f$ prazna ali nasičena in jo odstranimo iz drevesa.
    * Če je $p = \infty$, potem je problem neomejen.
 * 3\. Ponavljamo, dokler ne pridemo do optimalne rešitve (ali ugotovimo, da je problem neomejen).
@@ -1029,7 +1029,7 @@ Narišimo graf za pomožni problem in določimo začetno drevesno rešitev.
 
 # Primer (2)
 
-* Ker vstopi nasičena povezava, imamo $p = \min\{3, 2-0, 8\} = 2$.
+* Ker vstopi nasičena povezava, imamo $p = \min\lbrace 3, 2-0, 8 \rbrace = 2$.
 * Izstopna povezava je obratna, tako da bomo na njej povečali razvoz na $2$ in jo tako zasitili.
   
   ![h:300px](slike/razvoz-pro2.png)
@@ -1038,7 +1038,7 @@ Narišimo graf za pomožni problem in določimo začetno drevesno rešitev.
 
 <span>
 
-* Ker vstopi prazna povezava, imamo $p = \min\{5-0, 3, 3-1\} = 2$.
+* Ker vstopi prazna povezava, imamo $p = \min\lbrace 5-0, 3, 3-1 \rbrace = 2$.
 * Izstopna povezava je prema, tako da bomo na njej povečali razvoz na $2$ in jo tako zasitili.
   
   ![h:280px](slike/razvoz-pro2.png)
@@ -1070,7 +1070,7 @@ Narišimo graf za pomožni problem in določimo začetno drevesno rešitev.
 
 <span>
 
-* Ker vstopi prazna povezava, imamo $p = \min\{1-0, 5-1, 2\} = 1$.
+* Ker vstopi prazna povezava, imamo $p = \min\lbrace 1-0, 5-1, 2 \rbrace = 1$.
 * Imamo $e = f$, izstopna povezava je prema in jo tako zasitimo.
   
   ![h:300px](slike/razvoz-trikotnik2.png)
@@ -1097,7 +1097,7 @@ Narišimo graf za pomožni problem in določimo začetno drevesno rešitev.
 * Definiramo pomožni problem:
 
   * Izberemo _koren_ $r \in V$.
-  * Za vsako vozlišče $v \in V \setminus \{r\}$:
+  * Za vsako vozlišče $v \in V \setminus \lbrace r \rbrace$:
     - če $b_v \ge 0$ in povezava $rv$ ne obstaja, jo dodamo; če obstaja in $d_{rv} < b_v$, dodamo še eno tako povezavo;
     - če $b_v < 0$ in povezava $vr$ ne obstaja, jo dodamo; če obstaja in $d_{vr} < -b_v$, dodamo še eno tako povezavo.
 

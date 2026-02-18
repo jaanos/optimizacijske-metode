@@ -1,0 +1,272 @@
+\documentclass[14pt]{extarticle}
+\usepackage[a4paper, total={18cm, 26cm}]{geometry}
+\usepackage[utf8]{inputenc}
+
+\usepackage{omrezja}
+
+\tikzstyle{pot}=[very thick, double]
+\tikzstyle{dosezeno}=[fill=lightgray]
+\tikzstyle{pogojno}=[fill=pink]
+\tikzstyle{vozlisce pretoka}=[vozlisce, minimum size=8mm]
+\tikzstyle{drevo}=[very thick, double, red]
+\tikzstyle{zasicena}=[very thick, double]
+\tikzstyle{velikost}=[scale=1]
+
+\begin{document}
+
+\NewEnviron{pretok@letalo}{
+    \tikzstyle{vozlisce pretoka}=[vozlisce, minimum size=15mm]
+
+    \oznaka{SFO}{s}
+    \oznaka{JFK}{t}
+
+    \vozlisce*{SFO}[left]{-6, 0}
+    \vozlisce*{DEN}{-2, 2}
+    \vozlisce*{IAH}{-2,-2}
+    \vozlisce*{ORD}{ 2, 2}
+    \vozlisce*{ATL}{ 2,-2}
+    \vozlisce*{JFK}[right]{ 6, 0}
+
+    \povezava{SFO}{DEN}{5}[sloped]{above}
+    \povezava{SFO}{IAH}{6}[sloped]{below}
+    \povezava{DEN}{ATL}{2}[sloped]{below}
+    \povezava{DEN}{ORD}{5}{above}
+    \povezava{IAH}{ATL}{5}{below}
+    \povezava{ATL}{JFK}{7}[sloped]{below}
+    \povezava{ORD}{JFK}{4}[sloped]{above}
+}
+
+\begin{pretok}{letalo}
+\end{pretok}
+
+\NewEnviron{razvoz@letalo}{
+    \setboolean{@oznake}{true}
+    \tikzstyle{vozlisce razvoza}=[vozlisce, minimum size=15mm]
+
+    \vozlisce{SFO}[left] {-6, 0}
+    \vozlisce{DEN}[above]{-2, 2}
+    \vozlisce{IAH}[below]{-2,-2}
+    \vozlisce{ORD}[above]{ 2, 2}
+    \vozlisce{ATL}[below]{ 2,-2}
+    \vozlisce{JFK}[right]{ 6, 0}
+
+    \povezava{SFO}{DEN}[5]{0}[sloped]{above}
+    \povezava{SFO}{IAH}[6]{0}[sloped]{below}
+    \povezava{DEN}{ATL}[2]{0}[sloped]{below}
+    \povezava{DEN}{ORD}[5]{0}{above}
+    \povezava{IAH}{ATL}[5]{0}{below}
+    \povezava{ATL}{JFK}[7]{0}[sloped]{below}
+    \povezava{ORD}{JFK}[4]{0}[sloped]{above}
+    \povezava{JFK}{SFO}{-1}{below}[bend left=90]
+}
+
+\begin{razvoz}{letalo}
+    \oznaka{SFO}{s}
+    \oznaka{JFK}{t}
+\end{razvoz}
+
+\begin{razvoz}{letalo}
+    \kolicina{SFO}{DEN}{0}
+    \kolicina{SFO}{IAH}{0}
+    \kolicina{DEN}{ORD}{0}
+    \kolicina{IAH}{ATL}{0}[izstopi]
+    \kolicina{ATL}{JFK}{0}
+
+    \oznaka{SFO}{0}
+    \oznaka{DEN}{0}
+    \oznaka{IAH}{0}
+    \oznaka{ORD}{0}
+    \oznaka{ATL}{0}
+    \oznaka{JFK}{0}
+
+    \kandidat{JFK}{SFO}[vstopi]
+\end{razvoz}
+
+\begin{razvoz}{letalo}
+    \kolicina{SFO}{DEN}{0}
+    \kolicina{SFO}{IAH}{5}
+    \kolicina{DEN}{ORD}{0}
+    \kolicina*{IAH}{ATL}{5}
+    \kolicina{ATL}{JFK}{5}
+    \kolicina{JFK}{SFO}{5}
+
+    \oznaka{SFO}{0}
+    \oznaka{DEN}{0}
+    \oznaka{IAH}{0}
+    \oznaka{ORD}{0}
+    \oznaka{ATL}{1}
+    \oznaka{JFK}{1}
+
+    \kandidat{DEN}{ATL}
+    \kandidat{ORD}{JFK}[vstopi, izstopi]
+\end{razvoz}
+
+\begin{razvoz}{letalo}
+    \kolicina{SFO}{DEN}{4}[izstopi]
+    \kolicina{SFO}{IAH}{5}
+    \kolicina{DEN}{ORD}{4}
+    \kolicina*{IAH}{ATL}{5}
+    \kolicina{ATL}{JFK}{5}
+    \kolicina*{ORD}{JFK}{4}
+    \kolicina{JFK}{SFO}{9}
+
+    \oznaka{SFO}{0}
+    \oznaka{DEN}{0}
+    \oznaka{IAH}{0}
+    \oznaka{ORD}{0}
+    \oznaka{ATL}{1}
+    \oznaka{JFK}{1}
+
+    \kandidat{DEN}{ATL}[vstopi]
+\end{razvoz}
+
+\begin{razvoz}{letalo}
+    \kolicina*{SFO}{DEN}{5}
+    \kolicina{SFO}{IAH}{5}
+    \kolicina{DEN}{ATL}{1}
+    \kolicina{DEN}{ORD}{4}
+    \kolicina*{IAH}{ATL}{5}
+    \kolicina{ATL}{JFK}{6}
+    \kolicina*{ORD}{JFK}{4}
+    \kolicina{JFK}{SFO}{10}
+
+    \oznaka{SFO}{0}
+    \oznaka{DEN}{1}
+    \oznaka{IAH}{0}
+    \oznaka{ORD}{1}
+    \oznaka{ATL}{1}
+    \oznaka{JFK}{1}
+\end{razvoz}
+
+\NewEnviron{pretok@primer}{
+    \oznaka{SFO}{s}
+    \oznaka{JFK}{t}
+
+    \vozlisce{SFO}[left]{-6, 0}
+    \vozlisce{DEN}{-2, 2}
+    \vozlisce{IAH}{-2,-2}
+    \vozlisce{ORD}{ 2, 2}
+    \vozlisce{ATL}{ 2,-2}
+    \vozlisce{JFK}[right]{ 6, 0}
+
+    \povezava{SFO}{DEN}{1}[sloped]{above}
+    \povezava{SFO}{IAH}{2}[sloped]{below}
+    \povezava{DEN}{ATL}{2}[sloped]{below}
+    \povezava{DEN}{ORD}{3}{above}
+    \povezava{IAH}{ATL}{3}{below}
+    \povezava{ATL}{JFK}{1}[sloped]{below}
+    \povezava{ORD}{JFK}{2}[sloped]{above}
+}
+
+\begin{pretok}{primer}
+    \nicle
+    \kolicina*{SFO}{DEN}[1]{0}[red]
+    \kolicina*{DEN}{ATL}[2]{0}[red]
+    \kolicina*{ATL}{JFK}[1]{0}[red]
+\end{pretok}
+
+\begin{pretok}{primer}
+    \nicle
+    \kolicina{SFO}{DEN}[0]{1}[zasicena]
+    \kolicina*{SFO}{IAH}[2]{0}[red]
+    \kolicina*{DEN}{ATL}[1]{1}[red]
+    \kolicina*{DEN}{ORD}[3]{0}[red]
+    \kolicina*{IAH}{ATL}[3]{0}[red]
+    \kolicina{ATL}{JFK}[0]{1}[zasicena]
+    \kolicina*{ORD}{JFK}[2]{0}[red]
+\end{pretok}
+
+\begin{pretok}{primer}
+    \nicle
+    \kolicina{SFO}{DEN}[0]{1}[zasicena]
+    \kolicina{SFO}{IAH}[1]{1}
+    %\kolicina{DEN}{ATL}[2]{0}
+    \kolicina{DEN}{ORD}[2]{1}
+    \kolicina{IAH}{ATL}[2]{1}
+    \kolicina{ATL}{JFK}[0]{1}[zasicena]
+    \kolicina{ORD}{JFK}[1]{1}
+\end{pretok}
+
+\NewEnviron{pretok@pridruzeni}{
+    \vozlisce*{u}{-3, 0}
+    \vozlisce*{v}{ 3, 0}
+
+    \povezava{u}{v}{d_{uv}}{below}
+}
+
+\begin{pretok}{pridruzeni}
+\end{pretok}
+
+\begin{pretok}{pridruzeni}
+    \tikzstyle{puscica}=[]
+
+    \kolicina{u}{v}[d_{uv} - x_{uv}]{x_{uv}}
+\end{pretok}
+
+\begin{pretok}{letalo}
+    \nicle
+    \kolicina*{SFO}{IAH}[6]{0}[red]
+    \kolicina*{IAH}{ATL}[5]{0}[red]
+    \kolicina*{ATL}{JFK}[7]{0}[red]
+\end{pretok}
+
+\begin{pretok}{letalo}
+    \nicle
+    \kolicina*{SFO}{DEN}[5]{0}[red]
+    \kolicina{SFO}{IAH}[1]{5}
+    \kolicina*{DEN}{ORD}[5]{0}[red]
+    \kolicina{IAH}{ATL}[0]{5}[zasicena]
+    \kolicina{ATL}{JFK}[2]{5}
+    \kolicina*{ORD}{JFK}[4]{0}[red]
+\end{pretok}
+
+\begin{pretok}{letalo}
+    \nicle
+    \kolicina*{SFO}{DEN}[1]{4}[red]
+    \kolicina{SFO}{IAH}[1]{5}
+    \kolicina*{DEN}{ATL}[2]{0}[red]
+    \kolicina{DEN}{ORD}[1]{4}
+    \kolicina{IAH}{ATL}[0]{5}[zasicena]
+    \kolicina*{ATL}{JFK}[2]{5}[red]
+    \kolicina{ORD}{JFK}[0]{4}[zasicena]
+\end{pretok}
+
+\begin{pretok}{letalo}
+    \nicle
+    \kolicina{SFO}{DEN}[0]{5}[prerez]
+    \kolicina{SFO}{IAH}[1]{5}
+    \kolicina{DEN}{ATL}[1]{1}
+    \kolicina{DEN}{ORD}[1]{4}
+    \kolicina{IAH}{ATL}[0]{5}[prerez]
+    \kolicina{ATL}{JFK}[1]{6}
+    \kolicina{ORD}{JFK}[0]{4}[zasicena]
+
+    \dosezeno{SFO}
+    \dosezeno{IAH}
+\end{pretok}
+
+\begin{pretok}{letalo}
+    \nicle
+    \kolicina{SFO}{DEN}[ ]{5}[prerez]
+    \kolicina{SFO}{IAH}[ ]{5}
+    \kolicina{DEN}{ATL}[ ]{1}
+    \kolicina{DEN}{ORD}[ ]{4}
+    \kolicina{IAH}{ATL}[ ]{5}[prerez]
+    \kolicina{ATL}{JFK}[ ]{6}
+    \kolicina{ORD}{JFK}[ ]{4}[zasicena]
+
+    \dosezeno{SFO}
+    \dosezeno{IAH}
+\end{pretok}
+
+\begin{pretok}{letalo}
+    \nicle
+    \kolicina*{SFO}{DEN}[5]{0}[green]
+    \kolicina*{SFO}{IAH}[6]{0}[red]
+    \kolicina*{DEN}{ORD}[5]{0}[green]
+    \kolicina*{IAH}{ATL}[5]{0}[red]
+    \kolicina*{ATL}{JFK}[7]{0}[red]
+    \kolicina*{ORD}{JFK}[4]{0}[green]
+\end{pretok}
+
+\end{document}
