@@ -1,0 +1,420 @@
+\documentclass[14pt]{extarticle}
+\usepackage[a4paper, total={18cm, 26cm}]{geometry}
+\usepackage[utf8]{inputenc}
+
+\usepackage{omrezja}
+
+\tikzstyle{kandidat}=[thick, red]
+\tikzstyle{dosezeno}=[draw=white, fill=red]
+\tikzstyle{velikost}=[scale=1.2]
+
+\begin{document}
+
+\NewEnviron{neusmerjen@primer}{
+    \vozlisce{a}{-6, 0}
+    \vozlisce{b}{-2, 2}
+    \vozlisce{c}{-2,-2}
+    \vozlisce{d}{ 2, 2}
+    \vozlisce{e}{ 2,-2}
+    \vozlisce{f}{ 6, 0}
+
+    \povezava{a}{b}{}{}
+    \povezava{a}{c}{}{}
+    \povezava{b}{c}{}{}
+    \povezava{b}{d}{}{}
+    \povezava{d}{e}{}{}
+    \povezava{d}{f}{}{}
+    \povezava{e}{f}{}{}
+}
+
+\begin{neusmerjen}{primer}
+    \kandidat{a}{b}
+    \kandidat{d}{e}
+\end{neusmerjen}
+
+\begin{neusmerjen}{primer}
+    \kandidat{a}{b}
+    \kandidat{d}{e}
+    \kandidat{d}{f}
+\end{neusmerjen}
+
+\begin{neusmerjen}{primer}
+    \kandidat{a}{c}
+    \kandidat{b}{d}
+    \kandidat{e}{f}
+\end{neusmerjen}
+
+\begin{neusmerjen}{primer}
+    \dosezeno{b}
+    \dosezeno{c}
+    \dosezeno{d}
+    \dosezeno{e}
+    \dosezeno{f}
+\end{neusmerjen}
+
+\begin{neusmerjen}{primer}
+    \dosezeno{a}
+    \dosezeno{b}
+    \dosezeno{e}
+\end{neusmerjen}
+
+\begin{neusmerjen}{primer}
+    \dosezeno{b}
+    \dosezeno{c}
+    \dosezeno{d}
+    \dosezeno{f}
+\end{neusmerjen}
+
+\NewEnviron{neusmerjen@zvezda}{
+    \vozlisce{a}{xyz polar cs:angle=  0,radius=0}
+    \vozlisce{b}{xyz polar cs:angle= 90,radius=2}
+    \vozlisce{c}{xyz polar cs:angle=162,radius=2}
+    \vozlisce{d}{xyz polar cs:angle=234,radius=2}
+    \vozlisce{e}{xyz polar cs:angle=306,radius=2}
+    \vozlisce{f}{xyz polar cs:angle= 18,radius=2}
+
+    \povezava{a}{b}{}{}
+    \povezava{a}{c}{}{}
+    \povezava{a}{d}{}{}
+    \povezava{a}{e}{}{}
+    \povezava{a}{f}{}{}
+}
+
+\begin{neusmerjen}{zvezda}
+    \kandidat{a}{b}
+
+    \dosezeno{a}
+\end{neusmerjen}
+
+\begin{neusmerjen}{primer}
+    \kandidat{a}{c}
+    \kandidat{b}{d}
+    \kandidat{e}{f}
+
+    \dosezeno{b}
+    \dosezeno{c}
+    \dosezeno{d}
+    \dosezeno{f}
+\end{neusmerjen}
+
+\NewEnviron{neusmerjen@pot}{
+    \vozlisce{a}{-5, 0}
+    \vozlisce{b}{-3, 0}
+    \vozlisce{c}{-1, 0}
+    \vozlisce{d}{ 1, 0}
+    \vozlisce{e}{ 3, 0}
+    \vozlisce{f}{ 5, 0}
+
+    \povezava{a}{b}{}{}
+    \povezava{b}{c}{}{}
+    \povezava{c}{d}{}{}
+    \povezava{d}{e}{}{}
+    \povezava{e}{f}{}{}
+}
+
+\begin{neusmerjen}{pot}
+    \kandidat{b}{c}
+    \kandidat{d}{e}
+\end{neusmerjen}
+
+\begin{neusmerjen}{pot}
+    \kandidat{a}{b}
+    \kandidat{c}{d}
+    \kandidat{e}{f}
+\end{neusmerjen}
+
+\NewEnviron{neusmerjen@pot3}{
+    \vozlisce{a}{-3, 0}
+    \vozlisce{b}{-1, 0}
+    \vozlisce{c}{ 1, 0}
+    \vozlisce{d}{ 3, 0}
+
+    \povezava{a}{b}{}{above}
+    \povezava{b}{c}{}{above}
+    \povezava{c}{d}{}{above}
+}
+
+\begin{neusmerjen}{pot3}
+    \kolicina{a}{b}{M'}
+    \kolicina{b}{c}{M}
+    \kolicina{c}{d}{M'}
+\end{neusmerjen}
+
+\begin{neusmerjen}{pot3}
+    \kolicina{a}{b}{M}
+    \kolicina{b}{c}{M'}
+    \kolicina{c}{d}{M}
+\end{neusmerjen}
+
+\NewEnviron{neusmerjen@pot2}{
+    \vozlisce{a}{-2, 0}
+    \vozlisce{b}{ 0, 0}
+    \vozlisce{c}{ 2, 0}
+
+    \povezava{a}{b}{}{above}
+    \povezava{b}{c}{}{above}
+}
+
+\begin{neusmerjen}{pot2}
+    \kolicina{a}{b}{M}
+    \kolicina{b}{c}{M'}
+\end{neusmerjen}
+
+\NewEnviron{neusmerjen@cikel}{
+    \vozlisce{a}{xyz polar cs:angle=  0,radius=2}
+    \vozlisce{b}{xyz polar cs:angle= 60,radius=2}
+    \vozlisce{c}{xyz polar cs:angle=120,radius=2}
+    \vozlisce{d}{xyz polar cs:angle=180,radius=2}
+    \vozlisce{e}{xyz polar cs:angle=240,radius=2}
+    \vozlisce{f}{xyz polar cs:angle=300,radius=2}
+
+    \povezava{a}{b}{}[sloped]{above}
+    \povezava{b}{c}{}{above}
+    \povezava{c}{d}{}[sloped]{above}
+    \povezava{d}{e}{}[sloped]{below}
+    \povezava{e}{f}{}{below}
+    \povezava{f}{a}{}[sloped]{below}
+}
+
+\begin{neusmerjen}{cikel}
+    \kolicina{a}{b}{M}
+    \kolicina{b}{c}{M'}
+    \kolicina{c}{d}{M}
+    \kolicina{d}{e}{M'}
+    \kolicina{e}{f}{M}
+    \kolicina{f}{a}{M'}
+\end{neusmerjen}
+
+\NewEnviron{neusmerjen@particija}{
+    \oznaka{s1}{S}
+    \oznaka{t}{T}
+    \oznaka{xs1}{X \setminus S}
+    \oznaka{yt}{Y \setminus T}
+
+    \vozlisce{s1} [left] {-2, 2}
+    \vozlisce{s2}        {-2, 2}
+    \vozlisce{t}  [right]{ 2, 2}
+    \vozlisce{xs1}[left] {-2,-2}
+    \vozlisce{xs2}       {-2,-2}
+    \vozlisce{yt} [right]{ 2,-2}
+
+    \povezava{s1}{t}{}{above}[bend left=30]
+    \povezava{s2}{t}{}{}
+    \povezava{xs1}{t}{}{}
+    \povezava{xs1}{yt}{}{below}[bend right=30]
+    \povezava{xs2}{yt}{}{below}
+}
+
+\begin{neusmerjen}{particija}
+    \kolicina{s1}{t}{M_1}
+    \kolicina{xs1}{yt}{M_2}
+
+    \kandidat{s1}{t}
+    \kandidat{xs1}{yt}
+\end{neusmerjen}
+
+\NewEnviron{neusmerjen@dvodelen}{
+    \vozlisce*[]{X}{-2, 5}
+    \vozlisce*[]{Y}{ 2, 5}
+    \vozlisce{x1}[left] {-2, 3}
+    \vozlisce{x2}[left] {-2, 1}
+    \vozlisce{x3}[left] {-2,-1}
+    \vozlisce{x4}[left] {-2,-3}
+    \vozlisce{y1}[right]{ 2, 4}
+    \vozlisce{y2}[right]{ 2, 2}
+    \vozlisce{y3}[right]{ 2, 0}
+    \vozlisce{y4}[right]{ 2,-2}
+    \vozlisce{y5}[right]{ 2,-4}
+
+    \povezava{x1}{y3}{}{}
+    \povezava{x2}{y1}{}{}
+    \povezava{x2}{y2}{}{}
+    \povezava{x2}{y4}{}{}
+    \povezava{x2}{y5}{}{}
+    \povezava{x3}{y3}{}{}
+    \povezava{x3}{y4}{}{}
+    \povezava{x4}{y4}{}{}
+    \povezava{x4}{y5}{}{}
+}
+
+\begin{neusmerjen}{dvodelen}
+    \kandidat{x1}{y3}
+    \kandidat{x2}{y5}
+    \kandidat{x3}{y4}
+    \kandidat{x4}{y4}[blue,<-]
+    \kandidat{x4}{y5}[blue,<-]
+
+    \oznaka{x4}{S}
+    \oznaka{y4}{T}
+    \oznaka{y5}{T}
+\end{neusmerjen}
+
+\begin{neusmerjen}{dvodelen}
+    \kandidat{x1}{y3}
+    \kandidat{x2}{y5}
+    \kandidat{x2}{y1}[blue,<-]
+    \kandidat{x2}{y2}[blue,<-]
+    \kandidat{x2}{y4}[blue,<-]
+    \kandidat{x3}{y3}[blue,<-]
+    \kandidat{x3}{y4}
+    \kandidat{x4}{y4}[<-]
+    \kandidat{x4}{y5}[<-]
+
+    \oznaka{x2}{S}
+    \oznaka{x3}{S}
+    \oznaka{x4}{S}
+    \oznaka{y1}{T}
+    \oznaka{y2}{T}
+    \oznaka{y3}{T}
+    \oznaka{y4}{T}
+    \oznaka{y5}{T}
+\end{neusmerjen}
+
+\begin{neusmerjen}{dvodelen}
+    \kandidat{x1}{y3}
+    \kandidat{x2}{y1}
+    \kandidat{x3}{y4}
+    \kandidat{x4}{y5}
+
+    \dosezeno{x1}
+    \dosezeno{x2}
+    \dosezeno{x3}
+    \dosezeno{x4}
+\end{neusmerjen}
+
+\NewEnviron{neusmerjen@hall}{
+    \vozlisce*[]{X}{-2, 8}
+    \vozlisce*[]{Y}{ 2, 8}
+    \vozlisce{x1}[left] {-2, 7}
+    \vozlisce{x2}[left] {-2, 5}
+    \vozlisce{x3}[left] {-2, 3}
+    \vozlisce{x4}[left] {-2, 1}
+    \vozlisce{x5}[left] {-2,-1}
+    \vozlisce{x6}[left] {-2,-3}
+    \vozlisce{x7}[left] {-2,-5}
+    \vozlisce{x8}[left] {-2,-7}
+    \vozlisce{y1}[right]{ 2, 7}
+    \vozlisce{y2}[right]{ 2, 5}
+    \vozlisce{y3}[right]{ 2, 3}
+    \vozlisce{y4}[right]{ 2, 1}
+    \vozlisce{y5}[right]{ 2,-1}
+    \vozlisce{y6}[right]{ 2,-3}
+    \vozlisce{y7}[right]{ 2,-5}
+    \vozlisce{y8}[right]{ 2,-7}
+
+    \povezava{x1}{y1}{}{}
+    \povezava{x1}{y3}{}{}
+    \povezava{x2}{y1}{}{}
+    \povezava{x2}{y2}{}{}
+    \povezava{x3}{y2}{}{}
+    \povezava{x3}{y4}{}{}
+    \povezava{x4}{y2}{}{}
+    \povezava{x4}{y5}{}{}
+    \povezava{x5}{y3}{}{}
+    \povezava{x5}{y4}{}{}
+    \povezava{x5}{y8}{}{}
+    \povezava{x6}{y7}{}{}
+    \povezava{x7}{y6}{}{}
+    \povezava{x7}{y7}{}{}
+    \povezava{x8}{y5}{}{}
+    \povezava{x8}{y8}{}{}
+}
+
+\begin{neusmerjen}{hall}
+    \kandidat{x1}{y3}
+    \kandidat{x2}{y1}
+    \kandidat{x3}{y2}
+    \kandidat{x4}{y5}
+    \kandidat{x5}{y4}
+    \kandidat{x6}{y7}
+    \kandidat{x7}{y6}
+    \kandidat{x8}{y8}
+
+    \oznaka{x1}{A}
+    \oznaka{x5}{A}
+    \oznaka{x6}{A}
+    \oznaka{y1}{N(A)}
+    \oznaka{y3}{N(A)}
+    \oznaka{y4}{N(A)}
+    \oznaka{y7}{N(A)}
+    \oznaka{y8}{N(A)}
+\end{neusmerjen}
+
+\begin{neusmerjen}{particija}
+    \kandidat{s1}{t}
+    \kandidat{xs1}{yt}
+\end{neusmerjen}
+
+\NewEnviron{neusmerjen@stafeta}{
+    \setboolean{@oznake}{true}
+    \tikzstyle{velikost vozlisca neusmerjenega grafa}=[minimum size=20mm]
+
+    \vozlisce{1}[left] {-3, 5}
+    \vozlisce{2}[left] {-3, 3}
+    \vozlisce{3}[left] {-3, 1}
+    \vozlisce{4}[left] {-3,-1}
+    \vozlisce{5}[left] {-3,-3}
+    \vozlisce{6}[left] {-3,-5}
+    \vozlisce{prsno}[right]{3, 5}
+    \vozlisce{hrbtno}[right]{3, 3}
+    \vozlisce{delfin}[right]{3, 1}
+    \vozlisce{prosto}[right]{3,-1}
+    \vozlisce{pociva1}[right]{3,-3}
+    \vozlisce{pociva2}[right]{3,-5}
+
+    \povezava{1}{prsno}{}{}
+    \povezava{1}{delfin}{}{}
+    \povezava{2}{pociva1}{}{}
+    \povezava{2}{pociva2}{}{}
+    \povezava{3}{prosto}{}{}
+    \povezava{3}{pociva1}{}{}
+    \povezava{3}{pociva2}{}{}
+    \povezava{4}{pociva1}{}{}
+    \povezava{4}{pociva2}{}{}
+    \povezava{5}{hrbtno}{}{}
+    \povezava{5}{pociva1}{}{}
+    \povezava{5}{pociva2}{}{}
+    \povezava{6}{pociva1}{}{}
+    \povezava{6}{pociva2}{}{}
+}
+
+\begin{neusmerjen}{stafeta}
+    \kandidat{1}{delfin}
+    \kandidat{3}{prosto}
+    \kandidat{4}{pociva1}
+    \kandidat{5}{hrbtno}
+    \kandidat{6}{pociva2}
+
+    \dosezeno{1}
+    \dosezeno{3}
+    \dosezeno{5}
+    \dosezeno{pociva1}
+    \dosezeno{pociva2}
+\end{neusmerjen}
+
+\NewEnviron{neusmerjen@particija2}{
+    \oznaka{s1}{S}
+    \oznaka{t}{T}
+    \oznaka{xs1}{X \setminus S}
+    \oznaka{yt}{Y \setminus T}
+
+    \vozlisce{s1} [left] {-2, 2}
+    \vozlisce{s2}        {-2, 2}
+    \vozlisce{t}  [right]{ 2, 2}
+    \vozlisce{xs1}[left] {-2,-2}
+    \vozlisce{xs2}       {-2,-2}
+    \vozlisce{yt} [right]{ 2,-2}
+
+    \povezava{s1}{t}{}{above}[bend left=30]
+    \povezava{s2}{t}{}{}
+    \povezava{s1}{yt}{}{}
+    \povezava{xs1}{yt}{}{below}[bend right=30]
+    \povezava{xs2}{yt}{}{below}
+}
+
+\begin{neusmerjen}{particija2}
+    \kandidat{s1}{t}
+    \kandidat{xs1}{yt}
+\end{neusmerjen}
+
+\end{document}

@@ -60,3 +60,6 @@
   text-align: center;
 }
 
+.middle {
+  align-items: center !important;
+}
