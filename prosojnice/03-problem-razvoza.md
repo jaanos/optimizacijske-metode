@@ -626,18 +626,24 @@ $$
 
 # Dvofazna simpleksna metoda na omrežjih (2)
 
+<span class="small">
+
+* Ta problem je vedno dopusten:
+
+  - $x_{rv} = b_v$ za vse $v \in V \setminus \{r\}$ z $b_v \ge 0$,
+  - $x_{vr} = -b_v$ za vse $v \in V \setminus \{r\}$ z $b_v < 0$,
+  - $x_e = 0$ za vse ostale povezave $e \in \tilde{E}$.
+
 * Kirchhofovi zakoni:
 
   - $v \ne r$, $b_v \ge 0$: $x_{rv} = b_v$
   - $v \ne r$, $b_v < 0$: $-x_{vr} = b_v$
-  - $v = r$:
- 
-    $$
-    -\sum_{\substack{u \ne r \\ b_u \ge 0}} x_{ru} + \sum_{\substack{u \ne r \\ b_u < 0}} x_{ur} = -\sum_{\substack{u \ne r \\ b_u \ge 0}} b_u + \sum_{\substack{u \ne r \\ b_u < 0}} (-b_u) = -\sum_{u \ne r} b_u = b_r
-    $$
+  - $v = r$: $-\sum_{\substack{u \ne r \\ b_u \ge 0}} x_{ru} + \sum_{\substack{u \ne r \\ b_u < 0}} x_{ur} = -\sum_{\substack{u \ne r \\ b_u \ge 0}} b_u + \sum_{\substack{u \ne r \\ b_u < 0}} (-b_u) = -\sum_{u \ne r} b_u = b_r$
 
 * Prvotni problem je dopusten natanko tedaj, ko je optimalna vrednost pomožnega problema enaka $0$.
 * Ker so vse cene v pomožnem problemu nenegativne, je problem omejen.
+
+</span>
 
 ---
 
