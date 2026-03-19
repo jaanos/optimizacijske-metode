@@ -1047,7 +1047,7 @@ Narišimo graf za pomožni problem in določimo začetno drevesno rešitev.
 * Ker vstopi prazna povezava, imamo $p = \min\lbrace 5-0, 3, 3-1 \rbrace = 2$.
 * Izstopna povezava je prema, tako da bomo na njej povečali razvoz na $2$ in jo tako zasitili.
   
-  ![h:280px](slike/razvoz-pro2.png)
+  ![h:280px](slike/razvoz-pro3.png)
 
 * Ni več kandidatov za vstop - dobili smo optimalno rešitev s ceno
 
