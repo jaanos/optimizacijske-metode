@@ -61,11 +61,11 @@ plugins: mathjax
 
 <span class="numbers nobullet">
 
-* 1. $A \subseteq \operatorname{conv}(A)$.
-* 2. $\operatorname{conv}(A)$ je konveksna množica.
-* 3. $A \subseteq B \Rightarrow \operatorname{conv}(A) \subseteq B$.
-* 4. Če je $A$ konveksna množica, potem $\operatorname{conv}(A) = A$.
-* 5.
+* 1\. $A \subseteq \operatorname{conv}(A)$.
+* 2\. $\operatorname{conv}(A)$ je konveksna množica.
+* 3\. $A \subseteq B \Rightarrow \operatorname{conv}(A) \subseteq B$.
+* 4\. Če je $A$ konveksna množica, potem $\operatorname{conv}(A) = A$.
+* 5\.
 
   $$
   \begin{multlined}
@@ -84,10 +84,10 @@ plugins: mathjax
 
 <span class="numbers nobullet">
 
-* 1. $\operatorname{conv}(A) = \bigcap_{\substack{K \supseteq A \\ K \text{ konveksna}}} K \supseteq A$
-* 2. Presek konveksnih množic je konveksen.
-* 3. Ker je $B$ konveksna, sledi iz definicije konveksne ogrinjače.
-* 4. Po 3. je $\operatorname{conv}(A) \subseteq A \subseteq \operatorname{conv}(A)$.
+* 1\. $\operatorname{conv}(A) = \bigcap_{\substack{K \supseteq A \\ K \text{ konveksna}}} K \supseteq A$
+* 2\. Presek konveksnih množic je konveksen.
+* 3\. Ker je $B$ konveksna, sledi iz definicije konveksne ogrinjače.
+* 4\. Po 3. je $\operatorname{conv}(A) \subseteq A \subseteq \operatorname{conv}(A)$.
 
 </span>
 
@@ -97,21 +97,21 @@ plugins: mathjax
 
 <span class="small">
 
-5. Naj bo $C$ množica konveksnih kombinacij vektorjev iz $A$. Dokažimo $\operatorname{conv}(A) = C$.
-   * ($\subseteq$) Po 3. velja $\operatorname{conv}(A) \subseteq C$, saj:
-     * $A = \lbrace 1 \cdot x \mid x \in A \rbrace \subseteq C$;
-     * $C$ je konveksna, ker je vsaka konveksna kombinacija vektorjev $x, y \in C$
-  
-       $$
-       \begin{aligned}
-       z &= (1 - \lambda) x + \lambda y \\
-         &= (1 - \lambda)(\mu_1 x_1 + \dots + \mu_k x_k) + \lambda (\nu_1 y_1 + \dots + \nu_\ell y_\ell) \\
-         &= (1 - \lambda) \mu_1 x_1 + \dots + (1 - \lambda) \mu_k x_k + \lambda \nu_1 y_1 + \dots + \lambda \nu_\ell y_\ell
-       \end{aligned}
-       $$
+5\. Naj bo $C$ množica konveksnih kombinacij vektorjev iz $A$. Dokažimo $\operatorname{conv}(A) = C$.
+* ($\subseteq$) Po 3. velja $\operatorname{conv}(A) \subseteq C$, saj:
+  * $A = \lbrace 1 \cdot x \mid x \in A \rbrace \subseteq C$;
+  * $C$ je konveksna, ker je vsaka konveksna kombinacija vektorjev $x, y \in C$
 
-       tudi konveksna kombinacija vektorjev $x_1, \dots, x_k, y_1, \dots, y_\ell \in A$, saj $(1-\lambda) \mu_i, \lambda \nu_j \ge 0$ ($1 \le i \le k$, $1 \le j \le \ell$) in $(1 - \lambda) \mu_1 + \dots + (1 - \lambda) \mu_k + \lambda \nu_1 + \dots + \lambda \nu_\ell = (1 - \lambda) + \lambda = 1$, torej $z \in C$.
-   * ($\supseteq$) Ker je vsak $x \in C$ konveksna kombinacija vektorjev $x_1, x_2, \dots, x_n \in A$, za vsako konveksno množico $K \supseteq A$ velja $x_1, x_2, \dots, x_n \in K$, torej $x \in K$ in zato $x \in \operatorname{conv}(A)$. Sledi $\operatorname{conv}(A) \supseteq C$.
+    $$
+    \begin{aligned}
+    z &= (1 - \lambda) x + \lambda y \\
+      &= (1 - \lambda)(\mu_1 x_1 + \dots + \mu_k x_k) + \lambda (\nu_1 y_1 + \dots + \nu_\ell y_\ell) \\
+      &= (1 - \lambda) \mu_1 x_1 + \dots + (1 - \lambda) \mu_k x_k + \lambda \nu_1 y_1 + \dots + \lambda \nu_\ell y_\ell
+    \end{aligned}
+    $$
+
+    tudi konveksna kombinacija vektorjev $x_1, \dots, x_k, y_1, \dots, y_\ell \in A$, saj $(1-\lambda) \mu_i, \lambda \nu_j \ge 0$ ($1 \le i \le k$, $1 \le j \le \ell$) in $\sum_{i=1}^k (1 - \lambda) \mu_i + \sum_{j=1}^\ell \lambda \nu_j = (1 - \lambda) + \lambda = 1$, torej $z \in C$.
+* ($\supseteq$) Ker je vsak $x \in C$ konveksna kombinacija vektorjev $x_1, x_2, \dots, x_n \in A$, za vsako konveksno množico $K \supseteq A$ velja $x_1, x_2, \dots, x_n \in K$, torej $x \in K$ in zato $x \in \operatorname{conv}(A)$. Sledi $\operatorname{conv}(A) \supseteq C$.
 
 </span>
 
@@ -418,7 +418,7 @@ $S(a_1, a_2, a_3)$:
 
   <span class="numbers">
 
-  1. Naj bodo $a_1, a_2, \dots, a_n$ stolpci matrike $A$. Potem je izjava ekvivalentna izjavi $b \in S(a_1, a_2, \dots, a_n) \Longleftrightarrow b \in S^{\ast\ast}(a_1, a_2, \dots, a_n)$, ki sledi iz geometrijske oblike Farkaseve leme.
+  1\. Naj bodo $a_1, a_2, \dots, a_n$ stolpci matrike $A$. Potem je izjava ekvivalentna izjavi $b \in S(a_1, a_2, \dots, a_n) \Longleftrightarrow b \in S^{\ast\ast}(a_1, a_2, \dots, a_n)$, ki sledi iz geometrijske oblike Farkaseve leme.
 
   </span>
 
@@ -432,7 +432,7 @@ $S(a_1, a_2, a_3)$:
 
 Obravnavamo linearna programa:
 
-* 2.
+* 2\.
 
   <span class="columns col2">
 
@@ -462,7 +462,7 @@ Obravnavamo linearna programa:
 
   </span>
 
-* 3.
+* 3\.
 
   <span class="columns col2">
 
@@ -496,7 +496,7 @@ Obravnavamo linearna programa:
 
 <span class="nobullet">
 
-* 4.
+* 4\.
 
   <span class="columns col2">
 
@@ -547,36 +547,36 @@ Obravnavamo linearna programa:
 
 <span class="small">
 
-1. Ali obstaja nenegativna rešitev sistema linearnih enačb $Ax = b$?
-   * Če obstaja, jo zapišemo. Če ne obstaja, poiščemo $y$, da velja $A^\top y \ge 0$, $b^\top y < 0$.
+1\. Ali obstaja nenegativna rešitev sistema linearnih enačb $Ax = b$?
+* Če obstaja, jo zapišemo. Če ne obstaja, poiščemo $y$, da velja $A^\top y \ge 0$, $b^\top y < 0$.
 
-     $$
-     \begin{aligned}
-     x_1 - x_2 + 2 x_3 &= 1 & / \cdot 1 \\
-     -x_1 - x_2 + x_3 &= 2 & / \cdot (-1) \\ \hline
-     2 x_1 + x_3 &= -1
-     \end{aligned}
-     $$
+  $$
+  \begin{aligned}
+  x_1 - x_2 + 2 x_3 &= 1 & / \cdot 1 \\
+  -x_1 - x_2 + x_3 &= 2 & / \cdot (-1) \\ \hline
+  2 x_1 + x_3 &= -1
+  \end{aligned}
+  $$
 
-   * Dokažimo, da zgornji sistem nima nenegativnih rešitev.
+* Dokažimo, da zgornji sistem nima nenegativnih rešitev.
 
-     $$
-     \begin{aligned}
-     A &= \begin{bmatrix}
-     1 & -1 & 2 \\ -1 & -1 & 1
-     \end{bmatrix}, \quad
-     b = \begin{bmatrix} 1 \\ 2 \end{bmatrix}, \quad
-     y = \begin{bmatrix} 1 \\ -1 \end{bmatrix} \\
-     A^\top y &= \begin{bmatrix}
-     1 & -1 \\ -1 & -1 \\ 2 & 1
-     \end{bmatrix}
-     \begin{bmatrix} 1 \\ -1 \end{bmatrix}
-     = \begin{bmatrix} 2 \\ 0 \\ 1 \end{bmatrix} \ge 0, \quad
-     b^\top y = -1 < 0
-     \end{aligned}
-     $$
+  $$
+  \begin{aligned}
+  A &= \begin{bmatrix}
+  1 & -1 & 2 \\ -1 & -1 & 1
+  \end{bmatrix}, \quad
+  b = \begin{bmatrix} 1 \\ 2 \end{bmatrix}, \quad
+  y = \begin{bmatrix} 1 \\ -1 \end{bmatrix} \\
+  A^\top y &= \begin{bmatrix}
+  1 & -1 \\ -1 & -1 \\ 2 & 1
+  \end{bmatrix}
+  \begin{bmatrix} 1 \\ -1 \end{bmatrix}
+  = \begin{bmatrix} 2 \\ 0 \\ 1 \end{bmatrix} \ge 0, \quad
+  b^\top y = -1 < 0
+  \end{aligned}
+  $$
    
-   * Ustrezen $x$ oziroma $y$ lahko poiščemo s simpleksno metodo.
+* Ustrezen $x$ oziroma $y$ lahko poiščemo s simpleksno metodo.
 
 </span>
 
@@ -584,69 +584,69 @@ Obravnavamo linearna programa:
 
 # Primeri (2)
 
-2. Pokažimo, da linearni program nima dopustne rešitve.
+2\. Pokažimo, da linearni program nima dopustne rešitve.
 
-   <span class="nobullet">
+<span class="nobullet">
 
-   * 
-     $$
-     \begin{aligned}
-     x_1 - x_2 &\le -1 & / \cdot 1 \\
-     -x_1 - x_2 &\le -3 & / \cdot 3 \\
-     2 x_1 + x_2 &\le 2 & / \cdot 4 \\
-     x_1, x_2 &\ge 0 \\ \hline
-     6 x_1 &\le -2
-     \end{aligned}
-     $$
-   
-   * 
-     $$
-     \begin{aligned}
-     A &= \begin{bmatrix}
-     1 & -1 \\ -1 & -1 \\ 2 & 1
-     \end{bmatrix}, \quad
-     b = \begin{bmatrix} -1 \\ -3 \\ 2 \end{bmatrix},  \quad
-     y = \begin{bmatrix} 1 \\ 3 \\ 4 \end{bmatrix} \ge 0 \\
-     A^\top y &= \begin{bmatrix} 6 \\ 0 \end{bmatrix} \ge 0, \quad
-     b^\top y = -2 < 0
-     \end{aligned}
-    $$
+* 
+  $$
+  \begin{aligned}
+  x_1 - x_2 &\le -1 & / \cdot 1 \\
+  -x_1 - x_2 &\le -3 & / \cdot 3 \\
+  2 x_1 + x_2 &\le 2 & / \cdot 4 \\
+  x_1, x_2 &\ge 0 \\ \hline
+  6 x_1 &\le -2
+  \end{aligned}
+  $$
 
-    </span>
+* 
+  $$
+  \begin{aligned}
+  A &= \begin{bmatrix}
+  1 & -1 \\ -1 & -1 \\ 2 & 1
+  \end{bmatrix}, \quad
+  b = \begin{bmatrix} -1 \\ -3 \\ 2 \end{bmatrix},  \quad
+  y = \begin{bmatrix} 1 \\ 3 \\ 4 \end{bmatrix} \ge 0 \\
+  A^\top y &= \begin{bmatrix} 6 \\ 0 \end{bmatrix} \ge 0, \quad
+  b^\top y = -2 < 0
+  \end{aligned}
+  $$
+
+</span>
 
 ---
 
 # Primeri (3)
 
-3. Enakovredna izjava: $\exists x: \ Ax = b \ \Longleftrightarrow \ \forall y: \ (A^\top y = 0 \Rightarrow b^\top y = 0)$.
+3\. Enakovredna izjava: $\exists x: \ Ax = b \ \Longleftrightarrow \ \forall y: \ (A^\top y = 0 \Rightarrow b^\top y = 0)$.
 
-   * Pri linearni algebri $\lnot \exists x: \ Ax = b$ dokazujemo z Gaussovo eliminacijo.
+* Pri linearni algebri $\lnot \exists x: \ Ax = b$ dokazujemo z Gaussovo eliminacijo.
 
-   <span class="nobullet">
+<span class="nobullet">
 
-   * 
-     $$
-     \begin{aligned}
-     x_1 - 2 x_2 &= 3 & / \cdot 1 \\
-     -x_1 + 2 x_2 &= 1 & / \cdot 1 \\ \hline
-     0 &= 4
-     \end{aligned}
-     $$
-   
-   * 
-     $$
-     \begin{aligned}
-     A &= \begin{bmatrix}
-     1 & -2 \\ -1 & 2
-     \end{bmatrix}, \quad
-     b = \begin{bmatrix} 3 \\ 1 \end{bmatrix}, \quad
-     y = \begin{bmatrix} 1 \\ 1 \end{bmatrix} \\
-     A^\top y &= \begin{bmatrix} 0 \\ 0 \end{bmatrix}, \quad
-     b^\top y = 4
-     \end{aligned}
-     $$
+* 
+  $$
+  \begin{aligned}
+  x_1 - 2 x_2 &= 3 & / \cdot 1 \\
+  -x_1 + 2 x_2 &= 1 & / \cdot 1 \\ \hline
+  0 &= 4
+  \end{aligned}
+  $$
 
-   </span>
+* 
+  $$
+  \begin{aligned}
+  A &= \begin{bmatrix}
+  1 & -2 \\ -1 & 2
+  \end{bmatrix}, \quad
+  b = \begin{bmatrix} 3 \\ 1 \end{bmatrix}, \quad
+  y = \begin{bmatrix} 1 \\ 1 \end{bmatrix} \\
+  A^\top y &= \begin{bmatrix} 0 \\ 0 \end{bmatrix}, \quad
+  b^\top y = 4
+  \end{aligned}
+  $$
+
+</span>
 
 ---
 
