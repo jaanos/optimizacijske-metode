@@ -11,6 +11,7 @@ Repozitorij z gradivi pri predmetu Optimizacijske metode (1. letnik finančne ma
 * [Problem razvoza](https://jaanos.github.io/optimizacijske-metode/prosojnice/03-problem-razvoza.marp.html) ([izročki](prosojnice/03-problem-razvoza.md))
 * [Pretoki in prerezi](https://jaanos.github.io/optimizacijske-metode/prosojnice/04-pretoki-in-prerezi.marp.html) ([izročki](prosojnice/04-pretoki-in-prerezi.md))
 * [Prirejanja in pokritja](https://jaanos.github.io/optimizacijske-metode/prosojnice/05-prirejanja-in-pokritja.marp.html) ([izročki](prosojnice/05-prirejanja-in-pokritja.md))
+* [Konveksna optimizacija](https://jaanos.github.io/optimizacijske-metode/prosojnice/06-konveksna-optimizacija.marp.html) ([izročki](prosojnice/06-konveksna-optimizacija.md))
 
 ## Delovni zvezki in programi
 
