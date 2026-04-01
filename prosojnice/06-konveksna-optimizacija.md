@@ -163,9 +163,9 @@ plugins: mathjax
 
   <span class="nobullet numbers">
 
-  * 1. Množica $A$ je afina.
-  * 2. Vsaka afina kombinacija točk iz $A$ je v $A$.
-  * 3. $\exists v \in \mathbb{R}^m$, $\exists V \le \mathbb{R}^m$ linearen podprostor: $A = v + V = \lbrace v + x \mid x \in V \rbrace$.
+  * 1\. Množica $A$ je afina.
+  * 2\. Vsaka afina kombinacija točk iz $A$ je v $A$.
+  * 3\. $\exists v \in \mathbb{R}^m$, $\exists V \le \mathbb{R}^m$ linearen podprostor: $A = v + V = \lbrace v + x \mid x \in V \rbrace$.
 
   </span>
 
