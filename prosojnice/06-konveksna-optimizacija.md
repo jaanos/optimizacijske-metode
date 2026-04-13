@@ -673,3 +673,190 @@ Obravnavamo linearna programa:
 </span>
 
 </span>
+
+---
+
+# Konveksne funkcije
+
+Konveksne funkcije so "obrnjene navzgor", npr $f(x) = x^2$.
+
+<span class="center">
+
+![](slike/konveksna_funkcija.png)
+
+</span>
+
+---
+
+# Definicija
+
+<span class="small">
+
+* Naj bo $K \subseteq \mathbb{R}^n$ konveksna množica.
+* Funkcija $f : K \to \mathbb{R}$ je _konveksna_, če velja
+
+  $$
+  \forall x, y \in K \ \forall \lambda \in [0, 1]: f((1 - \lambda) x + \lambda y) \le (1 - \lambda) f(x) + \lambda f(y)
+  $$
+
+  Torej: graf funkcije leži pod zveznicami točk na grafu.
+
+* Funkcija $f : K \to \mathbb{R}$ je _konkavna_, če velja
+
+  $$
+  \forall x, y \in K \ \forall \lambda \in [0, 1]: f((1 - \lambda) x + \lambda y) \ge (1 - \lambda) f(x) + \lambda f(y)
+  $$
+
+  Torej: $f$ je konkavna $\Longleftrightarrow$ $-f$ je konveksna.
+
+* Funkcija $f : K \to \mathbb{R}$ je _strogo konveksna_, če velja
+
+  $$
+  \forall x, y \in K \ \forall \lambda \in (0, 1): f((1 - \lambda) x + \lambda y) < (1 - \lambda) f(x) + \lambda f(y)
+  $$
+
+* Funkcija $f : K \to \mathbb{R}$ je _strogo konkavna_, če velja
+
+  $$
+  \forall x, y \in K \ \forall \lambda \in (0, 1): f((1 - \lambda) x + \lambda y) > (1 - \lambda) f(x) + \lambda f(y)
+  $$
+
+</span>
+
+---
+
+# Primeri
+
+* Množica $K \subseteq \mathbb{R}$ je konveksna natanko tedaj, ko je množica $K$ interval.
+* Trdimo: $f(x) = x^2$ je konveksna funkcija (za vsak interval $K$).
+
+  $$
+  \begin{aligned}
+  & f((1 - \lambda) x + \lambda y) \stackrel{?}{\le} (1 - \lambda) f(x) + \lambda f(y) \\[2ex]
+  & ((1 - \lambda) x + \lambda y)^2 - ((1 - \lambda) x^2 + \lambda y^2) \\
+  &= (1 - \lambda)^2 x^2 + 2(1 - \lambda) \lambda xy + \lambda^2 y^2 - (1 - \lambda) x^2 - \lambda y^2 \\
+  &= (1 - \lambda)(1 - \lambda - 1) x^2 + 2(1 - \lambda) \lambda xy + \lambda (\lambda - 1) y^2 \\
+  &= -\lambda(1 - \lambda) (x^2 - 2xy + y^2) = -\lambda(1 - \lambda) (x - y)^2 \le 0
+  \end{aligned}
+  $$
+
+---
+
+# Primeri (2)
+
+* _Afina funkcija_ $f(x_1, x_2, \dots, x_n) = a_1 x_1 + a_2 x_2 + \dots + a_n x_n + b$ (ali $f(x) = a^\top x + b$) je konveksna:
+
+  $$
+  \begin{aligned}
+  f((1 - \lambda) x + \lambda y)
+  &= a^\top ((1 - \lambda) x + \lambda y) + b \\
+  &= (1 - \lambda) a^\top x + \lambda a^\top y + (1 - \lambda) b + \lambda b \\
+  &= (1 - \lambda) f(x) + \lambda f(y)
+  \end{aligned}
+  $$
+
+* Funkcija $f$ je tudi konkavna.
+* Da se dokazati, da je funkcija konveksna in konkavna natanko tedaj, ko je afina.
+
+---
+
+# Primeri (3)
+
+* _Norma_ $\Vert \cdot \Vert : \mathbb{R}^n \to \mathbb{R}$ je funkcija s sledečimi lastnostmi:
+   - $\Vert x \Vert \ge 0$, $\Vert x \Vert = 0 \Rightarrow x = 0$
+   - $\Vert \lambda x \Vert = \vert \lambda \vert \Vert x \Vert$
+   - $\Vert x + y \Vert \le \Vert x \Vert + \Vert y \Vert$ (_trikotniška neenakost_)
+
+* Primer: dolžina vektorja $\Vert x \Vert = \sqrt{x^\top x} = \sqrt{x_1^2 + x_2^2 + \dots + x_n^2}$
+
+* Norma je konveksna:
+
+  $$
+  \Vert (1 - \lambda) x + \lambda y \Vert \le \Vert (1 - \lambda) x \Vert + \Vert \lambda y \Vert = (1 - \lambda) \Vert x \Vert + \lambda \Vert y \Vert
+  $$
+
+---
+
+# Lastnosti konveksnih funkcij
+
+<span class="small numbers">
+
+* **_Trditev._** Naj bo $K \subseteq \mathbb{R}^n$ konveksna množica ter $f, g: K \to \mathbb{R}$ konveksni funkciji. Potem velja sledeče.
+
+  1. Če $c \ge 0$, potem je $c \cdot f$ konveksna funkcija.
+  2. Funkcija $f + g$ je konveksna.
+  3. Če je funkcija $f$ afina, je slika $f(K)$ konveksna množica.
+
+* **_Trditev._** Naj bo $K \subseteq \mathbb{R}^n$ konveksna množica ter $f: K \to \mathbb{R}$ in $g: \operatorname{conv}(f(K)) \to \mathbb{R}$ konveksni funkciji. Denimo, da velja vsaj eno od sledečega.
+
+  - Funkcija $f$ je afina, ali
+  - funkcija $g$ je naraščajoča.
+
+  Potem je kompozitum $g \circ f$ konveksna funkcija.
+
+</span>
+
+---
+
+# Dokaz
+
+* 1\.
+
+  $$
+  (c \cdot f)((1 - \lambda) x + \lambda y) \le c ((1 - \lambda) f(x) + \lambda f(y)) = ((1 - \lambda) (c \cdot f)(x) + \lambda (c \cdot f)(y))
+  $$
+
+* 2\.
+
+  $$
+  \begin{aligned}
+  (f + g)((1 - \lambda) x + \lambda y)
+  &= f((1 - \lambda) x + \lambda y) + g((1 - \lambda) x + \lambda y) \\
+  &\le (1 - \lambda) f(x) + \lambda f(y) + (1 - \lambda) g(x) + \lambda g(y) \\
+  &= (1 - \lambda) (f + g)(x) + \lambda (f + g)(y)
+  \end{aligned}
+  $$
+
+* 3\. Funkcija $f(x) = a^\top x + b$ je konveksna in konkavna, za $x, y \in K$ velja $f(x), f(y) \in f(K)$. Ker je $(1 - \lambda) x + \lambda y \in K$, velja
+
+  $$
+  (1 - \lambda) f(x) + \lambda f(y) = f((1 - \lambda) x + \lambda y) \in f(K).
+  $$
+
+---
+
+# Dokaz (2)
+
+* Trdimo, da velja
+
+  $$
+  \begin{aligned}
+  f((1 - \lambda) x + \lambda y) &\le (1 - \lambda) f(x) + \lambda f(y) \\
+  g(f((1 - \lambda) x + \lambda y)) &\le g((1 - \lambda) f(x) + \lambda f(y)) \\
+  &\le (1 - \lambda) (g \circ f)(x) + \lambda (g \circ f)(y)
+  \end{aligned}
+  $$
+
+* Prva neenakost velja zaradi konveksnosti funkcije $f$.
+* Če je funkcija $g$ naraščajoča, potem velja tudi druga neenakost.
+* Če pa je funkcija $f$ afina, velja enakost v prvi in posledično tudi v drugi neenakosti.
+* V obeh primerih zadnja neenakost sledi zaradi konveksnosti funkcije $g$.
+
+---
+
+# Neprimeri
+
+* Produkt konveksnih funkcij ni nujno konveksna funkcija: $f(x) = x$, $g(x) = -x$, $(f \cdot g)(x) = -x^2$.
+* Kompozitum konveksnih funkcij ni nujno konveksna funkcija: $f(x) = x^2$, $g(x) = -x$, $(g \circ f)(x) = -x^2$.
+* Slika konveksne množice s konveksno funkcijo ni nujno konveksna množica:
+
+  $$
+  \begin{aligned}
+  f:&\ [0, 1] \to \mathbb{R} \\
+  f(x) &= \begin{cases}
+  0 & \text{če } 0 \le x < 1 \\
+  1 & \text{če } x = 1
+  \end{cases} \\
+  f([0, 1]) &= \lbrace 0, 1 \rbrace
+  \end{aligned}
+  $$
