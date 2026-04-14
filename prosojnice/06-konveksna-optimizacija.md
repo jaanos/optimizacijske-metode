@@ -860,3 +860,480 @@ Konveksne funkcije so "obrnjene navzgor", npr $f(x) = x^2$.
   f([0, 1]) &= \lbrace 0, 1 \rbrace
   \end{aligned}
   $$
+
+---
+
+# Konveksne funkcije in optimizacija
+
+* **_Definicija._** Naj bo $A \subseteq \mathbb{R}^n$ in $f: A \to \mathbb{R}$. Funkcija $f$ ima v točki $x^\ast \in A$:
+
+  * _globalni maksimum_, če $\forall x \in A: f(x) \le f(x^\ast)$;
+  * _globalni minimum_, če $\forall x \in A: f(x) \ge f(x^\ast)$;
+  * _lokalni maksimum_, če $\exists \epsilon > 0 \ \forall x \in A: (\Vert x - x^\ast \Vert < \epsilon \Rightarrow f(x) \le f(x^\ast))$; in
+  * _lokalni minimum_, če $\exists \epsilon > 0 \ \forall x \in A: (\Vert x - x^\ast \Vert < \epsilon \Rightarrow f(x) \ge f(x^\ast))$.
+
+* **_Trditev._** Naj bo $K \subseteq \mathbb{R}^n$ konveksna množica ter $f: K \to \mathbb{R}$ konveksna funkcija. Če ima $f$ v $x^\ast \in K$ lokalni minimum, ima v $x^\ast$ tudi globalni minimum.
+
+---
+
+# Dokaz
+
+* Naj bo $\epsilon > 0$ tak, da velja $\forall x \in K: (\Vert x - x^\ast \Vert < \epsilon \Rightarrow f(x) \ge f(x^\ast))$.
+* Če $x^\ast$ ni globalni minimum, potem obstaja tak $y \in K$, da velja $f(y) < f(x^\ast)$.
+* Tedaj za vsak $\lambda \in (0, 1]$ velja
+
+  $$
+  f((1 - \lambda) x^\ast + \lambda y) \le (1 - \lambda) f(x^\ast) + \lambda f(y) < (1 - \lambda) f(x^\ast) + \lambda f(x^\ast) = f(x^\ast) .
+  $$
+
+* Za dovolj majhen $\lambda$ je $(1 - \lambda) x^\ast + \lambda y$ poljubno blizu $x^\ast$:
+
+  $$
+  \Vert (1 - \lambda) x^\ast + \lambda y - x^\ast \Vert = \Vert \lambda (y - x^\ast) \Vert = \lambda \Vert y - x^\ast \Vert < \epsilon, \text{ če } \lambda < {\epsilon \over \Vert y - x^\ast \Vert}
+  $$
+
+* Torej: če je $\lambda \in \left(0, {\epsilon \over \Vert y - x^\ast \Vert}\right)$, je $\Vert (1 - \lambda) x^\ast + \lambda y - x^\ast \Vert < \epsilon$ in tedaj $f((1 - \lambda) x^\ast + \lambda y) \ge f(x^\ast)$, protislovje.
+
+---
+
+# Odvodi
+
+* Preverjanje konveksnosti po definiciji je v splošnem težko. Večinoma je lažje preverjati konveksnost z odvodi.
+
+* Naj bo $f: (a, b) \to \mathbb{R}$ konveksna funkcija. Njen graf potem leži nad vsako tangento (**kriterij 1. odvoda**), torej
+$f(y) \ge f(x) + (y-x) f'(x)$ za vsaka $x, y \in (a, b)$.
+
+* **_Primer._** Naj bo $f(x) = x^2$. Preverimo, ali za vsaka $x, y \in \mathbb{R}$ velja
+
+  $$
+  y^2 \stackrel{?}{\ge} x^2 + (y-x) \cdot 2x .
+  $$
+
+  * Res:
+
+    $$
+    y^2 - x^2 - 2xy + 2x^2 = y^2 - 2xy + x^2 = (x-y)^2 \ge 0.
+    $$
+
+---
+
+# Odvodi (2)
+
+* Smerni koeficienti tangent na graf konveksne funkcije $f$ naraščajo - njen odvod $f'$ je torej naraščajoča funkcija, torej $f''(x) \ge 0$ za vsak $x \in (a, b)$ (**kriterij 2. odvoda**).
+
+* **_Primer._** Naj bo $f(x) = x^2$. Potem je $f''(x) = 2 \ge 0$.
+
+---
+
+# Kriterij 1. odvoda
+
+* Naj bo $K \subseteq \mathbb{R}^n$ odprta konveksna množica, ter $f: K \to \mathbb{R}$ funkcija, ki ima vse parcialne odvode ${\partial f \over \partial x_i}$ ($1 \le i \le n$).
+  - Parcialne odvode zapišemo v _gradient_ $\nabla f(x) = \left({\partial f \over \partial x_i}(x)\right)_{i=1}^n$.
+* Potem je funkcija $f$ konveksna natanko tedaj, ko za vsaka $x, y \in K$ velja $f(y) \ge f(x) + (\nabla f(x))^\top (y - x)$.
+
+---
+
+# Dokaz ($\Longleftarrow$)
+
+* Naj bodo $x, y \in K$ in $\lambda \in [0, 1]$ poljubni ter pišimo $z := (1 - \lambda) x + \lambda y$.
+* Potem velja:
+
+  $$
+  \begin{aligned}
+  f(x) &\ge f(z) + (\nabla f(z))^\top (x - z) &&/ \cdot (1 - \lambda) \\
+  f(y) &\ge f(z) + (\nabla f(z))^\top (y - z) &&/ \cdot \lambda \\
+  \hline
+  (1 - \lambda) f(x) + \lambda f(y) &\ge f(z) + (\nabla f(z))^\top ((1 - \lambda) x + \lambda y - z) \\
+  &= f((1 - \lambda) x + \lambda y)
+  \end{aligned}
+  $$
+
+* Funkcija $f$ je torej konveksna.
+
+---
+
+# Dokaz ($\Longrightarrow$)
+
+* Za fiksna $x, y \in K$ je $g_{x, y}(\lambda) = f((1 - \lambda) x + \lambda y)$ funkcija v $\lambda$ - zanima nas njen odvod pri $\lambda = 0$.
+*  Funkcija $g_{x, y}$ je definirana na $(-\epsilon, 1]$ za nek $\epsilon > 0$.
+*  Naj bo $\delta > 0$ tak, da je množica $K(x, \delta) = \lbrace y \in \mathbb{R}^n \mid \Vert x - y \Vert \le \delta \rbrace$ (tj., krogla s središčem v $x$ in polmerom $\delta$) vsebovana v $K$.
+* Zadostuje, da za vse $\lambda \in (-\epsilon, 0]$ velja
+
+  $$
+  \Vert (1 - \lambda) x + \lambda y - x \Vert = \Vert \lambda y - \lambda x \Vert = \vert \lambda \vert \Vert y - x \Vert < \delta.
+  $$
+
+* Vzamemo lahko torej $\epsilon := {\delta \over \Vert y - x \Vert}$.
+
+---
+
+# Dokaz ($\Longrightarrow$, 2)
+
+* Izračunajmo $g'_{x, y}(\lambda)$.
+
+  $$
+  \begin{aligned}
+  g'_{x, y}(\lambda)
+  &= {d \over d \lambda} f((1 - \lambda) x + \lambda y) \\
+  &= {d \over d \lambda} f((1 - \lambda) x_1 + \lambda y_1, \dots, (1 - \lambda) x_n + \lambda y_n) \\
+  &= {\partial f \over \partial x_1}((1 - \lambda) x + \lambda y) \cdot (y_1 - x_1) + \dots + {\partial f \over \partial x_n}((1 - \lambda) x + \lambda y) \cdot (y_n - x_n) \\
+  &= (\nabla f((1 - \lambda) x + \lambda y))^\top (y - x)
+  \end{aligned}
+  $$
+
+* Velja torej $g'_{x, y}(0) = (\nabla f(x))^\top (y - x)$.
+
+---
+
+# Dokaz ($\Longrightarrow$, 3)
+
+* Po definiciji odvoda nadalje velja
+
+  $$
+  \begin{aligned}
+  g'_{x, y}(0)
+  &= \lim_{\lambda \to 0} {g_{x, y}(\lambda) - g_{x, y}(0) \over \lambda} \\
+  &= \lim_{\lambda \to 0} {f((1 - \lambda) x + \lambda y) - f(x) \over \lambda} \\
+  &= \lim_{\lambda \searrow 0} {f((1 - \lambda) x + \lambda y) - f(x) \over \lambda} \\ 
+  &\le \lim_{\lambda \searrow 0} {(1 - \lambda) f(x) + \lambda f(y) - f(x) \over \lambda} & \text{(ker $\lambda > 0$)} \\
+  &= f(y) - f(x).
+  \end{aligned}
+  $$
+
+* Velja torej $f(y) \ge f(x) + (\nabla f(x))^\top (y - x)$.
+
+---
+
+# Kriterij 2. odvoda za funkcije ene spremenljivke
+
+<span class="small">
+
+* Naj bo $f: (a, b) \to \mathbb{R}$ dvakrat odvedljiva funkcija.
+* Potem je funkcija $f$ konveksna natanko tedaj, ko za vsak $x \in (a, b)$ velja $f''(x) \ge 0$.
+
+* _Dokaz ($\Longrightarrow$)._ Naj bo $x \in (a, b)$ in $h > 0$ tak, da $x \pm h \in (a, b)$.
+  * Zaradi konveksnosti funkcije $f$ potem velja:
+
+    $$
+    f(x) = f\left({1 \over 2} (x + h) + {1 \over 2} (x - h)\right) \le {1 \over 2} f(x + h) + {1 \over 2} f(x - h)
+    $$
+
+  * Z dvakratno uporabo L'Hôpitalovega pravila potem izpeljemo
+
+    $$
+    \begin{aligned}
+    0 \le \lim_{h \to 0} {f(x + h) + f(x - h) - 2f(x) \over h^2} &= \lim_{h \to 0} {f'(x + h) - f'(x - h) \over 2h} \\
+    &= \lim_{h \to 0} {f''(x + h) + f''(x - h) \over 2} = f''(x).
+    \end{aligned}
+    $$
+
+</span>
+
+---
+
+# Dokaz ($\Longleftarrow$)
+
+* Naj bosta $x, y \in (a, b)$ (brez škode za splošnost privzamemo $x < y$) ter $\lambda \in (0, 1)$. Postavimo $z = (1 - \lambda) x + \lambda y \in (x, y)$.
+* Po Lagrangeevem izreku velja
+
+  $$
+  \begin{aligned}
+  \exists \xi_1 &\in (x, z): & {f(z) - f(x) \over z - x} &= f'(\xi_1) \\
+  \exists \xi_2 &\in (z, y): & {f(y) - f(z) \over y - z} &= f'(\xi_2) \\
+  \exists \xi_3 &\in (\xi_1, \xi_2): & {f'(\xi_2) - f'(\xi_1) \over \xi_2 - \xi_1} &= f''(\xi_3)
+  \end{aligned}
+  $$
+
+---
+
+# Dokaz ($\Longleftarrow$, 2)
+
+* Ker velja $f''(\xi_3) \ge 0$ in $\xi_1 < \xi_2$, sledi $f'(\xi_1) \le f'(\xi_2)$ (tj., funkcija $f'$ narašča, ker je njen odvod nenegativen).
+* Velja torej:
+
+  $$
+  \begin{aligned}
+  {f(z) - f(x) \over z - x} &\le {f(y) - f(z) \over y - z} & / \cdot (z - x)(y - z) \\
+  (y - z)(f(z) - f(x)) &\le (z - x)(f(y) - f(z)) \\
+  (y - z + z - x) f(z) &\le (y - z) f(x) + (z - x) f(y) \\
+  (y - x) f(z) &\le (1 - \lambda)(y - x) f(x) + \lambda (y - x) f(y) \\
+  f((1 - \lambda) x + \lambda y) &\le (1 - \lambda) f(x) + \lambda f(y)
+  \end{aligned}
+  $$
+
+---
+
+# Lastni vektorji in vrednosti
+
+* Pri Algebri 1 se naučite: $x \in \mathbb{C}^n \setminus \lbrace 0 \rbrace$ je _lastni vektor_ matrike $A \in \mathbb{R}^{n \times n}$, če obstaja _lastna vrednost_ $\lambda \in \mathbb{C}$, da velja $Ax = \lambda x$.
+* Matrika $A$ je _diagonalizabilna_, če obstaja $n$ linearno neodvisnih lastnih vektorjev.
+
+* **_Primer._** Matrika $A = \begin{bmatrix} 0 & 1 \\ 0 & 0 \end{bmatrix}$ ni diagonalizabilna:
+
+  $$
+  \begin{gathered}
+  \begin{bmatrix} 0 & 1 \\ 0 & 0 \end{bmatrix}
+  \begin{bmatrix} x \\ y \end{bmatrix} =
+  \begin{bmatrix} y \\ 0 \end{bmatrix} =
+  \lambda \begin{bmatrix} x \\ y \end{bmatrix} \\
+  \begin{aligned}
+  \lambda &= 0: & y &= 0, & x &\ne 0 \\
+  \lambda &\ne 0: & y &= 0, & x &= 0 & \text{ni lastni vektor}
+  \end{aligned}
+  \end{gathered}
+  $$
+
+  - Imamo torej samo en linearno neodvisen lastni vektor.
+
+---
+
+# Diagonalizacija
+
+* Lastne vrednosti poiščemo kot ničle karakterističnega polinoma $\det(A - \lambda I)$. Lastni vektorji so neničelne rešitve enačbe $(A - \lambda I) x = 0$ za lastne vrednosti $\lambda$.
+
+* Realna matrika ima lahko kompleksne lastne vrednosti in lastne vektorje:
+
+  $$
+  A = \begin{bmatrix} 0 & 1 \\ -1 & 0 \end{bmatrix} \qquad
+  \begin{vmatrix} -\lambda & 1 \\ -1 & -\lambda \end{vmatrix} = \lambda^2 + 1, \quad
+  \lambda = \pm i
+  $$
+
+* Če je $A$ diagonalizabilna matrika, jo lahko zapišemo kot $A = PDP^{-1}$, kjer je $P$ obrnljiva matrika, katere stolpci so linearno neodvisni lastni vektorji, $D$ pa diagonalna matrika z ustreznimi lastnimi vrednostmi na diagonali.
+
+---
+
+# Simetrične matrike
+
+
+* **_Definicija._** Matrika $A \in \mathbb{R}^{n \times n}$ je _simetrična_, če velja $A^\top = A$.
+
+* **_Izrek._** Simetrična matrika $A \in \mathbb{R}^{n \times n}$ ima realne lastne vrednosti in je diagonalizabilna v ortonormirani bazi (tj., lastni vektorji imajo normo $1$ in so drug na drugega pravokotni).
+  - Tedaj lahko pišemo $A = UDU^\top$, kjer je $U$ ortogonalna matrika (tj., $U^\top U = I$ oziroma $U^{-1} = U^\top$) z lastnimi vektorji v stolpcih.
+
+---
+
+# Definitnost
+
+**_Definicija._** Naj bo $A \in \mathbb{R}^{n \times n}$ simetrična matrika.
+
+* $A$ je _pozitivno semidefinitna_ ($A \ge 0$), če ima same nenegativne lastne vrednosti.
+* $A$ je _pozitivno definitna_ ($A > 0$), če ima same pozitivne lastne vrednosti.
+* $A$ je _negativno semidefinitna_ ($A \le 0$), če ima same nepozitivne lastne vrednosti.
+* $A$ je _negativno definitna_ ($A < 0$), če ima same negativne lastne vrednosti.
+* $A$ je _nedefinitna_, če ima tako pozitivne kot negativne lastne vrednosti.
+
+---
+
+# Kvadratne forme
+
+<span class="small">
+
+* **_Definicija._** Naj bo $A = (a_{ij})_{i,j=1}^n \in \mathbb{R}^{n \times n}$ simetrična matrika. _Kvadratna forma_, ki pripada $A$, je
+
+  $$
+  f(x) = x^\top A x = [x_1 \ x_2 \ \dots \ x_n] \begin{bmatrix}
+  a_{11} x_1 + a_{12} x_2 + \dots a_{1n} x_n \\
+  a_{21} x_1 + a_{22} x_2 + \dots a_{2n} x_n \\
+  \vdots \\
+  a_{n1} x_1 + a_{n2} x_2 + \dots a_{nn} x_n
+  \end{bmatrix} = \sum_{i=1}^n \sum_{j=1}^n a_{ij} x_i x_j
+  $$
+
+* **_Primera._**
+
+  * Kvadratna forma za matriko $A = \begin{bmatrix} 3 & 1 \\ 1 & -2 \end{bmatrix}$ je $f(x_1, x_2) = 3 x_1^2 + 2 x_1 x_2 - 2 x_2^2$.
+  * Kvadratna forma $f(x_1, x_2, x_3) = 4 x_1^2 - 2 x_1 x_2 + 3 x_1 x_3 - x_2^2 + x_3^2$ ustreza matriki
+    $$
+    A = \begin{bmatrix} 4 & -1 & {3 \over 2} \\ -1 & -1 & 0 \\ {3 \over 2} & 0 & 1 \end{bmatrix}.
+    $$
+
+</span>
+
+---
+
+# Definitnost in kvadratne forme
+
+**_Trditev._**
+
+- $A \ge 0 \Longleftrightarrow \forall x \in \mathbb{R}^n: \ x^\top A x \ge 0$,
+- $A > 0 \Longleftrightarrow \forall x \in \mathbb{R}^n \setminus \lbrace 0 \rbrace: \ x^\top A x > 0$,
+- $A \le 0 \Longleftrightarrow \forall x \in \mathbb{R}^n: \ x^\top A x \le 0$,
+- $A < 0 \Longleftrightarrow \forall x \in \mathbb{R}^n \setminus \lbrace 0 \rbrace: \ x^\top A x < 0$,
+- $A$ je nedefinitna natanko tedaj, ko $x^\top A x$ doseže tako pozitivne kot negativne vrednosti.
+
+---
+
+# Dokaz
+
+* Vzemimo $x \in \mathbb{R}^n$ in diagonalizirajmo $A = UDU^\top$.
+* Če je $x = 0$, potem je $x^\top A x = 0$. Sicer pišimo $\tilde{x} = U^\top x$, posledično velja tudi $x = U \tilde{x}$.
+* Potem velja
+
+  $$
+  x^\top A x = x^\top UDU^\top x = \tilde{x}^\top D \tilde{x} = \sum_{i=1}^n \lambda_i \tilde{x}_i^2.
+  $$
+
+* Matrika $A$ ima tako vse lastne vrednosti nenegativne/pozitivne/nepozitivne/negativne natanko tedaj, ko je za vsak $x \in \mathbb{R}^n \setminus \lbrace 0 \rbrace$ zgornja vrednost $\ge/>/\le/< 0$.
+
+---
+
+# Primer
+
+<span class="small">
+
+* Naj bo $A$ simetrična matrika dimenzij $2 \times 2$: $\quad A = \begin{bmatrix} a & b \\ b & c \end{bmatrix}$
+
+* Potem velja:
+
+  $$
+  \begin{alignedat}{8}
+  A \ge 0 \quad &\Leftrightarrow &\quad \lambda_1, \lambda_2 &\ge 0 \quad \Leftrightarrow &\quad \lambda_1 + \lambda_2 &\ge 0 &\quad &\Leftrightarrow &\quad \operatorname{tr} A &=&\ a + c &\ge 0 \\
+  &&&& \lambda_1 \lambda_2 &\ge 0 &&& \det A &=&\ ac - b^2 &\ge 0 \\[1ex]
+  A > 0 \quad &\Leftrightarrow &\quad \lambda_1, \lambda_2 &> 0 \quad \Leftrightarrow &\quad \lambda_1 + \lambda_2 &> 0 &\quad &\Leftrightarrow &&&\ a + c &> 0 &\quad &\Leftrightarrow & a &> 0 \\
+  &&&& \lambda_1 \lambda_2 &> 0 &&&&& ac - b^2 &> 0 &&& ac - b^2 &> 0 \\[1ex]
+  A \le 0 \quad &\Leftrightarrow &\quad \lambda_1, \lambda_2 &\le 0 \quad \Leftrightarrow &\quad \lambda_1 + \lambda_2 &\le 0 &\quad &\Leftrightarrow &&&\ a + c &\le 0 \\
+  &&&& \lambda_1 \lambda_2 &\ge 0 &&&&& ac - b^2 &\ge 0 \\[1ex]
+  A < 0 \quad &\Leftrightarrow &\quad \lambda_1, \lambda_2 &< 0 \quad \Leftrightarrow &\quad \lambda_1 + \lambda_2 &< 0 &\quad &\Leftrightarrow &&&\ a + c &< 0 &\quad &\Leftrightarrow & a &< 0 \\
+  &&&& \lambda_1 \lambda_2 &> 0 &&&&& ac - b^2 &> 0 &&& ac - b^2 &> 0 \\[1ex]
+  A \text{ nedefinitna} \quad &\Leftrightarrow &\quad \lambda_1 &> 0 \quad \Leftrightarrow &\quad \lambda_1 \lambda_2 &< 0 &\quad &\Leftrightarrow &&& ac - b^2 &< 0 \\
+  && \lambda_2 &< 0
+  \end{alignedat}
+  $$
+
+---
+
+# Preverjanje definitnosti
+
+* **_Definicija._** _Glavne poddeterminante_ matrike $A = (a_{ij})_{i,j=1}^n \in \mathbb{R}^{n \times n}$ so vrednosti $\det (a_{ij})_{i,j=1}^\ell$ ($1 \le \ell \le n$).
+
+* **_Trditev._** Naj bo $A \in \mathbb{R}^{n \times n}$ simetrična matrika. Potem velja:
+
+  - $A > 0$ natanko tedaj, ko so vse glavne poddeterminante pozitivne.
+  - $A < 0$ natanko tedaj, ko glavne poddeterminante alternirajo med negativnimi in pozitivnimi vrednostmi.
+
+---
+
+# Hessejeva matrika
+
+* **_Definicija._** Naj bo $\Omega \subseteq \mathbb{R}^n$ odprta množica in $f: \Omega \to \mathbb{R}$ funkcija, za katero obstajajo vsi drugi parcialni odvodi ${\partial^2 f \over \partial x_j \partial x_i}$ ($1 \le i, j \le n$).
+* _Hessejeva matrika_ funkcije $f$ je $H_f(x) = \left({\partial^2 f \over \partial x_j \partial x_i}(x)\right)_{i,j=1}^n$.
+  * Če so vsi drugi parcialni odvodi **zvezni** ($f \in \mathcal{C}^2(\Omega)$), velja $\forall i, j: {\partial^2 f \over \partial x_j \partial x_i} = {\partial^2 f \over \partial x_i \partial x_j}$, torej je $H_f(x)$ simetrična.
+
+---
+
+# Kriterij 2. odvoda
+
+* Naj bo $K \subseteq \mathbb{R}^n$ odprta konveksna množica, ter $f: K \to \mathbb{R}$ funkcija iz $\mathcal{C}^2(K)$.
+* Potem je funkcija $f$ konveksna natanko tedaj, ko za vsak $x \in K$ velja $H_f(x) \ge 0$.
+
+* _Dokaz._ Trdimo, da je funkcija $f$ konveksna natanko tedaj, ko za vsaka $x, y \in K$ obstaja tak $\epsilon$, da je funkcija $h_{x,y}: (-\epsilon, 1+\epsilon) \to \mathbb{R}$, $h_{x,y}(t) = f((1 - t) x + ty)$ konveksna in $h_{x,y} \in \mathcal{C}^2(-\epsilon, 1+\epsilon)$.
+  - Dokažimo najprej to trditev.
+
+---
+
+# Dokaz ($\Longrightarrow$)
+
+* Ker je množica $K$ odprta, obstaja tak $\epsilon$, da je funkcija z zgornjim predpisom dobro definirana.
+* Ker velja $f \in \mathcal{C}^2(K)$, velja tudi $h_{x,y} \in \mathcal{C}^2(-\epsilon, 1+\epsilon)$.
+* Dokažimo še, da je $h_{x,y}$ konveksna funkcija.
+* Vzemimo torej poljubne $s, t \in (-\epsilon, 1+\epsilon)$ in $\lambda \in [0, 1]$.
+* Ker je $f$ konveksna, velja:
+
+  $$
+  \begin{aligned}
+  f((1 - \lambda)((1 - t) x + ty) + \lambda ((1 - s) x + sy)) &\le (1 - \lambda) f((1 - t) x + ty) + \lambda f((1 - s) x + sy) \\
+  f((1 - (1 - \lambda) t - \lambda s) x + ((1 - \lambda) t + \lambda s) y) &\le (1 - \lambda) f((1 - t) x + ty) + \lambda f((1 - s) x + sy) \\
+  h_{x,y}((1 - \lambda) t + \lambda s) &\le (1 - \lambda) h_{x,y}(t) + \lambda h_{x,y}(s)
+  \end{aligned}
+  $$
+
+---
+
+# Dokaz ($\Longleftarrow$)
+
+* Ker je za vsaka $x, y \in K$ funkcija $h_{x,y}$ konveksna, za vsak $\lambda \in [0, 1]$ velja:
+
+  $$
+  \begin{aligned}
+  h_{x,y}(\lambda) = h_{x,y}((1 - \lambda) \cdot 0 + \lambda \cdot 1) &\le (1 - \lambda) h_{x,y}(0) + \lambda h_{x,y}(1) \\
+  f((1 - \lambda) x + \lambda y) &\le (1 - \lambda) f(x) + \lambda f(y)
+  \end{aligned}
+  $$
+
+* Funkcija $f$ je torej konveksna.
+
+---
+
+# Dokaz (nadaljevanje)
+
+Za poljubna $x, y \in K$ lahko torej zapišemo:
+
+$$
+\begin{aligned}
+h_{x,y}(t) &= f((1 - t) x + ty) \\
+&= f((1 - t) x_1 + ty_1, \dots, (1 - t) x_n + ty_n) \\[2ex]
+h'_{x,y}(t) &= {\partial f \over \partial x_1}((1 - t) x + ty) \cdot (y_1 - x_1) + \dots + {\partial f \over \partial x_n}((1 - t) x + ty) \cdot (y_n - x_n) \\
+&= (\nabla f((1 - t) x + ty))^\top (y - x) \\[2ex]
+h''_{x,y}(t) &= {\partial^2 f \over \partial x_1 \partial x_1}((1 - t) x + ty) \cdot (y_1 - x_1)(y_1 - x_1) + \dots + {\partial^2 f \over \partial x_n \partial x_1}((1 - t) x + ty) \cdot (y_n - x_n)(y_1 - x_1) \\
+&+ \dots \\
+&+ {\partial^2 f \over \partial x_1 \partial x_n}((1 - t) x + ty) \cdot (y_1 - x_1)(y_n - x_n) + \dots + {\partial^2 f \over \partial x_n \partial x_n}((1 - t) x + ty) \cdot (y_n - x_n)(y_n - x_n) \\
+&= \sum_{i=1}^n \sum_{j=1}^n {\partial^2 f \over \partial x_j \partial x_i}((1 - t) x + ty) \cdot (y_j - x_j)(y_i - x_i) \\
+&= (y - x)^\top H_f((1 - t) x + ty) (y - x)
+\end{aligned}
+$$
+
+---
+
+# Dokaz (zaključek)
+
+* Velja torej:
+
+  $$
+  \begin{aligned}
+  \forall x, y \in K \ \forall t \in [0, 1]: h''_{x,y}(t) \ge 0 &\iff
+  \forall x, y \in K \ \forall t \in [0, 1]: H_f((1 - t) x + ty) \ge 0 \\
+  &\iff \forall x \in K: H_f(x) \ge 0
+  \end{aligned}
+  $$
+
+* **Opomba.** Taylorjev razvoj funkcije več spremenljivk lahko zapišemo kot
+
+  $$
+  f(y) = f(x) + (\nabla f(x))^\top (y - x) + {1 \over 2} (y - x)^\top H_f(x) (y - x) + \text{členi višjega reda}
+  $$
+
+  - Če je v $x$ lokalni minimum, potem velja $H_f(x) \ge 0$, $\nabla f(x) = 0$.
+  - Če velja $H_f(x) > 0$ in $\nabla f(x) = 0$, potem je v $x$ lokalni minimum.
+
+---
+
+# Stroga konveksnost in ekstremne točke
+
+* Iz dokazov za kriterij 2. odvoda lahko ugotovimo, da če za vsak $x \in K$ velja $H_f(x) > 0$, potem je $f$ strogo konveksna.
+  - Obratno ne velja v splošnem (npr. $f(x) = x^4$).
+
+* **_Trditev._** Naj bo $K \subseteq \mathbb{R}^n$ konveksna množica, ter $f: K \to \mathbb{R}$ strogo konveksna funkcija. Če je $x^\ast \in K$ globalni maksimum funkcije $f$, potem je $x^\ast$ ekstremna točka za $K$.
+
+* _Dokaz._ Predpostavimo, da $x^\ast$ ni ekstremna točka, torej obstajajo $x, y \in K, \ x \ne y$ ter $\lambda \in (0, 1)$, da velja $x^\ast = (1 - \lambda) x + \lambda y$. Potem velja
+
+  $$
+  f(x^\ast) = f((1 - \lambda) x + \lambda y) < (1 - \lambda) f(x) + \lambda f(y) \le (1 - \lambda) f(x^\ast) + \lambda f(x^\ast) = f(x^\ast),
+  $$
+
+  protislovje.
+
+---
+
+# Neprimer
+
+* Naj bo $K = [-1, 1] \times \mathbb{R}$ in $f: K \to \mathbb{R}$, $f(x, y) = x^2$.
+* Funkcija $f$ je konveksna, saj velja $H_f(x, y) = \begin{bmatrix} 2 & 0 \\ 0 & 0 \end{bmatrix} \ge 0$ (lastni vrednosti sta $0$ in $2$).
+* Funkcija $f$ ni strogo konveksna, saj za vse $\lambda \in (0, 1)$ velja
+
+  $$
+  1 = f(1, \lambda) = f((1 - \lambda) (1, 0) + \lambda (1, 1)) = (1 - \lambda) f(1, 0) + \lambda f(1, 1) = 1
+  $$
+
+* Globalni maksimumi funkcije $f$ so doseženi v točkah iz $\lbrace -1, 1 \rbrace \times \mathbb{R}$.
+* Množica $K$ nima ekstremnih točk.
