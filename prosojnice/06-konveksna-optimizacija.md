@@ -892,7 +892,7 @@ Konveksne funkcije so "obrnjene navzgor", npr $f(x) = x^2$.
   \Vert (1 - \lambda) x^\ast + \lambda y - x^\ast \Vert = \Vert \lambda (y - x^\ast) \Vert = \lambda \Vert y - x^\ast \Vert < \epsilon, \text{ če } \lambda < {\epsilon \over \Vert y - x^\ast \Vert}
   $$
 
-* Torej: če je $\lambda \in \left(0, {\epsilon \over \Vert y - x^\ast \Vert}\right)$, je $\Vert (1 - \lambda) x^\ast + \lambda y - x^\ast \Vert < \epsilon$ in tedaj $f((1 - \lambda) x^\ast + \lambda y) \ge f(x^\ast)$, protislovje.
+* Torej: če je $\lambda \in \left(0, {\epsilon \over \Vert y - x^\ast \Vert}\right)$, je $\Vert (1 - \lambda) x^\ast + \lambda y - x^\ast \Vert < \epsilon$ in tedaj $f((1 - \lambda) x^\ast + \lambda y) < f(x^\ast)$, protislovje.
 
 ---
 
