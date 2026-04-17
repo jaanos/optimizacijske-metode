@@ -1328,7 +1328,7 @@ $$
 # Neprimer
 
 * Naj bo $K = [-1, 1] \times \mathbb{R}$ in $f: K \to \mathbb{R}$, $f(x, y) = x^2$.
-* Funkcija $f$ je konveksna, saj velja $H_f(x, y) = \begin{bmatrix} 2 & 0 \\ 0 & 0 \end{bmatrix} \ge 0$ (lastni vrednosti sta $0$ in $2$).
+* Funkcija $f$ je konveksna, saj velja $H_f(x, y) = \begin{bmatrix} 2 & 0 \newline 0 & 0 \end{bmatrix} \ge 0$ (lastni vrednosti sta $0$ in $2$).
 * Funkcija $f$ ni strogo konveksna, saj za vse $\lambda \in (0, 1)$ velja
 
   $$
@@ -1337,3 +1337,656 @@ $$
 
 * Globalni maksimumi funkcije $f$ so doseženi v točkah iz $\lbrace -1, 1 \rbrace \times \mathbb{R}$.
 * Množica $K$ nima ekstremnih točk.
+
+---
+
+# Konveksne funkcije in vezani ekstremi
+
+* Naj bo $\Omega \subseteq \mathbb{R}^n$ odprta množica.
+* Problem **vezanih ekstremov z neenačbami (VEN)** definiramo kot
+
+  $$
+  \begin{aligned}
+  \max / \min \ f(x) \\[1ex]
+  \text{p.p.} \quad
+  x &\in \Omega \\
+  g_1(x) &\le 0 \\
+  g_2(x) &\le 0 \\
+  &\vdots \\
+  g_m(x) &\le 0
+  \end{aligned}
+  $$
+
+* Množica dopustnih rešitev je torej
+
+  $$
+  D = \lbrace x \in \Omega \mid \forall i \in \lbrace 1, 2, \dots, m \rbrace: g_i(x) \le 0 \rbrace.
+  $$
+
+---
+
+# Primer
+
+* Iščemo maksimum in minimum funkcije $f(x, y) = 2x^3 + 4x^2 + y^2 - 2xy$ v območju med $y = 4$ in $y = x^2$.
+
+<span class="columns col2">
+
+<span class="center nobullet">
+
+* ![h:450px](slike/ven.png)
+
+</span>
+
+<span>
+
+* Imamo torej:
+
+  $$
+  \begin{aligned}
+  \Omega &= \mathbb{R}^2 \\
+  y &\le 4 & y - 4 &\le 0 \\
+  y &\ge x^2 & x^2 - y &\le 0
+  \end{aligned}
+  $$
+
+</span>
+
+</span>
+
+---
+
+# 1. način
+
+* V notranjosti:
+
+  $$
+  \begin{alignedat}{2}
+  {\partial f \over \partial x}(x, y) &=&\ 6x^2 + 8x - 2y &= 0 \\
+  {\partial f \over \partial y}(x, y) &=&\ 2y - 2x &= 0 \Longrightarrow x = y \\
+  && 6x^2 + 6x &= 0 \\
+  && x(x+1) &= 0
+  \end{alignedat}
+  $$
+
+* Dobimo kandidata $x = y = 0$ in $x = y = -1$, ki pa nista v $\mathring{D}$ (relativna notranjost $D$).
+
+---
+
+# 1. način (2)
+
+Na zgornjem robu: $x \in (-2, 2)$, $y = 4$
+
+$$
+\begin{gathered}
+\begin{aligned}
+g(x) &= f(x, 4) = 2x^3 + 4x^2 - 8x + 16 \\
+g'(x) &= 6x^2 + 8x - 8 = 2(3x^2 + 4x - 4) = 0 \\
+x &= {-4 \pm \sqrt{16 + 48} \over 6} = {-2 \pm 4 \over 3}
+\end{aligned} \\
+\begin{aligned}
+x_1 &= -2 & f(-2, 4) &= 32 \quad \text{(ni v relativni notranjosti roba)} \\
+x_2 &= {2 \over 3} & f\left({2 \over 3}, 4\right) &= {352 \over 27} \approx 13.037
+\end{aligned}
+\end{gathered}
+$$
+
+---
+
+# 1. način (3)
+
+* Na spodnjem robu: $x \in (-2, 2)$, $y = x^2$
+
+  $$
+  \begin{aligned}
+  h(x) &= f(x, x^2) = x^4 + 4x^2 \\
+  h'(x) &= 4x^3 + 8x = 4x(x^2 + 2) = 0 \\
+  x &= 0 \quad \ \ f(0, 0) = 0
+  \end{aligned}
+  $$
+
+* Na stičiščih obeh robov: $x = \pm 2$, $y = 4$
+
+  $$
+  f(-2, 4) = 32 \qquad f(2, 4) = 32
+  $$
+
+* Globalni maksimum je torej v $(\pm 2, 4)$, globalni minimum pa v $(0, 0)$.
+
+---
+
+# 2. način
+
+* V notranjosti: kot prej.
+* Na zgornjem robu: $y - 4 = 0$. 
+  * Definirajmo _Lagrangeevo funkcijo_
+
+    $$
+    L(x, y, \lambda) = 2x^3 + 4x^2 + y^2 - 2xy + \lambda (y - 4),
+    $$
+
+    kjer je $\lambda$ _Lagrangeev množitelj (multiplikator)_.
+
+---
+
+# 2. način (zgornji rob)
+
+* Poiščimo parcialne odvode Lagrangeeve funkcije:
+
+  $$
+  \begin{gathered}
+  \begin{alignedat}{2}
+  {\partial L \over \partial x} &= 6x^2 + 8x - 2y &&= 0 \\
+  {\partial L \over \partial y} &= 2y - 2x + \lambda &&= 0 \\
+  {\partial L \over \partial \lambda} &= y - 4 &&= 0
+  \end{alignedat} \\
+  y = 4 \qquad x = {-2 \pm 4 \over 3} \qquad \lambda = {-28 \pm 8 \over 3}
+  \end{gathered}
+  $$
+
+* Sistem enačb ima rešitvi $(x, y, \lambda) = (-2, 4, -12)$ in $(x, y, \lambda) = \left({2 \over 3}, 4, -{20 \over 3}\right)$.
+
+---
+
+# 2. način (spodnji rob)
+
+<span class="small">
+
+$$
+\begin{gathered}
+L(x, y, \mu) = 2x^3 + 4x^2 + y^2 - 2xy + \mu (x^2 - y) \\
+\begin{alignedat}{2}
+{\partial L \over \partial x} &= 6x^2 + 8x - 2y + 2 \mu x &&= 0 \\
+{\partial L \over \partial y} &= 2y - 2x - \mu &&= 0 \\
+{\partial L \over \partial \mu} &= x^2 - y &&= 0 \\[2ex]
+y &= x^2 \\
+\mu &= 2x^2 - 2x \\
+0 &= 4x^3 + 8x = 4x (x^2 + 2)
+\end{alignedat} \\
+x = 0 \qquad y = 0 \qquad \mu = 0
+\end{gathered}
+$$
+
+* Sistem enačb ima rešitev $(x, y, \mu) = (0, 0, 0)$.
+
+</span>
+
+---
+
+# 2. način (stičišči robov)
+
+$$
+\begin{gathered}
+L(x, y, \lambda, \mu) = 2x^3 + 4x^2 + y^2 - 2xy + \lambda (y - 4) + \mu (x^2 - y) \\
+\begin{alignedat}{2}
+{\partial L \over \partial x} &= 6x^2 + 8x - 2y + 2 \mu x &&= 0 \\
+{\partial L \over \partial y} &= 2y - 2x + \lambda - \mu &&= 0 \\
+{\partial L \over \partial \lambda} &= y - 4 &&= 0 \\
+{\partial L \over \partial \mu} &= x^2 - y &&= 0 \\[2ex]
+\end{alignedat} \\
+y = 4 \qquad x = \pm 2 \qquad \mu = \mp 4 - 4 \qquad \lambda = -12
+\end{gathered}
+$$
+
+* Sistem enačb ima rešitvi $(x, y, \lambda, \mu) = (-2, 4, -12, 0)$ in $(x, y, \lambda, \mu) = (2, 4, -12, -8)$.
+
+---
+
+# 3. način
+
+<span class="small">
+
+$$
+\begin{alignedat}{2}
+f(x, y) &= 2x^3 + 4x^2 + y^2 - 2xy \\
+\text{p.p.} \quad y - 4 &\le 0 \\
+x^2 - y &\le 0 \\[2ex]
+L(x, y, \lambda, \mu) &= 2x^3 + 4x^2 + y^2 - 2xy &&+ \lambda (y - 4) + \mu (x^2 - y) \\
+L_x := {\partial L \over \partial x} &= 6x^2 + 8x - 2y + 2 \mu x &&= 0 \\
+L_y := {\partial L \over \partial y} &= 2y - 2x + \lambda - \mu &&= 0 \\
+\end{alignedat}
+$$
+
+* Ločimo primere:
+  - $\lambda = 0$, $\mu = 0$: notranjost
+  - $y - 4 = 0$, $\mu = 0$: zgornji rob
+  - $\lambda = 0$, $x^2 - y = 0$: spodnji rob
+  - $y - 4 = 0$, $x^2 - y = 0$: stičišči robov
+
+</span>
+
+---
+
+# Lagrangeeva funkcija
+
+<span class="small">
+
+* Za problem vezanih ekstremov z neenačbami lahko torej zapišemo Lagrangeevo funkcijo
+
+  $$
+  L(x_1, \dots, x_n, \lambda_1, \dots, \lambda_m) = f(x_1, \dots, x_n) + \sum_{i=1}^m \lambda_i g_i(x_1, \dots, x_n)
+  $$
+
+* Lokalni ekstremi so doseženi pri
+
+  $$
+  \begin{align}
+  L_j := {\partial L \over \partial x_j}(x_1, \dots, x_n, \lambda_1, \dots, \lambda_m) &= 0 & (1 \le j \le n) \\
+  \lambda_i g_i(x_1, \dots, x_n) &= 0 & (1 \le i \le m) \\
+  g_i(x_1, \dots, x_n) &\le 0 & (1 \le i \le m)
+  \end{align}
+  $$
+
+* Ločimo na $2^m$ primerov glede na $g_i(x_1, \dots, x_n) = 0$ oziroma $g_i(x_1, \dots, x_n) < 0$ in posledično $\lambda_i = 0$ ($1 \le i \le m$).
+
+</span>
+
+---
+
+# Karush-Kuhn-Tuckerjevi pogoji
+
+<span class="small">
+
+* **_Definicija._** Vrednosti $x_1, \dots, x_n, \lambda_1, \dots, \lambda_m$ ustrezajo _Karush-Kuhn-Tuckerjevim (KKT) pogojem_ za problem vezanega ekstrema z neenačbami, če velja
+
+  $$
+  \begin{align}
+  L_j := {\partial L \over \partial x_j}(x_1, \dots, x_n, \lambda_1, \dots, \lambda_m) &= 0 & (1 \le j \le n) \\
+  \lambda_i g_i(x_1, \dots, x_n) &= 0 & (1 \le i \le m) \\
+  g_i(x_1, \dots, x_n) &\le 0 & (1 \le i \le m) \\
+  \lambda_i &\ge 0 & (1 \le i \le m)
+  \end{align}
+  $$
+
+* Ali so Karush-Kuhn-Tuckerjevi pogoji za $(x^\ast, \lambda^\ast)$ zadoščeni natanko tedaj, ko je $x^\ast$ globalni ekstrem?
+  * V splošnem **NE**.
+  * Bo pa odgovor pritrdilen za **konveksne optimizacijske probleme**.
+
+</span>
+
+---
+
+# Primera
+
+$$
+\begin{aligned}
+\min \ x^2 - y^2 \\[1ex]
+\text{p.p.} \quad
+x, y &\in \mathbb{R} & (\Omega = \mathbb{R}^2) \\
+x, y &\ge 0
+\end{aligned}
+$$
+
+* Tak problem je neomejen - globalnega minimuma ni!
+* Vseeno lahko najdemo točko, ki ustreza Karush-Kuhn-Tuckerjevim pogojem:
+
+  $$
+  \begin{alignedat}{5}
+  L(x, y, \lambda, \mu) &= x^2 - y^2 &&- \lambda x - \mu y \\
+  L_x &= 2x - \lambda &&= 0 & -\lambda x &= 0 &\qquad x &\ge 0 &\qquad \lambda &\ge 0 \\
+  L_y &= -2y - \mu &&= 0 & -\mu y &= 0 &\qquad y &\ge 0 &\qquad \mu &\ge 0 \\
+  x &= y = \lambda = \mu &&= 0
+  \end{alignedat}
+  $$
+
+---
+
+# Primera (2)
+
+<span class="columns col2a">
+
+<span>
+
+$$
+\begin{aligned}
+\min \ x \\[1ex]
+\text{p.p.} \quad
+x, y &\in \mathbb{R} & (\Omega = \mathbb{R}^2) \\
+0 \le y &\le x^3
+\end{aligned}
+$$
+
+* Globalni minimum je v točki $(x, y) = (0, 0)$.
+
+  $$
+  \begin{alignedat}{4}
+  L(x, y, \lambda, \mu) &= x - \lambda y +{} &\mu &(y - x^3) \\
+  L_x &= 1 - 3 \mu x^2 &&= 0 \\
+  L_y &= -\lambda + \mu &&= 0 & \\
+  -\lambda y &= 0 & y &\ge 0 &\qquad \lambda &\ge 0 \\
+  \mu (y - x^3) &= 0 & y &\le x^3 &\qquad \mu &\ge 0 \\[1ex]
+  \lambda &= \mu\ne 0 & y &= x = 0 & 1 &= 0 & \rightarrow\!&\!\leftarrow
+  \end{alignedat}
+  $$
+
+</span>
+
+<span class="center">
+
+![](slike/kkt-protiprimer.png)
+
+</span>
+
+</span>
+
+---
+
+# Zadostnost pogojev KKT
+
+<span class="small">
+
+* **_Izrek._** Naj bo $\Omega \subseteq \mathbb{R}^n$ odprta konveksna množica ter $f, g_1, g_2, \dots, g_m: \Omega \to \mathbb{R}$ konveksne odvedljive funkcije. Če $(x^\ast, \lambda^\ast) \in \Omega \times \mathbb{R}^m$ zadošča Karush-Kuhn-Tuckerjevim pogojem, potem je $x^\ast$ globalni minimum funkcije $f\vert_D$, kjer je $D = \lbrace x \in \Omega \mid \forall i \in \lbrace 1, 2, \dots, m \rbrace: g_i(x) \le 0 \rbrace$ (tj., $x^\ast$ je optimalna rešitev ustreznega problema vezanih ekstremov z neenačbami).
+
+* **Opomba.** Pri pogojih iz zgornjega izreka so torej Karush-Kuhn-Tuckerjevi pogoji zadostni za optimalnost rešitve.
+
+* _Dokaz._ Vzemimo poljuben $x \in D$. Zaradi konveksnosti (kriterij 1. odvoda) velja:
+
+  $$
+  \begin{aligned}
+  f(x) &\ge f(x^\ast) + (\nabla f(x^\ast))^\top (x - x^\ast) \\
+  \forall i \in \lbrace 1, 2, \dots, m \rbrace: \ g_i(x) &\ge g_i(x^\ast) + (\nabla g_i(x^\ast))^\top (x - x^\ast) \qquad / \cdot \lambda_i^\ast \\ \hline
+  f(x) \ge f(x) + \sum_{i=1}^m \lambda_i^\ast g_i(x) &\ge f(x^\ast) + \sum_{i=1}^m \lambda_i^\ast g_i(x^\ast) + \left(\nabla f(x^\ast) + \sum_{i=1}^m \lambda_i^\ast \nabla g_i(x^\ast)\right)^\top (x - x^\ast) \\
+  &= f(x^\ast) + (\nabla L(x^\ast, \lambda^\ast))^\top (x - x^\ast) = f(x^\ast) \\
+  \end{aligned}
+  $$
+
+</span>
+
+---
+
+# Potrebnost pogojev KKT
+
+<span class="small">
+
+* **_Izrek._** Naj bo $\Omega \subseteq \mathbb{R}^n$ odprta množica ter $f, g_1, g_2, \dots, g_m: \Omega \to \mathbb{R}$ funkcije, pri čemer je funkcija $f$ odvedljiva. Če je $x^\ast$ globalni minimum funkcije $f\vert_D$ za $D = \lbrace x \in \Omega \mid \forall i \in \lbrace 1, 2, \dots, m \rbrace: g_i(x) \le 0 \rbrace$ in velja vsaj eno od sledečega:
+
+  - funkcije $g_1, g_2, \dots, g_m$ so afine; ali
+  - množica $\Omega$ je konveksna, $\mathring{D} \ne \emptyset$ ter funkcije $f, g_1, g_2, \dots, g_m$ so konveksne; ali
+  - funkcije $g_1, g_2, \dots, g_m$ so odvedljive ter $(\nabla g_i(x^\ast))_{\!\!\!\!\!\substack{i = 1 \\ g_i(x^\ast) = 0}}^m$ je zaporedje linearno neodvisnih vektorjev,
+
+  potem obstaja tak $\lambda^\ast \in \mathbb{R}^m$, da $(x^\ast, \lambda^\ast)$ ustreza Karush-Kuhn-Tuckerjevim pogojem.
+
+* Dokaz izpustimo. V dokazu se uporabi Farkaseva lema.
+
+* **Opomba.** Pri pogojih iz zgornjega izreka so torej Karush-Kuhn-Tuckerjevi pogoji potrebni za optimalnost rešitve.
+
+</span>
+
+---
+
+# Konveksni problemi
+
+* **_Posledica._** Naj bo $\Omega \subseteq \mathbb{R}^n$ odprta konveksna množica ter $f, g_1, g_2, \dots, g_m: \Omega \to \mathbb{R}$ konveksne odvedljive funkcije, tako da velja $\mathring{D} \ne \emptyset$. Potem je $x^\ast \in \Omega$ globalni minimum problema vezanih ekstremov z neenačbami natanko tedaj, ko obstaja tak $\lambda^\ast \in \mathbb{R}^m$, da $(x^\ast, \lambda^\ast)$ ustreza Karush-Kuhn-Tuckerjevim pogojem.
+
+* **Opomba.** Takemu problemu rečemo **konveksni problem** oziroma **problem konveksne optimizacije**.
+  * Čim najdemo eno rešitev Karush-Kuhn-Tuckerjevih pogojev, smo našli optimalno rešitev takega problema (tj., globalni minimum).
+
+---
+
+# Primer
+
+<span class="small">
+
+$$
+\begin{aligned}
+\min \ x \\[1ex]
+\text{p.p.} \quad
+x, y &\in \mathbb{R} & (\Omega = \mathbb{R}^2) \\
+0 \le y &\le x^3
+\end{aligned}
+$$
+
+* Globalni minimum je v točki $(x^\ast, y^\ast) = (0, 0)$, kjer pa Karush-Kuhn-Tuckerjevi pogoji niso izpolnjeni. Velja namreč:
+
+  $$
+  \begin{aligned}
+  g_1(x, y) &= -y & g_1(0, 0) &= 0 & \text{afina} \\
+  g_2(x, y) &= y - x^3 & g_2(0, 0) &= 0 & \text{ni afina} \\
+  H_{g_2}(x, y) &= \begin{bmatrix} -6x & 0 \\ 0 & 0 \end{bmatrix} \not\ge 0 & (\text{za } x &> 0) & \text{ni konveksna} \\
+  \nabla g_1(x, y) &= \begin{bmatrix} 0 \\ -1 \end{bmatrix} &
+  \nabla g_2(x, y) &= \begin{bmatrix} -3x^2 \\ 1 \end{bmatrix} \\
+  \nabla g_1(0, 0) &= \begin{bmatrix} 0 \\ -1 \end{bmatrix} &
+  \nabla g_2(0, 0) &= \begin{bmatrix} 0 \\ 1 \end{bmatrix} &
+  \text{nista linearno neodvisna}
+  \end{aligned}
+  $$
+
+</span>
+
+---
+
+# Konveksne funkcije in konveksne množice
+
+<span class="small">
+
+* **_Trditev._** Naj bo $K \subseteq \mathbb{R}^n$ konveksna množica, $f: K \to \mathbb{R}$ konveksna funkcija, ter $b \in \mathbb{R}$. Potem je množica $A = \lbrace x \in K \mid f(x) \le b \rbrace$ konveksna.
+
+* _Dokaz._ Vzemimo poljubne $x, y \in A$ ter $\lambda \in [0, 1]$. Potem velja
+
+  $$
+  f((1 - \lambda) x + \lambda y) \le (1 - \lambda) f(x) + \lambda f(y) \le (1 - \lambda) b + \lambda b = b.
+  $$
+
+  * Velja torej $(1 - \lambda) x + \lambda y \in A$, zato je množica $A$ konveksna.
+
+* **Opomba.** Če je množica $\Omega$ konveksna in so funkcije $g_1, g_2, \dots, g_m: \Omega \to \mathbb{R}$ konveksne ter $b \in \mathbb{R}^m$, potem je množica $\lbrace x \in \Omega \mid \forall i \in \lbrace 1, 2, \dots, m \rbrace: g_i(x) \le b_i \rbrace$ konveksna.
+  * Na primer, za $f(x, y) = x^2 + y^2$ imamo $H_f(x, y) = \begin{bmatrix} 2 & 0 \\ 0 & 2 \end{bmatrix} \ge 0$, torej je $f$ konveksna funkcija in je tako $\lbrace (x, y) \in \mathbb{R}^2 \mid f(x, y) \le 4 \rbrace$ konveksna množica.
+
+</span>
+
+---
+
+# Primer
+
+<span class="columns col2a">
+
+<span>
+
+$$
+\begin{aligned}
+\min \ {1 \over x} + {2 \over y} \\[1ex]
+\text{p.p.} \quad
+x &> 0 \\
+y &> 0 \\
+x + y &\le 5 \\
+3x^2 + 2y^2 &\le 35
+\end{aligned}
+$$
+
+* To je konveksni problem:
+
+  $$
+  \begin{aligned}
+  \Omega &= \lbrace (x, y) \in \mathbb{R}^2 \mid x > 0, y > 0 \rbrace & \text{konveksna,} &\ \text{odprta} \\
+  f(x, y) &= {1 \over x} + {2 \over y} &
+  H_f(x, y) &= \begin{bmatrix} 2x^{-3} & 0 \\ 0 & 4y^{-3} \end{bmatrix} \ge 0 \\
+  g_1(x, y) &= x + y - 5 && \text{afina} \\
+  g_2(x, y) &= 3x^2 + 2y^2 - 35 &
+  H_{g_2}(x, y) &= \begin{bmatrix} 6 & 0 \\ 0 & 4 \end{bmatrix} \ge 0 
+  \end{aligned}
+  $$
+
+</span>
+
+<span class="center">
+
+![](slike/konveksni_problem.png)
+
+</span>
+
+</span>
+
+---
+
+# Primer (pogoji KKT)
+
+$$
+\begin{alignedat}{3}
+L(x, y, \lambda, \mu) &= {1 \over x} + {2 \over y} + \lambda (x + y &{} - 5) &+ \mu (3x^2 &{} + 2y^2 - 35) \qquad \\
+\text{KKT:} \quad L_x &= -{1 \over x^2} + \lambda + 6 \mu x &&= 0 \\
+L_y &= -{2 \over y^2} + \lambda + 4 \mu y &&= 0 \\
+0 &= \lambda (x + y - 5) & \lambda &\ge 0 & x + y - 5 &\le 0 \\
+0 &= \mu (3x^2 + 2y^2 - 35) & \mu &\ge 0 & 3x^2 + 2y^2 - 35 &\le 0
+\end{alignedat}
+$$
+
+---
+
+# Primer (1.)
+
+$g_1(x, y) = x + y - 5 = 0$: $y = 5 - x$
+
+$$
+\begin{alignedat}{3}
+L(x, 5 - x, \lambda, \mu) &= {1 \over x} + {2 \over 5 - x} + \mu (5x^2 - 20x &&+ 15) \qquad \\
+\text{KKT:} \quad L_x &= -{1 \over x^2} + \lambda + 6 \mu x &&= 0 \\
+L_y &= -{2 \over (5 - x)^2} + \lambda + 4 \mu (5 - x) &&= 0 \\
+0 &= \mu (5x^2 - 20x + 15) && \lambda, \mu \ge 0 \qquad 5x^2 - 20x + 15 \le 0
+\end{alignedat}
+$$
+
+---
+
+# Primer (1.1.)
+
+$g_2(x, 5 - x) = 0$: $x = 2 \pm 1$, $y = 3 \mp 1$
+
+<span class="columns col2 nobullet small">
+
+<span>
+
+* 
+  $$
+  \begin{alignedat}{3}
+  x = 1, y = 4: \\
+  L(1, 4, \lambda, \mu) &= 1 + {1 \over 2} = {3 \over 2} &&\quad \lambda, \mu \ge 0 \\
+  \text{KKT:} \quad L_x &= -1 + \lambda + 6 \mu &&= 0 \\
+  L_y &= -{1 \over 8} + \lambda + 16 \mu &&= 0 \\
+  \mu &= -{7 \over 80} < 0 &&\rightarrow\!\leftarrow
+  \end{alignedat}
+  $$
+
+</span>
+
+<span>
+
+* 
+  $$
+  \begin{alignedat}{3}
+  x = 3, y = 2: \\
+  L(3, 2, \lambda, \mu) &= {1 \over 3} + 1 = {4 \over 3} &&\quad \lambda, \mu \ge 0 \\
+  \text{KKT:} \quad L_x &= -{1 \over 9} + \lambda + 18 \mu &&= 0 \\
+  L_y &= -{1 \over 2} + \lambda + 8 \mu &&= 0 \\
+  \mu &= -{7 \over 180} < 0 &&\rightarrow\!\leftarrow
+  \end{alignedat}
+  $$
+
+</span>
+
+</span>
+
+---
+
+# Primer (1.2.)
+
+<span class="small">
+
+$g_2(x, 5 - x) < 0$, $\mu = 0$:
+
+<span class="columns col2 nobullet">
+
+<span>
+
+* 
+  $$
+  \begin{alignedat}{3}
+  L(x, 5 - x, \lambda, 0) &= {1 \over x} + {2 \over 5 - x} &&\ \lambda \ge 0 \\
+  \text{KKT:} \quad L_x &= -{1 \over x^2} + \lambda &&= 0 \\
+  L_y &= -{2 \over (5 - x)^2} + \lambda &&= 0 \\
+  &\quad\ 5x^2 - 20x + 15 &&< 0
+  \end{alignedat}
+  $$
+
+</span>
+
+<span>
+
+* 
+  $$
+  \begin{alignedat}{3}
+  \lambda &= {1 \over x^2} = {2 \over (5 - x)^2} \\
+  2x^2 &= (5 - x)^2 = x^2 -{} && 10x + 25 \\
+  0 &= x^2 + 10x - 25 \\
+  x &= -5 + 5\sqrt{2} \\
+  y &= 10 - 5\sqrt{2} \\
+  \lambda &= {1 \over 75 - 50 \sqrt{2}} &&> 0 \\
+  5x^2 - 20x + 15 &= 490 - 350 \sqrt{2} &&< 0
+  \end{alignedat}
+  $$
+
+</span>
+
+</span>
+
+* Po zgornji posledici je $(x^\ast, y^\ast) = (5(\sqrt{2} - 1), 5(2 - \sqrt{2}))$ globalni minimum.
+* Ostalih možnosti nam ni potrebno preverjati.
+
+</span>
+
+---
+
+# KKT za linearni program
+
+<span class="small">
+
+* **_Primer._** Uporabimo Karush-Kuhn-Tuckerjeve pogoje za linearni program $\Pi$.
+
+  $$
+  \begin{aligned}
+  \max \ c^\top x \\[1ex]
+  \text{p.p.} \quad A x &\le b \\
+  x &\ge 0
+  \end{aligned}
+  $$
+
+* Zgornji linearni program zapišimo kot problem vezanega ekstrema z neenačbami.
+
+  $$
+  \begin{aligned}
+  \min \ -c^\top x \\[1ex]
+  \text{p.p.} \quad x &\in \mathbb{R}^n \\
+  a_i^\top x - b_i &\le 0 & (1 &\le i \le m) \\
+  -x_j &\le 0 & (1 &\le j \le n)
+  \end{aligned}
+  $$
+
+* Ciljna funkcija in vezi so konveksne, torej imamo konveksni problem.
+
+</span>
+
+---
+
+# KKT za linearni program (2)
+
+* Zapišimo Lagrangeevo funkcijo in Karush-Kuhn-Tuckerjeve pogoje.
+
+  <span class="smaller">
+
+  $$
+  \begin{alignedat}{3}
+  L(x, \lambda, \mu) &= -c^\top x + \lambda^\top (A x -{} &{} b) &- \mu^\top x \\
+  &= -\sum_{j=1}^n c_j x_j \ + \ \sum_{i=1}^m &{} \lambda_i &\Big(\sum_{j=1}^n a_{ij} x_j &{} - \ b_i \Big) &- \sum_{j=1}^n \mu_j x_j \\
+  \text{KKT:} \quad L_j(x, \lambda, \mu) &= -c_j + \sum_{i=1}^n \lambda_i a_{ij} -{} &{} \mu_j &= 0 && (1 \le j \le n) \\
+  \nabla L(x, \lambda, \mu) &= -c + A^\top \lambda - \mu &&= 0 \\
+  \lambda^\top (A x - b) &= 0 & \lambda &\ge 0 & Ax - b &\le 0 \\
+  -\mu^\top x &= 0 & \mu &\ge 0 & -x &\le 0
+  \end{alignedat}
+  $$
+
+  </span>
+
+  <span class="small">
+
+  * Ker velja $\mu = A^\top \lambda - c \ge 0$, vektor $\lambda$ ustreza ravno spremenljivkam dualnega linearnega programa $\Pi'$.
+  * Iz izreka o dualnem dopolnjevanju sledi, da je $x^\ast$ optimalna rešitev linearnega programa $\Pi$ in $\lambda^\ast$ optimalna rešitev njegovega duala $\Pi'$ natanko tedaj, ko $(x^\ast, \lambda^\ast, \mu^\ast := A^\top \lambda^\ast - c)$ ustreza Karush-Kuhn-Tuckerjevim pogojem.
+
+  </span>
