@@ -1,6 +1,6 @@
 # Optimizacijske metode
 
-[![Launch in Binder](http://mybinder.org/badge.svg)](http://beta.mybinder.org/v2/gh/jaanos/optimizacijske-metode/master)
+[![Launch in Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/v2/gh/jaanos/optimizacijske-metode/master)
 
 Repozitorij z gradivi pri predmetu Optimizacijske metode (1. letnik finančne matematike)
 
@@ -12,14 +12,15 @@ Repozitorij z gradivi pri predmetu Optimizacijske metode (1. letnik finančne ma
 * [Pretoki in prerezi](https://jaanos.github.io/optimizacijske-metode/prosojnice/04-pretoki-in-prerezi.marp.html) ([izročki](prosojnice/04-pretoki-in-prerezi.md))
 * [Prirejanja in pokritja](https://jaanos.github.io/optimizacijske-metode/prosojnice/05-prirejanja-in-pokritja.marp.html) ([izročki](prosojnice/05-prirejanja-in-pokritja.md))
 * [Konveksna optimizacija](https://jaanos.github.io/optimizacijske-metode/prosojnice/06-konveksna-optimizacija.marp.html) ([izročki](prosojnice/06-konveksna-optimizacija.md))
+* [Lokalna optimizacija](https://jaanos.github.io/optimizacijske-metode/prosojnice/07-lokalna-optimizacija.marp.html) ([izročki](prosojnice/07-lokalna-optimizacija.md))
 
 ## Delovni zvezki in programi
 
-* [![Launch in Binder](http://mybinder.org/badge.svg)](http://beta.mybinder.org/v2/gh/jaanos/optimizacijske-metode/master?labpath=predavanja-Dualnost.ipynb) [`predavanja-Dualnost.ipynb`](predavanja-Dualnost.ipynb): Predavanja - Dualnost v linearnem programiranju
-* [![Launch in Binder](http://mybinder.org/badge.svg)](http://beta.mybinder.org/v2/gh/jaanos/optimizacijske-metode/master?labpath=predavanja-FisherjevModelTrga.ipynb) [`predavanja-FisherjevModelTrga.ipynb`](predavanja-FisherjevModelTrga.ipynb): Predavanja - Fisherjev model trga
-* [![Launch in Binder](http://mybinder.org/badge.svg)](http://beta.mybinder.org/v2/gh/jaanos/optimizacijske-metode/original?labpath=vaje2-LinearniProgrami.ipynb) [`vaje2-LinearniProgrami.ipynb`](vaje2-LinearniProgrami.ipynb): Vaje 2 - Linearni programi
-* [![Launch in Binder](http://mybinder.org/badge.svg)](http://beta.mybinder.org/v2/gh/jaanos/optimizacijske-metode/original?labpath=vaje4-DvofaznaCelostevilsko.ipynb) [`vaje4-DvofaznaCelostevilsko.ipynb`](vaje4-DvofaznaCelostevilsko.ipynb): Vaje 4 - Dvofazna metoda in celoštevilsko linearno programiranje
-* [![Launch in Binder](http://mybinder.org/badge.svg)](http://beta.mybinder.org/v2/gh/jaanos/optimizacijske-metode/original?labpath=vaje10-PrirejanjaPretoki.ipynb) [`vaje10-PrirejanjaPretoki.ipynb`](vaje10-PrirejanjaPretoki.ipynb): Vaje 10 - Prirejanja v dvodelnih grafih, pretoki in prerezi
+* [![Launch in Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/jaanos/optimizacijske-metode/master?labpath=predavanja-Dualnost.ipynb) [`predavanja-Dualnost.ipynb`](predavanja-Dualnost.ipynb): Predavanja - Dualnost v linearnem programiranju
+* [![Launch in Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/jaanos/optimizacijske-metode/master?labpath=predavanja-FisherjevModelTrga.ipynb) [`predavanja-FisherjevModelTrga.ipynb`](predavanja-FisherjevModelTrga.ipynb): Predavanja - Fisherjev model trga
+* [![Launch in Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/jaanos/optimizacijske-metode/original?labpath=vaje2-LinearniProgrami.ipynb) [`vaje2-LinearniProgrami.ipynb`](vaje2-LinearniProgrami.ipynb): Vaje 2 - Linearni programi
+* [![Launch in Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/jaanos/optimizacijske-metode/original?labpath=vaje4-DvofaznaCelostevilsko.ipynb) [`vaje4-DvofaznaCelostevilsko.ipynb`](vaje4-DvofaznaCelostevilsko.ipynb): Vaje 4 - Dvofazna metoda in celoštevilsko linearno programiranje
+* [![Launch in Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/jaanos/optimizacijske-metode/original?labpath=vaje10-PrirejanjaPretoki.ipynb) [`vaje10-PrirejanjaPretoki.ipynb`](vaje10-PrirejanjaPretoki.ipynb): Vaje 10 - Prirejanja v dvodelnih grafih, pretoki in prerezi
 * [`vaje14-LokalnaOptimizacijaTSP.py`](vaje14-LokalnaOptimizacijaTSP.py): Vaje 14 - Lokalna optimizacija za problem trgovskega potnika
 
 ## [Zapiski z vaj](zapiski/)

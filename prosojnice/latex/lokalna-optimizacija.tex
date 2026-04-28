@@ -1,0 +1,112 @@
+\documentclass[14pt]{extarticle}
+\usepackage[a4paper, total={18cm, 26cm}]{geometry}
+\usepackage[utf8]{inputenc}
+
+\usepackage[oznake]{omrezja}
+
+\tikzstyle{kandidat}=[thick, red]
+\tikzstyle{velikost}=[scale=1]
+
+\begin{document}
+
+\NewEnviron{neusmerjen@ppt}{
+    \tikzstyle{vozlisce neusmerjenega grafa}=[vozlisce razvoza]
+
+    \vozlisce{u}[left] {xyz polar cs:angle=180,radius=4}
+    \vozlisce{x}[above]{xyz polar cs:angle=108,radius=4}
+    \vozlisce{y}[below]{xyz polar cs:angle=252,radius=4}
+    \vozlisce{v}[above]{xyz polar cs:angle= 36,radius=4}
+    \vozlisce{w}[below]{xyz polar cs:angle=324,radius=4}
+
+    \povezava{u}{v}{1}[sloped]{above}
+    \povezava{u}{w}{1}[sloped]{below}
+    \povezava{u}{x}{5}[sloped]{above}
+    \povezava{u}{y}{5}[sloped]{below}
+    \povezava{v}{w}{5}{right}
+    \povezava{v}{x}{5}[sloped]{above}
+    \povezava{v}{y}{10}[sloped]{below}
+    \povezava{w}{x}{10}[sloped]{above}
+    \povezava{w}{y}{5}[sloped]{below}
+    \povezava{x}{y}{10}{left}
+}
+
+\begin{neusmerjen}{ppt}
+    \setboolean{@oznake}{false}
+\end{neusmerjen}
+
+\NewEnviron{neusmerjen@cikel1}{
+    \vozlisce{a}{xyz polar cs:angle=  0,radius=2}
+    \vozlisce{b}{xyz polar cs:angle= 60,radius=2}
+    \vozlisce{c}{xyz polar cs:angle=120,radius=2}
+    \vozlisce{d}{xyz polar cs:angle=180,radius=2}
+    \vozlisce{e}{xyz polar cs:angle=240,radius=2}
+    \vozlisce{f}{xyz polar cs:angle=300,radius=2}
+
+    \povezava{a}{b}{}[sloped]{above}
+    \povezava{b}{c}{}{above}
+    \povezava{c}{d}{}[sloped]{above}
+    \povezava{d}{e}{}[sloped]{below}
+    \povezava{e}{f}{}{below}
+    \povezava{f}{a}{}[sloped]{below}
+}
+
+\begin{neusmerjen}{cikel1}
+    \setboolean{@oznake}{false}
+
+    \kandidat{b}{c}
+    \kandidat{e}{f}
+\end{neusmerjen}
+
+\NewEnviron{neusmerjen@cikel2}{
+    \vozlisce{a}{xyz polar cs:angle=  0,radius=2}
+    \vozlisce{b}{xyz polar cs:angle= 60,radius=2}
+    \vozlisce{c}{xyz polar cs:angle=120,radius=2}
+    \vozlisce{d}{xyz polar cs:angle=180,radius=2}
+    \vozlisce{e}{xyz polar cs:angle=240,radius=2}
+    \vozlisce{f}{xyz polar cs:angle=300,radius=2}
+
+    \povezava{a}{b}{}[sloped]{above}
+    \povezava{b}{e}{}[sloped]{above}
+    \povezava{c}{d}{}[sloped]{above}
+    \povezava{d}{e}{}[sloped]{below}
+    \povezava{c}{f}{}[sloped]{below}
+    \povezava{f}{a}{}[sloped]{below}
+}
+
+\begin{neusmerjen}{cikel2}
+    \setboolean{@oznake}{false}
+\end{neusmerjen}
+
+\begin{neusmerjen}{ppt}
+    \kandidat{u}{x}
+    \kandidat{u}{y}
+    \kandidat{v}{x}
+    \kandidat{v}{w}
+    \kandidat{w}{y}
+\end{neusmerjen}
+
+\begin{neusmerjen}{ppt}
+    \kandidat{u}{x}
+    \kandidat{u}{y}
+    \kandidat{w}{x}
+    \kandidat{v}{w}
+    \kandidat{v}{y}
+\end{neusmerjen}
+
+\begin{neusmerjen}{ppt}
+    \kandidat{u}{v}
+    \kandidat{u}{y}
+    \kandidat{v}{x}
+    \kandidat{w}{x}
+    \kandidat{w}{y}
+\end{neusmerjen}
+
+\begin{neusmerjen}{ppt}
+    \kandidat{u}{v}
+    \kandidat{x}{y}
+    \kandidat{v}{x}
+    \kandidat{u}{w}
+    \kandidat{w}{y}
+\end{neusmerjen}
+
+\end{document}

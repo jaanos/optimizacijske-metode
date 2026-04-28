@@ -712,13 +712,13 @@ Konveksne funkcije so "obrnjene navzgor", npr $f(x) = x^2$.
 * Funkcija $f : K \to \mathbb{R}$ je _strogo konveksna_, če velja
 
   $$
-  \forall x, y \in K \ \forall \lambda \in (0, 1): f((1 - \lambda) x + \lambda y) < (1 - \lambda) f(x) + \lambda f(y)
+  \forall x, y \in K \ \forall \lambda \in (0, 1): (x \ne y \Rightarrow f((1 - \lambda) x + \lambda y) < (1 - \lambda) f(x) + \lambda f(y))
   $$
 
 * Funkcija $f : K \to \mathbb{R}$ je _strogo konkavna_, če velja
 
   $$
-  \forall x, y \in K \ \forall \lambda \in (0, 1): f((1 - \lambda) x + \lambda y) > (1 - \lambda) f(x) + \lambda f(y)
+  \forall x, y \in K \ \forall \lambda \in (0, 1): (x \ne y \Rightarrow f((1 - \lambda) x + \lambda y) > (1 - \lambda) f(x) + \lambda f(y))
   $$
 
 </span>
@@ -1291,8 +1291,8 @@ $$
 
   $$
   \begin{aligned}
-  \forall x, y \in K \ \forall t \in [0, 1]: h''_{x,y}(t) \ge 0 &\iff
-  \forall x, y \in K \ \forall t \in [0, 1]: H_f((1 - t) x + ty) \ge 0 \\
+  \forall x, y \in K \ \forall t \in (-\epsilon, 1+\epsilon): h''_{x,y}(t) \ge 0 &\iff
+  \forall x, y \in K \ \forall t \in (-\epsilon, 1+\epsilon): H_f((1 - t) x + ty) \ge 0 \\
   &\iff \forall x \in K: H_f(x) \ge 0
   \end{aligned}
   $$
@@ -1990,3 +1990,490 @@ $g_2(x, 5 - x) < 0$, $\mu = 0$:
   * Iz izreka o dualnem dopolnjevanju sledi, da je $x^\ast$ optimalna rešitev linearnega programa $\Pi$ in $\lambda^\ast$ optimalna rešitev njegovega duala $\Pi'$ natanko tedaj, ko $(x^\ast, \lambda^\ast, \mu^\ast := A^\top \lambda^\ast - c)$ ustreza Karush-Kuhn-Tuckerjevim pogojem.
 
   </span>
+
+---
+
+# Fisherjev model trga
+
+* Imamo $m$ kupcev in $n$ dobrin.
+* Naj bo:
+  * $a_i > 0$ kapital, ki ga ima na voljo $i$-ti kupec,
+  * $b_j > 0$ količina $j$-te dobrine na trgu, ter
+  * $u_{ij} \ge 0$ zadovoljstvo $i$-tega kupca z enoto $j$-te dobrine ($1 \le i \le m$, $1 \le j \le n$).
+* Imamo torej $a \in \mathbb{R}^m$, $b \in \mathbb{R}^m$ in $U = (u_{ij})_{i,j=1}^{m,n} \in \mathbb{R}^{m \times n}$.
+* Predpostavimo še, da:
+  * si vsak kupec želi vsaj ene dobrine (torej $\forall i \ \exists j: \ u_{ij} > 0$),
+  * si vsake dobrine želita vsaj dva kupca (torej $\forall j \ \exists i_1, i_2: \ (i_1 \ne i_2 \land u_{i_1 j} > 0 \land u_{i_2 j} > 0)$).
+
+---
+
+# Pogoji
+
+* Iščemo:
+  * cene $p_j \ge 0$ $j$-te dobrine,
+  * količine $x_{ij} \ge 0$ $j$-te dobrine, ki jo kupi $i$-ti kupec ($1 \le i \le m$, $1 \le j \le n$)
+* Iščemo torej $p \in \mathbb{R}^n$ in $X = (x_{ij})_{i,j=1}^{m,n} \in \mathbb{R}^{m \times n}$, da velja:
+  * $\forall i: \ \sum_{j=1}^n x_{ij} p_j = a_i$ oziroma $Xp = a$ (vsak kupec porabi ves svoj kapital)
+  * $\forall j: \ \sum_{i=1}^n x_{ij} = b_j$ oziroma $X^\top \mathbf{1} = b$ (vsaka dobrina se proda v celoti)
+  * pri cenah $p$ je zadovoljstvo $i$-tega kupca $u_i(X) = \sum_{j=1}^n u_{ij} x_{ij}$ maksimalno
+* **_Definicija._** Cene $p$ so _ravnovesne_, če obstaja $X \in \mathbb{R}^{m \times n}$, da so izpolnjeni zgornji pogoji.
+
+---
+
+# Primer
+
+<span class="small">
+
+$$
+a = \begin{bmatrix} 20 \\ 60 \\ 100 \end{bmatrix} \qquad
+b = \begin{bmatrix} 2 \\ 4 \end{bmatrix} \qquad
+U = \begin{bmatrix} 8 & 10 \\ 5 & 30 \\ 5 & 20 \end{bmatrix}
+$$
+
+* Ali so cene $p = \begin{bmatrix} 18 \\ 36 \end{bmatrix}$ ravnovesne?
+
+  $$
+  \begin{aligned}
+  18 x_{11} + 36 x_{12} &= 20 & x_{12} &= {5 \over 9} - {1 \over 2} x_{11} \\
+  18 x_{21} + 36 x_{22} &= 60 & x_{22} &= {5 \over 3} - {1 \over 2} x_{21} \\
+  18 x_{31} + 36 x_{32} &= 100 & x_{32} &= {25 \over 9} - {1 \over 2} x_{31} \\
+  x_{11} + x_{21} + x_{31} &= 2 & x_{31} &= 2 - x_{11} - x_{21} \\
+  x_{12} + x_{22} + x_{32} &= 4 & {45 \over 9} - 1 &= 4
+  \end{aligned}
+  $$
+
+</span>
+
+---
+
+# Primer (2)
+
+<span class="small">
+
+$$
+\begin{aligned}
+0 \le x_{11} &\le {10 \over 9} & 0 &\le x_{21} \le 2 & 0 &\le x_{31} \le 2 \\
+u_1(X) &= 8 x_{11} + 10 x_{12} & u_2(X) &= 5 x_{21} + 30 x_{22} & u_3(X) &= 5 x_{31} + 20 x_{32} \\
+&= 3x_{11} + {50 \over 9} &&= -10 x_{21} + 50 &&= -5 x_{31} + {500 \over 9} \\
+x_{11} &= {10 \over 9} & x_{21} &= 0 & x_{31} &= 0 \ne 2 - x_{11} - x_{12} \\
+u_1(X) &= {80 \over 9} & u_2(X) &= 50 && \rightarrow\!\leftarrow
+\end{aligned}
+$$
+
+* Pogoji niso kompatibilni, zato cene niso ravnovesne.
+
+* **_Vaja._** Dokaži, da so cene $p = \begin{bmatrix} 10 \\ 40 \end{bmatrix}$ ravnovesne.
+
+</span>
+
+---
+
+# Optimalni sveženj
+
+<span class="small">
+
+* **_Trditev._** Če ravnovesne cene $p$ obstajajo, potem so pozitivne in $b^\top p = \mathbf{1}^\top a$ (tj., vse dobrine se prodajo za ves kapital na voljo).
+
+* _Dokaz._ Denimo, da za nek $j$ velja $p_j = 0$.
+  * Ker obstajata taka različna $i_1, i_2$, da velja $u_{i_1 j}, u_{i_2 j} > 0$, sta kupca $i_1$ in $i_2$ najbolj zadovoljna, če dobita vso dobrino $j$, protislovje.
+  * Nadalje velja $b^\top p = \mathbf{1}^\top Xp = \mathbf{1}^\top a$.
+
+* **_Definicija._** _Zadovoljstvo $i$-tega kupca z $j$-to dobrino na denarno enoto_ je $z_{ij} := {u_{ij} \over p_j}$ ($1 \le i \le m$, $1 \le j \le n$).
+  * Naj bo $z_i := \max\lbrace z_{ij} \mid 1 \le j \le n \rbrace$.
+  * _Optimalni sveženj $i$-tega kupca_ je množica $S_i := \lbrace j \in \lbrace 1, 2, \dots, n \rbrace \mid z_{ij} = z_i \rbrace$.
+
+</span>
+
+---
+
+# Optimalni sveženj in ravnovesnost
+
+<span class="small">
+
+* **_Trditev._** Naj bosta $p > 0$ in $X \ge 0$takšna, da velja $Xp = a$ in $X^\top \mathbf{1} = b$. Če vsak kupec kupuje samo iz svojega optimalnega svežnja (tj., $\forall i, j: \ (x_{ij} > 0 \Rightarrow j \in S_i)$), potem so cene $p$ ravnovesne.
+
+* **_Primer._**
+
+  <span class="smaller">
+
+  $$
+  a = \begin{bmatrix} 20 \\ 60 \\ 100 \end{bmatrix} \qquad
+  b = \begin{bmatrix} 2 \\ 4 \end{bmatrix} \qquad
+  U = \begin{bmatrix} 8 & 10 \\ 5 & 30 \\ 5 & 20 \end{bmatrix}
+  $$
+
+  </span>
+
+  * Pokažimo, da so cene $p = \begin{bmatrix} 10 \\ 40 \end{bmatrix}$ ravnovesne.
+
+    <span class="columns col2b nobullet">
+
+    <span>
+
+    * 
+      $$
+      \begin{aligned}
+      z_{11} &= {8 \over 10} & z_{12} &= {10 \over 40} & z_1 &= {4 \over 5} & S_1 &= lbrace 1 \rbrace \\
+      z_{21} &= {5 \over 10} & z_{22} &= {30 \over 40} & z_2 &= {3 \over 4} & S_2 &= \lbrace 2 \rbrace \\
+      z_{31} &= {5 \over 10} & z_{32} &= {20 \over 40} & z_3 &= {1 \over 2} & S_3 &= \lbrace 1, 2 \rbrace
+      \end{aligned}
+      $$
+
+    </span>
+
+    <span class="smaller">
+
+    * 
+      $$
+      \begin{aligned}
+      x_{11} &= {20 \over 10} = 2 & x_{12} &= 0 \\
+      x_{21} &= 0 & x_{22} &= {60 \over 40} = {3 \over 2} \\
+      x_{31} &= 0 & x_{32} &= {100 \over 40} = {5 \over 2}
+      \end{aligned}
+      $$
+
+    </span>
+
+---
+
+# Dokaz
+
+<span class="small">
+
+* Če vsak kupec kupuje samo iz svojega optimalnega svežnja, potem velja $\forall i, j: \left(x_{ij} > 0 \Rightarrow z_i = z_{ij} = {u_{ij} \over p_j}\right)$. Za vsak $i$ torej velja
+
+  <span class="smaller">
+
+  $$
+  u_i(X) = \sum_{j=1}^n u_{ij} x_{ij} = \sum_{j=1}^n z_i p_j x_{ij} = z_i \sum_{j=1}^n p_j x_{ij} = z_i a_i.
+  $$
+
+  </span>
+
+  * Naj bo $X' = (x'_{ij})_{i,j=1}^{m,n}$ neka druga dopustna izbira kupljenih količin. Ker velja $\forall i, j: z_{ij} = {u_{ij} \over p_j} \le z_i$, za vsak $i$ sledi
+
+    <span class="smaller">
+
+    $$
+    u_i(X') = \sum_{j=1}^n u_{ij} x'_{ij} \le \sum_{j=1}^n z_i p_j x'_{ij} = z_i a_i = u_i(X).
+    $$
+
+    </span>
+
+  * Vrednosti $u_i(X)$ so torej optimalne za vsak $i$.
+
+* Vprašanji:
+  * Ali ravnovesne cene obstajajo? **JA.**
+  * Kako jih poiščemo? S **Karush-Kuhn-Tuckerjevimi pogoji**.
+
+</span>
+
+---
+
+# Eisenberg-Galeov konveksni program (EGP)
+
+<span class="small">
+
+* Brez škode za splošnost lahko predpostavimo, da za vsak $j$ velja $b_j = 1$ (oziroma $b = \mathbf{1}$) - tj., celotna količina vsake dobrine je $1$ enota.
+  * Če temu ni tako, lahko $j$-ti stolpec matrike $U$ pomnožimo s staro vrednostjo $b_j$ (in podobno za dobljeno rešitev $X$).
+
+* Pri Fisherjevem modelu trga želimo maksimizirati zadovoljstvo **vseh** kupcev.
+
+* Kako iz $n$ funkcij dobimo eno? Kako iz $n$ števil dobimo eno? Nekaj možnosti:
+  * ${x_1 + x_2 + \dots + x_n \over n}$ - aritmetična sredina
+  * ${a_1 x_1 + a_2 x_2 + \dots + a_n x_n \over a_1 + a_2 + \dots + a_n}$ - utežena aritmetična sredina ($\forall i: a_i > 0$)
+  * $\sqrt[n]{x_1 x_2 \cdots x_n}$ - geometrijska sredina ($\forall i: x_i > 0$)
+  * $\sqrt[a_1 + a_2 + \dots + a_n]{x_1^{a_1} x_2^{a_2} \cdots x_n^{a_n}} \qquad\quad$ - utežena geometrijska sredina
+
+</span>
+
+---
+
+# Ciljna funkcija
+
+* Izkaže se, da je "prava" funkcija
+
+  $$
+  \left(\prod_{i=1}^m u_i(X)^{a_i}\right)^{1 \over \sum_{i=1}^m a_i}.
+  $$
+
+* Iskali bomo torej maksimum te funkcije.
+* Za lažje delo bomo funkcijo logaritmirali; da jo obravnavamo kot ciljno funkcijo konveksnega problema, pa tudi negirali in iskali njen minimum.
+
+---
+
+# Konveksnost ciljne funkcije
+
+* **_Trditev._** Funkcija
+
+  $$
+  f(X) = -\sum_{i=1}^m a_i \log(u_i(X))
+  $$
+
+  je konveksna.
+
+* _Dokaz._ Pišemo lahko $f = \sum_{i=1}^m a_i \cdot ((-\log) \circ u_i)$.
+  * Funkcija $-\log$ je konveksna (saj $(-\log)''(x) = {1 \over x^2} > 0$), za vsak $i$ pa je funkcija $u_i$ afina in $a_i > 0$.
+  * Potem je za vsak $i$ funkcija $a_i \cdot ((-\log) \circ u_i)$ konveksna.
+  * Funkcija $f$ je torej vsota konveksnih funkcij in je tako konveksna.
+
+---
+
+# Konveksni program
+
+<span class="small">
+
+* Zapišimo torej **Eisenberg-Galeov konveksni program (EGP)**.
+
+  $$
+  \begin{alignedat}{2}
+  \min \ -\sum_{i=1}^m &\ a_i \log(u_i(X)) \\[1ex]
+  \text{p.p.} \quad X \in \Omega &= \lbrace X \in \mathbb{R}^{m \times n} &&\mid \forall i \in \lbrace 1, 2, \dots, m \rbrace: u_i(X) > 0 \rbrace \\
+  \sum_{i=1}^m x_{ij} &\le 1 && (1 \le j \le n) \\
+  x_{ij} &\ge 0 && (1 \le i \le m, 1 \le j \le n)
+  \end{alignedat}
+  $$
+
+* Opazimo:
+  - za vsak $i$ je $u_i$ linearna funkcija (torej afina in zvezna), tako da je $\Omega$ konveksna odprta množica
+  - ciljna funkcija je konveksna in odvedljiva
+  - vse vezi so afine (torej konveksne in odvedljive)
+
+</span>
+
+---
+
+# Optimalnost EGP
+
+* Karush-Kuhn-Tuckerjevi pogoji so torej **potrebni** in **zadostni** za optimalnost rešitve.
+
+* Spomnimo se: množica $A \subseteq \mathbb{R}^n$ je kompaktna, ko je zaprta in omejena.
+  - Zvezna funkcija na kompaktni množici doseže minimum in maksimum.
+
+* **_Izrek._** Eisenberg-Galeov konveksni program je dopusten in optimalen.
+
+* _Dokaz._ Pokažimo najprej, da je $\overline{x}_{ij} = {1 \over m}$ ($1 \le i \le m$, $1 \le j \le n$) dopustna rešitev.
+  * Res, velja $u_i(\overline{X}) > 0$ ($1 \le i \le m$), $\sum_{i=1}^m \overline{x}_{ij} = 1$ ($1 \le j \le n$) in $\overline{x}_{ij} \ge 0$ ($1 \le i \le m$, $1 \le j \le n$).
+
+---
+
+# Dokaz
+
+<span class="small">
+
+* Naj bo
+
+  $$
+  D = \left\lbrace X \in \Omega \mid \forall j \in \lbrace1, 2, \dots, n \rbrace: \left(\sum_{i=1}^m x_{ij} \le 1 \land \forall i \in \lbrace 1, 2, \dots, m \rbrace: x_{ij} \ge 0\right)\right\rbrace
+  $$
+
+  množica dopustnih rešitev.
+
+* Za $\epsilon > 0$ definirajmo še množico
+  
+  $$
+  D_\epsilon = \lbrace X \in D \mid \forall i \in \lbrace 1, 2, \dots, m \rbrace: u_i(X) \ge \epsilon \rbrace.
+  $$
+
+* Množica $D_\epsilon$ je omejena (saj $\forall i, j: 0 \le x_{ij} \le 1$) in zaprta, torej je kompaktna.
+* Funkcija $f$ je zvezna, torej doseže minimum na $D_\epsilon$.
+* Vrednost $\epsilon$ bomo izbrali tako, da bo $\overline{X} \in D_\epsilon$ in $\forall X \in D \setminus D_\epsilon: f(X) > f(\overline{X})$.
+  - To bo pomenilo, da funkcija $f$ doseže minimum na $D$.
+
+</span>
+
+---
+
+# Dokaz (2)
+
+<span class="small">
+
+* Da bo $\overline{X} \in D_\epsilon$, mora veljati
+
+  $$
+  \forall i \in \lbrace 1, 2, \dots, m \rbrace: \ \epsilon \le u_i(\overline{X}) = {1 \over m} \sum_{j=1}^n u_{ij}.
+  $$
+
+* Poleg tega bomo zahtevali še
+
+  $$
+  \forall h \in \lbrace 1, 2, \dots, m \rbrace: \ \epsilon \le e^{-{1 \over a_h}\left(f(\overline{X}) + \sum_{\substack{i = 1 \\ i \ne h}}^m a_i \log \left(\sum_{j=1}^n u_{ij}\right)\right)}.
+  $$
+
+* Naj bo $X \in D \setminus D_\epsilon$. Potem za nek $h_0$ velja $u_{h_0}(X) < \epsilon$. Z logaritmiranjem tako dobimo
+
+  <span class="smaller">
+
+  $$
+  \begin{aligned}
+  \log(u_{h_0}(X)) &< -{1 \over a_{h_0}}\left(f(\overline{X}) + \sum_{\substack{i = 1 \\ i \ne h_0}}^m a_i \log \left(\sum_{j=1}^n u_{ij}\right)\right) \\
+  -a_{h_0} \log(u_{h_0}(X)) &> f(\overline{X}) + \sum_{\substack{i = 1 \\ i \ne h_0}}^m a_i \log\left(\sum_{j=1}^n u_{ij}\right)
+  \end{aligned}
+  $$
+
+  </span>
+
+</span>
+
+---
+
+# Dokaz (3)
+
+* Ker za vsak $i$ velja $u_i(X) = \sum_{j=1}^n u_{ij} x_{ij} \le \sum_{j=1} u_{ij}$, velja tudi
+
+  $$
+  -a_i \log(u_i(X)) \ge -a_i \log \left(\sum_{j=1}^n u_{ij}\right).
+  $$
+
+* Če k prejšnji neenakosti prištejemo zgornjo za vsak $i \ne h_0$, dobimo
+
+  $$
+  f(X) = -\sum_{i=1}^m a_i \log(u_i(X)) > f(\overline{X})
+  $$
+
+* Ker so vse zgornje meje za $\epsilon$ pozitivne, lahko torej izberemo tak $\epsilon$, da veljajo zgornji pogoji.
+* Funkcija $f$ tako doseže minimum na $D$, zato je konveksni problem optimalen.
+
+---
+
+# Pogoji KKT za EGP
+
+Zapišimo Karush-Kuhn-Tuckerjeve pogoje za Eisenberg-Galeov konveksni program:
+
+$$
+\begin{alignedat}{3}
+L(X, p, \Lambda) &= \quad -\sum_{i=1}^m a_i & \log(u_i(X)) &+ \sum_{j=1}^n p_j \Big(\sum_{i=1}^m & x_{ij} &- 1\Big) - {} && \sum_{i=1}^m \sum_{j=1}^n \lambda_{ij} x_{ij} \\
+L_{ij} := {\partial L \over \partial x_{ij}}(X, p, \Lambda) &= -a_i {u_{ij} \over u_i(X)} &{} + p_j - \lambda_{ij} &= 0 &&&& (1 \le i \le m, 1 \le j \le n) \\
+p_j \left(\sum_{i=1}^m x_{ij} - 1\right) &= 0 & \sum_{i=1}^m x_{ij} &\le 1 & p_j &\ge 0 && (1 \le j \le n) \\
+\lambda_{ij} x_{ij} &= 0 & x_{ij} &\ge 0 & \lambda_{ij} &\ge 0 && (1 \le i \le m, 1 \le j \le n)
+\end{alignedat}
+$$
+
+---
+
+# Ekvivalentnost FMT in EGP
+
+**_Izrek._** Naj bosta $X \in \mathbb{R}^{m \times n}$ in $p \in \mathbb{R} ^m$. Sledeči trditvi sta ekvivalentni.
+
+1. $X$ je optimalna razdelitev za Fisherjev model trga s cenami $p$, kjer vsak kupec kupuje le dobrine iz svojega optimalnega svežnja.
+2. $X \in \Omega$ in $(X, p, \Lambda)$ zadošča Karush-Kuhn-Tuckerjevim pogojem, kjer $\Lambda = (\lambda_{ij})_{i,j=1}^{m,n} \in \mathbb{R}^{m \times n}$ ustreza
+
+   $$
+   \lambda_{ij} = \begin{cases}
+   0 & \text{če $x_{ij} > 0$, in} \\
+   p_j - a_i {u_{ij} \over u_i(X)} & \text{če $x_{ij} = 0$}
+   \end{cases}
+   $$
+
+   (tj., $p$ so Lagrangeevi množitelji za vezi $\sum_{i=1}^m x_{ij} \le 1$ ($1 \le j \le n$)).
+
+---
+
+# Dokaz (1. $\Rightarrow$ 2.)
+
+* Pogoji $\sum_{i=1}^m x_{ij} = 1$, $p_j \left(\sum_{i=1}^m x_{ij} - 1\right) = 0$, $p_j \ge 0$ ($1 \le j \le n$) ter $\lambda_{ij} x_{ij} = 0$, $x_{ij} \ge 0$ ($1 \le i \le m$, $1 \le j \le n$) so očitno izpolnjeni.
+* Za vsaka $i, j$ ločimo dva primera, pri čemer bomo upoštevali $u_i(X) = z_i a_i$.
+  * Če je $x_{ij} > 0$, potem je $\lambda_{ij} = 0$. Ker je $j \in S_i$, velja $u_{ij} = p_j z_i$, torej
+
+    $$
+    L_{ij} = -a_i {u_{ij} \over u_i(X)} + p_j - \lambda_{ij} = -a_i {p_j z_i \over z_i a_i} + p_j = 0.
+    $$
+
+  * Če je $x_{ij} = 0$, potem velja $L_{ij} = -a_i {u_{ij} \over u_i(X)} + p_j - \lambda_{ij} = 0$.
+    - Ker velja $u_{ij} \le p_j z_i$, velja tudi $\lambda_{ij} \ge p_j - a_i {p_j z_i \over z_i a_i} = 0$.
+
+* Za $(X, p, \Lambda)$ torej veljajo Karush-Kuhn-Tuckerjevi pogoji.
+
+---
+
+# Dokaz (2. $\Rightarrow$ 1.)
+
+<span class="small">
+
+* Ker za vsako dobrino obstaja kupec, ki si je želi, za vsak $j$ obstaja $i$, da velja $p_j \ge a_i {u_{ij} \over u_i(X)} > 0$ in posledično $\sum_{i=1}^m x_{ij} = 1$ - tj., vsaka dobrina se proda v celoti.
+* Sledi tudi $z_{ij} = {u_{ij} \over p_j} \le {u_i(X) \over a_i}$.
+* Če velja $x_{ij} > 0$, potem velja $\lambda_{ij} = 0$ in velja enakost v prejšnji neenakosti - tj., vsak kupec kupuje le dobrine iz svojega optimalnega svežnja.
+* Nazadnje za vsak $i$ izpeljemo še
+
+  $$
+  \begin{aligned}
+  \sum_{j=1}^n a_i u_{ij} x_{ij} &= \sum_{j=1}^n p_j u_i(X) x_{ij} \\
+  a_i u_i(X) &= u_i(X) \sum_{j=1}^n p_j x_{ij}
+  \end{aligned}
+  $$
+
+* Velja torej $a_i = \sum_{j=1}^n p_j x_{ij}$ - tj., vsak kupec je porabil ves svoj kapital.
+
+</span>
+
+---
+
+# Poenostavljeni pogoji KKT za EGP
+
+Zapišimo še poenostavljene Karush-Kuhn-Tuckerjeve pogoje za Eisenberg-Galeov konveksni program:
+
+$$
+\begin{aligned}
+a_i {u_{ij} \over u_i(X)} + \lambda_{ij} &= p_j & x_{ij} &\ge 0 && (1 \le i \le m, 1 \le j \le n) \\
+\sum_{i=1}^m x_{ij} &= 1 & p_j &> 0 && (1 \le j \le n) \\
+\lambda_{ij} x_{ij} &= 0 & \lambda_{ij} &\ge 0 && (1 \le i \le m, 1 \le j \le n)
+\end{aligned}
+$$
+
+---
+
+# Primer
+
+$$
+a = \begin{bmatrix} 2 \\ 1 \end{bmatrix} \qquad
+U = \begin{bmatrix} 2 & 2 \\ 1 & 2 \end{bmatrix}
+$$
+
+* S Karush-Kuhn-Tuckerjevimi pogoji dobimo sledečo rešitev:
+
+  $$
+  p = \begin{bmatrix} {3 \over 2} \\ {3 \over 2} \end{bmatrix} \qquad
+  X = \begin{bmatrix} 1 & {1 \over 3} \\ 0 & {2 \over 3} \end{bmatrix}
+  $$
+
+* Trdimo, da so tudi $p' = \begin{bmatrix} 1 \\ 2 \end{bmatrix}$ ravnovesne cene.
+
+---
+
+# Primer (2)
+
+<span class="small">
+
+$$
+\begin{alignedat}{4}
+x'_{11} + 2 x'_{12} &= 2 &&& x'_{12} &= 1 \,-\, {1 \over 2} & x'_{11} \\
+x'_{21} + 2 x'_{22} &= 1 &&& x'_{22} &= {1 \over 2} - {1 \over 2} & x'_{21} &= {1 \over 2} x'_{11} \\
+x'_{11} + x'_{21} &= 1 &&& x'_{21} &= 1 - x'_{11} \\
+x'_{12} + x'_{22} &= 1 &&& 0 &\le x'_{11} \le 1 \\
+u_1(X') &= 2 x'_{11} &{} + 2 x'_{12} &= x'_{11} + 2 &\qquad u_2(X') &= x'_{21} + 2 & x'_{22} &= 1 \\
+x'_{11} &= 1 & x'_{12} &= {1 \over 2} & x'_{21} &= 0 & x'_{22} &= {1 \over 2} \\
+u_1(X') &= 3 &&& u_2(X') &= 1 \\
+z'_1 &= 2 & S'_1 &= \lbrace 1 \rbrace & z'_2 &= 1 & S'_2 &= \lbrace 1, 2 \rbrace
+\end{alignedat}
+$$
+
+* Ravnovesne cene torej niso enolične!
+* V tem primeru prvi kupec kupuje tudi izven svojega optimalnega svežnja.
+
+</span>
+
+---
+
+# Primer (3)
+
+Izkaže se, da so pri teh podatkih vse možne ravnovesne cene
+
+$$
+\begin{gathered}
+\tilde{p} = \begin{bmatrix} \lambda \\ 3 - \lambda \end{bmatrix} \qquad
+\tilde{X} = \begin{bmatrix} 1 & {2 - \lambda \over 3 - \lambda} \\ 0 & {1 \over 3 - \lambda} \end{bmatrix} \qquad
+\left(\lambda \in \left[1, {3 \over 2}\right]\right) \\
+u_1(\tilde{X}) = 4 - {2 \over 3 - \lambda} \qquad
+u_2(\tilde{X}) = {2 \over 3 - \lambda}
+\end{gathered}
+$$

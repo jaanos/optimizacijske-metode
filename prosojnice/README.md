@@ -6,3 +6,4 @@
 * [Pretoki in prerezi](https://jaanos.github.io/optimizacijske-metode/prosojnice/04-pretoki-in-prerezi.marp.html) ([izročki](04-pretoki-in-prerezi.md))
 * [Prirejanja in pokritja](https://jaanos.github.io/optimizacijske-metode/prosojnice/05-prirejanja-in-pokritja.marp.html) ([izročki](05-prirejanja-in-pokritja.md))
 * [Konveksna optimizacija](https://jaanos.github.io/optimizacijske-metode/prosojnice/06-konveksna-optimizacija.marp.html) ([izročki](06-konveksna-optimizacija.md))
+* [Lokalna optimizacija](https://jaanos.github.io/optimizacijske-metode/prosojnice/07-lokalna-optimizacija.marp.html) ([izročki](07-lokalna-optimizacija.md))
