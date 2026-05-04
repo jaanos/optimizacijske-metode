@@ -2150,7 +2150,7 @@ $$
 
   </span>
 
-  * Naj bo <i>$X' = (x'_{ij})_{i,j=1}^{m,n}$</i> neka druga dopustna izbira kupljenih količin. Ker velja <i>$\forall i, j: z_{ij} = {u_{ij} \over p_j} \le z_i$</i>, za vsak $i$ sledi
+  * Naj bo <i>$X' = (x'_{ij} )_{i,j=1}^{m,n}$</i> neka druga dopustna izbira kupljenih količin. Ker velja <i>$\forall i, j: z_{ij} = {u_{ij} \over p_j} \le z_i$</i>, za vsak $i$ sledi
 
     <span class="smaller">
 
