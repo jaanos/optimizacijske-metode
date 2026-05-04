@@ -2113,7 +2113,7 @@ $$
     * 
       $$
       \begin{aligned}
-      z_{11} &= {8 \over 10} & z_{12} &= {10 \over 40} & z_1 &= {4 \over 5} & S_1 &= lbrace 1 \rbrace \\
+      z_{11} &= {8 \over 10} & z_{12} &= {10 \over 40} & z_1 &= {4 \over 5} & S_1 &= \lbrace 1 \rbrace \\
       z_{21} &= {5 \over 10} & z_{22} &= {30 \over 40} & z_2 &= {3 \over 4} & S_2 &= \lbrace 2 \rbrace \\
       z_{31} &= {5 \over 10} & z_{32} &= {20 \over 40} & z_3 &= {1 \over 2} & S_3 &= \lbrace 1, 2 \rbrace
       \end{aligned}
@@ -2150,7 +2150,7 @@ $$
 
   </span>
 
-  * Naj bo $X' = (x'_{ij})_{i,j=1}^{m,n}$ neka druga dopustna izbira kupljenih količin. Ker velja $\forall i, j: z_{ij} = {u_{ij} \over p_j} \le z_i$, za vsak $i$ sledi
+  * Naj bo <i>$X' = (x'_{ij})_{i,j=1}^{m,n}$</i> neka druga dopustna izbira kupljenih količin. Ker velja <i>$\forall i, j: z_{ij} = {u_{ij} \over p_j} \le z_i$</i>, za vsak $i$ sledi
 
     <span class="smaller">
 
@@ -2253,7 +2253,7 @@ $$
 * **_Izrek._** Eisenberg-Galeov konveksni program je dopusten in optimalen.
 
 * _Dokaz._ Pokažimo najprej, da je $\overline{x}_{ij} = {1 \over m}$ ($1 \le i \le m$, $1 \le j \le n$) dopustna rešitev.
-  * Res, velja $u_i(\overline{X}) > 0$ ($1 \le i \le m$), $\sum_{i=1}^m \overline{x}_{ij} = 1$ ($1 \le j \le n$) in $\overline{x}_{ij} \ge 0$ ($1 \le i \le m$, $1 \le j \le n$).
+  * Res, velja $u_i(\overline{X}) > 0$ ($1 \le i \le m$), <i>$\sum_{i=1}^m \overline{x}_{ij} = 1$</i> ($1 \le j \le n$) in <i>$\overline{x}_{ij} \ge 0$</i> ($1 \le i \le m$, $1 \le j \le n$).
 
 ---
 
@@ -2264,7 +2264,7 @@ $$
 * Naj bo
 
   $$
-  D = \left\lbrace X \in \Omega \mid \forall j \in \lbrace1, 2, \dots, n \rbrace: \left(\sum_{i=1}^m x_{ij} \le 1 \land \forall i \in \lbrace 1, 2, \dots, m \rbrace: x_{ij} \ge 0\right)\right\rbrace
+  D = \left\lbrace X \in \Omega \mid \forall j \in \lbrace 1, 2, \dots, n \rbrace: \left(\sum_{i=1}^m x_{ij} \le 1 \land \forall i \in \lbrace 1, 2, \dots, m \rbrace: x_{ij} \ge 0\right)\right\rbrace
   $$
 
   množica dopustnih rešitev.
