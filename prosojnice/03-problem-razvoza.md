@@ -736,7 +736,7 @@ Narišimo graf za pomožni problem in določimo začetno drevesno rešitev.
 
 # Dvojno stohastične matrike
 
-* **_Definicija._** Matrika <i>$A = (a_{ij})_{i,j=1}^n \in \mathbb{R}^{n \times n}$</i> je _dvojno stohastična_, če velja $a_{ij} \ge 0$ ($1 \le i, j \le n$) ter $\sum_{j=1}^n a_{ij} = 1$ ($1 \le i \le n$) in $\sum_{i=1}^n a_{ij} = 1$ ($1 \le j \le n$).
+* **_Definicija._** Matrika <i>$A = \lparen a_{ij} \rparen_{i,j=1}^n \in \mathbb{R}^{n \times n}$</i> je _dvojno stohastična_, če velja <i>$a_{ij} \ge 0$</i> ($1 \le i, j \le n$) ter <i>$\sum_{j=1}^n a_{ij} = 1$</i> ($1 \le i \le n$) in <i>$\sum_{i=1}^n a_{ij} = 1$</i> ($1 \le j \le n$).
 
 * **_Primer_** dvojno stohastične matrike:
 
@@ -752,7 +752,7 @@ Narišimo graf za pomožni problem in določimo začetno drevesno rešitev.
 
 # Permutacijske matrike
 
-* **_Definicija._** Matrika <i>$P = (p_{ij})_{i,j=1}^n \in {\lbrace 0, 1 \rbrace}^{n \times n}$</i> je _permutacijska matrika_, če je v vsaki vrstici in v vsakem stolpcu natanko ena enica.
+* **_Definicija._** Matrika <i>$P = \lparen p_{ij} \rparen_{i,j=1}^n \in {\lbrace 0, 1 \rbrace}^{n \times n}$</i> je _permutacijska matrika_, če je v vsaki vrstici in v vsakem stolpcu natanko ena enica.
 
 * **_Primeri_** za $n = 3$:
 

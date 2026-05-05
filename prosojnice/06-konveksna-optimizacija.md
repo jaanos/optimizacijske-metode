@@ -1129,7 +1129,7 @@ $f(y) \ge f(x) + (y-x) f'(x)$ za vsaka $x, y \in (a, b)$.
 
 <span class="small">
 
-* **_Definicija._** Naj bo <i>$A = (a_{ij})_{i,j=1}^n \in \mathbb{R}^{n \times n}$</i> simetrična matrika. _Kvadratna forma_, ki pripada $A$, je
+* **_Definicija._** Naj bo <i>$A = \lparen a_{ij} \rparen_{i,j=1}^n \in \mathbb{R}^{n \times n}$</i> simetrična matrika. _Kvadratna forma_, ki pripada $A$, je
 
   $$
   f(x) = x^\top A x = [x_1 \ x_2 \ \dots \ x_n] \begin{bmatrix}
