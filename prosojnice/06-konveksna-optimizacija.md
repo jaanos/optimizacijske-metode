@@ -1129,7 +1129,7 @@ $f(y) \ge f(x) + (y-x) f'(x)$ za vsaka $x, y \in (a, b)$.
 
 <span class="small">
 
-* **_Definicija._** Naj bo $A = (a_{ij})_{i,j=1}^n \in \mathbb{R}^{n \times n}$ simetrična matrika. _Kvadratna forma_, ki pripada $A$, je
+* **_Definicija._** Naj bo <i>$A = (a_{ij})_{i,j=1}^n \in \mathbb{R}^{n \times n}$</i> simetrična matrika. _Kvadratna forma_, ki pripada $A$, je
 
   $$
   f(x) = x^\top A x = [x_1 \ x_2 \ \dots \ x_n] \begin{bmatrix}
@@ -1205,7 +1205,7 @@ $f(y) \ge f(x) + (y-x) f'(x)$ za vsaka $x, y \in (a, b)$.
 
 # Preverjanje definitnosti
 
-* **_Definicija._** _Glavne poddeterminante_ matrike $A = (a_{ij})_{i,j=1}^n \in \mathbb{R}^{n \times n}$ so vrednosti $\det (a_{ij})_{i,j=1}^\ell$ ($1 \le \ell \le n$).
+* **_Definicija._** _Glavne poddeterminante_ matrike <i>$A = (a_{ij})_{i,j=1}^n \in \mathbb{R}^{n \times n}$</i> so vrednosti <i>$\det (a_{ij})_{i,j=1}^\ell$</i> ($1 \le \ell \le n$).
 
 * **_Trditev._** Naj bo $A \in \mathbb{R}^{n \times n}$ simetrična matrika. Potem velja:
 
