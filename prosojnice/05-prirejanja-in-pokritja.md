@@ -492,7 +492,7 @@ Dobimo optimalno rešitev:
 
 * Če je $M$ popolno prirejanje ($\vert M \vert = n$), nam to da $n$ ničel, eno v vsaki vrstici in stolpcu.
 * Če je $\vert M \vert = \vert C \vert < n$, nam vozlišča iz $C$ dajo manj kot $n$ vrstic in stolpcev, ki pokrijejo vse ničle.
-  - Vrsticam v $C$ (torej v $X \setminus S$) prištejemo $\epsilon$, stolpcem izven $C$ (torej v $X \setminus T$) odštejemo $\epsilon$.
+  - Vrsticam v $C$ (torej v $X \setminus S$) prištejemo $\epsilon$, stolpcem izven $C$ (torej v $Y \setminus T$) odštejemo $\epsilon$.
   - Res torej od nepokritih števil odštejemo $\epsilon$, dvakrat pokritim pa prištejemo $\epsilon$.
 
 </span>
